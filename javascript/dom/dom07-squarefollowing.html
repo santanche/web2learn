@@ -1,0 +1,23 @@
+<html>
+
+<head>
+   <script type="text/javascript">
+      function Start() {
+         let c = document.querySelector("#clicavel");
+         c.addEventListener("click", Clicado);
+      }
+      function Clicado(event) {
+         let c = document.querySelector("#movel");
+         c.setAttribute("x", event.x - 50);
+         c.setAttribute("y", event.y - 50);
+      }
+   </script>
+</head>
+
+<body onload="Start()">
+   <svg id="clicavel" width="100%" height="100%">
+      <rect id="movel"  x='0' y='0'  width='100' height='100'/>
+   </svg>
+</body>
+
+</html>

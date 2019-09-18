@@ -1,0 +1,40 @@
+<html>
+
+<head>
+   <script type="text/javascript">
+      let follow = null;
+      let square = null;
+      let position = null;
+      function Start() {
+         follow = false;
+         square = document.querySelector("#movel");
+         position = {};
+         let area = document.querySelector("#area");
+         square.addEventListener("mousedown", Down);
+         area.addEventListener("mousemove", Move);
+         square.addEventListener("mouseup", Up);
+      }
+      function Down(event) {
+         follow = true;
+         position.dx = event.x - Number(square.getAttribute("x"));
+         position.dy = event.y - Number(square.getAttribute("y"));
+      }
+      function Move(event) {
+         if (follow) {
+            square.setAttribute("x", event.x - position.dx);
+            square.setAttribute("y", event.y - position.dy);
+         }
+      }
+      function Up(event) {
+         follow = false;
+      }
+   </script>
+</head>
+
+<body onload="Start()">
+   <svg id="area" width="100%" height="100%">
+      <rect id="movel"  x='0' y='0'  width='100' height='100'/>
+   </svg>
+</body>
+
+</html>

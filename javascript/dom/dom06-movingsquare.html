@@ -1,0 +1,19 @@
+<html>
+
+<head>
+   <script type="text/javascript">
+      function Clicado() {
+         let c = document.querySelector("#clicavel");
+         c.setAttribute("x",Number(c.getAttribute("x"))+50)
+         c.setAttribute("y",Number(c.getAttribute("y"))+50)
+      }
+   </script>
+</head>
+
+<body>
+   <svg width="100%" height="100%">
+      <rect onclick="Clicado()" id = "clicavel" x = '0' y = '0'  width='100' height='100'/>
+   </svg>
+</body>
+
+</html>
