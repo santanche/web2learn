@@ -2,7 +2,7 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <script type="text/javascript"  src="src/resizablesquare.js"></script>
+   <script type="text/javascript"  src="src/movinggoogle.js"></script>
    <style>
    .main{
       position: absolute;
@@ -10,7 +10,12 @@
       top: 5px;
       right: 5px;
       bottom: 5px;
-      background-image: url(images/virus.png);
+      /* background-image: url(images/virus.png); */
+   }
+   #movel{
+      position: absolute;
+      top: 0px;
+      left: 0px;
    }
    </style>
 </head>
@@ -18,7 +23,7 @@
 <body onload="Start()">
    <div class = "main">
       <svg id="area" width="100%" height="100%">
-         <rect id="movel"  x='0' y='0'  width='100' height='100' fill ="#5f7b97"/>
+         <img src="images/procurar.svg" id = "movel" width="100px" height="100px" >
       </svg>
    </div>
 </body>
