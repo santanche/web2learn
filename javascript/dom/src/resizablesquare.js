@@ -10,9 +10,12 @@ function Start() {
 }
 class SVG{
    constructor(type){
+      this.Down = this.Down.bind(this);
+      this.Move = this.Move.bind(this);
+      this.Up = this.Up.bind(this);
       this.format = null;
       this.position = {};
-      this.follow = false;
+      SVG.follow = false;
       if(type === "square"){
          this.format = document.querySelector("#movel");
          this.format.addEventListener("mousedown", this.Down);
@@ -27,17 +30,21 @@ class SVG{
    }
    Down(event) {
       console.log(this.format)
-      this.follow = true;
+      SVG.follow = true;
       this.position.dx = event.x - Number(this.format.getAttribute("x"));
       this.position.dy = event.y - Number(this.format.getAttribute("y"));
    }
    Move(event) {
-      if (this.follow) {
+      if (SVG.follow) {
          this.format.setAttribute("x", event.x - this.position.dx);
          this.format.setAttribute("y", event.y - this.position.dy);
       }
    }
    Up(event) {
-      this.follow = false;
+      SVG.follow = false;
    }
 }
+
+(function() {
+   SVG.follow = false;
+})();
