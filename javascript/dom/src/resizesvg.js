@@ -36,7 +36,7 @@ class Movel{
    }
    down(event) {
       this.follow = true;
-      this.growSquare.classList.add("visible");
+      this.growSquare.classList.toggle("visible");
       this.position.dx = event.x - this.position.tx;
       this.position.dy = event.y - this.position.ty;
       // this.position.dx = event.x - Number(this.group.getAttribute("transform"));
