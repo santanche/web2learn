@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset="utf-8">
+   <script type="text/javascript"  src="src/resizesvg.js"></script>
+   <style>
+   .main{
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+      /* background-image: url(images/virus.png); */
+   }
+   #movel{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+   }
+   .pointerDiff{
+            visibility: hidden;
+            fill: blue;
+            cursor: nwse-resize
+        }
+     .visivel{
+         visibility: visible
+     }
+   </style>
+</head>
+
+<body onload="Start()">
+   <div class = "main">
+      <svg id="area" width="100%" height="100%">
+         <img src="images/procurar.svg" id = "movel" width="100px" height="100px" >
+         <svg id="area2" width="100%" height="100%" x = 0 y = 0>
+            <rect id="quadrado" class="pointerDiff visivel" x= 95 y= 95 width= "8" height= "8" />
+         </svg>
+      </svg>
+   </div>
+</body>
+
+</html>
