@@ -1,5 +1,4 @@
 let square;
-let area;
 function Start() {
    square = new Movel();
    //square.format.addEventListener("mousedown", square.down);
@@ -11,62 +10,64 @@ class Movel{
       this.down = this.down.bind(this);
       this.move = this.move.bind(this);
       this.up = this.up.bind(this);
-      this.click = this.click.bind(this);
       this.grow = this.grow.bind(this);
       this.notGrow = this.notGrow.bind(this);
-      this.position = {"dx" : 0,"dy": 0};
+      this.position = { "dx" : 0,
+                        "dy": 0,
+                        "tx":0,
+                        "ty":0};
       this.follow = false;
-      this.cresce = false;
-      this.quadradoElem = document.querySelector(".pointerDiff");
-      this.quadradoElem.classList.toggle("visivel");
-      this.square = document.querySelector("#movel");
+      this.resize = false;
+      this.growSquare = document.querySelector(".pointerDiff");
+      this.growSquare.classList.toggle("visible");
+      this.square = document.querySelector("#move");
       this.area = document.querySelector("#area");
-      this.quadradoElem.addEventListener("mousedown", this.grow);
-      this.quadradoElem.addEventListener("mouseup", this.notGrow);
-      this.square.addEventListener("click", this.click);
+      this.growSquare.addEventListener("mousedown", this.grow);
+      this.growSquare.addEventListener("mouseup", this.notGrow);
+      this.square.addEventListener("mousedown", this.down);
+      this.square.addEventListener("mouseup",this.up);
       this.area.addEventListener("mousemove", this.move);
-      this.area.addEventListener("click", this.click);
+      this.group = document.querySelector("#group-move");
+      // this.area.addEventListener("click", this.click);
 
    }
    grow(event){
-      this.cresce = true;
+      this.resize = true;
    }
    down(event) {
       this.follow = true;
-      this.position.dx = event.x - Number(this.square.style.left);
-      this.position.dy = event.y - Number(this.square.style.top);
+      this.growSquare.classList.add("visible");
+      this.position.dx = event.x - this.position.tx;
+      this.position.dy = event.y - this.position.ty;
+      // this.position.dx = event.x - Number(this.group.getAttribute("transform"));
+      // this.position.dy = event.y - Number(this.group.getAttribute("y"));
    }
    move(event) {
-      if (this.follow && !this.cresce) {
-         this.square.style.left = (event.x - this.position.dx) + "px";
-         this.square.style.top = (event.y - this.position.dy) + "px";
+      if (this.follow && !this.resize) {
+         if(event.x < 0){
+            event.x = 0;
+         }
+         if(event.y < 0){
+            event.y = 0;
+         }
+         this.position.tx = event.x - this.position.dx;
+         this.position.ty = event.y - this.position.dy;
+         this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");
+         // this.group.setAttribute("y",event.y - this.position.dy);
       }
-      if (this.cresce){
-         this.square.width = event.x;
-         this.square.height = event.y;
-         this.quadradoElem.setAttribute("x", event.x -5 );
-         this.quadradoElem.setAttribute("y", event.y -5);
+      if (this.resize){
+         this.square.setAttribute("width",event.x - this.position.tx);
+         this.square.setAttribute("height",event.y - this.position.ty);
+         this.growSquare.setAttribute("x", event.x - this.position.tx -5 );
+         this.growSquare.setAttribute("y", event.y - this.position.ty -5);
       }
    }
-   up(event) {square.setAttribute("width", event.x );
-            square.setAttribute("height", event.y );
-            quadradoElem.setAttribute("x", event.x -5 );
-            quadradoElem.setAttribute("y", event.y -5);
+   up(event) {
       this.follow = false;
    }
    notGrow(event){
-      this.cresce = false;
-      this.quadradoElem.classList.toggle("visivel");
-   }
-   click(event){
-      if(this.follow){
-         this.follow = false;
-      }else{
-         this.follow = true;
-         this.quadradoElem.classList.add("visivel");
-         this.position.dx = event.x - Number(this.square.style.left.replace("px",""));
-         this.position.dy = event.y - Number(this.square.style.top.replace("px",""));
-      }
+      this.resize = false;
+      this.growSquare.classList.toggle("visible");
    }
 }
 

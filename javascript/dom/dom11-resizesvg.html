@@ -4,6 +4,10 @@
    <meta charset="utf-8">
    <script type="text/javascript"  src="src/resizesvg.js"></script>
    <style>
+   /* #area2{
+     position: absolute;
+     left: 0px;
+   } */
    .main{
       position: absolute;
       left: 5px;
@@ -22,19 +26,22 @@
             fill: blue;
             cursor: nwse-resize
         }
-     .visivel{
+     .visible{
          visibility: visible
      }
+
    </style>
 </head>
 
 <body onload="Start()">
    <div class = "main">
       <svg id="area" width="100%" height="100%">
-         <img src="images/procurar.svg" id = "movel" width="100px" height="100px" >
-         <svg id="area2" width="100%" height="100%" x = 0 y = 0>
-            <rect id="quadrado" class="pointerDiff visivel" x= 95 y= 95 width= "8" height= "8" />
-         </svg>
+         <g id="group-move" transform = "translate(0,0)">
+           <image xlink:href="images/procurar.svg" id = "move" width="100px" height="100px" />
+         <!-- <svg id="area2" width="100%" height="100%" x = 0 y = 0> -->
+           <rect id="square" class="pointerDiff visible" x= 95 y= 95 width= "8" height= "8" />
+        </g>
+         <!-- </svg> -->
       </svg>
    </div>
 </body>
