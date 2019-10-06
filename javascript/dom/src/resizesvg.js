@@ -119,13 +119,11 @@ class Movel{
    notGrow(event){
       this.resize = false;
       this.growSquareBR.classList.toggle("visible");
-<<<<<<< HEAD
 
       this.growSquareTL.classList.toggle("visible");
       this.growSquareBL.classList.toggle("visible");
       this.growSquareTR.classList.toggle("visible");
       
-=======
->>>>>>> 4b192affbffeed83182349921e3d3d710bee3ff0
+      
    }
 }
