@@ -123,5 +123,6 @@ class Movel{
       this.growSquareTL.classList.toggle("visible");
       this.growSquareBL.classList.toggle("visible");
       this.growSquareTR.classList.toggle("visible");
+      
    }
 }
