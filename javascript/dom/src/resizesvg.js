@@ -13,6 +13,7 @@ class Movel{
       this.grow = this.grow.bind(this);
       this.notGrow = this.notGrow.bind(this);
 
+      this.areaup = this.areaup.bind(this);
 
       this.position = { "dx" : 0,
                         "dy": 0,
@@ -49,10 +50,17 @@ class Movel{
       this.square.addEventListener("mouseup",this.up);
       this.area.addEventListener("mousemove", this.move);
       this.group = document.querySelector("#group-move");
+      this.area.addEventListener("mouseup", this.areaup);
       // this.area.addEventListener("click", this.click);
 
       document.addEventListener("keydown", this.move);
 
+   }
+
+   areaup(event){
+       if(this.controlDown){
+           this.resize = false;
+       }
    }
    grow(event){
       this.resize = true;
