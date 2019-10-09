@@ -110,6 +110,13 @@ class Movel{
                 this.square.setAttribute("height",squareSizeY);
                 this.growSquareBR.setAttribute("x", squareSizeX -5 );
                 this.growSquareBR.setAttribute("y", squareSizeY -5);
+
+                this.growSquareTL.setAttribute("x", 0);
+                this.growSquareTL.setAttribute("y", 0);
+                this.growSquareBL.setAttribute("x", 0 );
+                this.growSquareBL.setAttribute("y", squareSizeY - 5);
+                this.growSquareTR.setAttribute("x", squareSizeX - 5 );
+                this.growSquareTR.setAttribute("y", 0);
             }
             else{
                 let minimun = Math.min(squareSizeX, squareSizeY);
@@ -117,6 +124,13 @@ class Movel{
                 this.square.setAttribute("height",minimun);
                 this.growSquareBR.setAttribute("x", minimun -5 );
                 this.growSquareBR.setAttribute("y", minimun -5);
+
+                this.growSquareTL.setAttribute("x", 0);
+                this.growSquareTL.setAttribute("y", 0);
+                this.growSquareBL.setAttribute("x", 0 );
+                this.growSquareBL.setAttribute("y", minimun - 5);
+                this.growSquareTR.setAttribute("x", minimun - 5 );
+                this.growSquareTR.setAttribute("y", 0);
             }
          }
       }
