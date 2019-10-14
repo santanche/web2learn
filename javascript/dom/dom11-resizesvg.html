@@ -39,15 +39,18 @@
 </head>
 
 <body onload="Start()">
-   <div class = "main">
+   <div class = "main" width="100%" height="100%">
       <svg id="area" width="100%" height="100%">
          <g id="group-move" transform = "translate(0,0)">
-           <image xlink:href="images/procurar.svg" id = "move" width="100px" height="100px" preserveAspectRatio="none" x="5" y ="5" />
          <!-- <svg id="area2" width="100%" height="100%" x = 0 y = 0> -->
            <rect id="squareBR" class="pointerDiffR visible" x= 95 y= 95 width= "8" height= "8" />
            <rect id="squareTL" class="pointerDiffR visible" x= 0 y= 0 width= "8" height= "8" />
            <rect id="squareBL" class="pointerDiffL visible" x= 0 y= 95 width= "8" height= "8" />
            <rect id="squareTR" class="pointerDiffL visible" x= 95 y= 0 width= "8" height= "8" />
+           <g>
+            <image xlink:href="images/procurar.svg" id = "move" width="100px" height="100px" preserveAspectRatio="none" x="5" y ="5" />
+           </g>
+           
         </g>
          <!-- </svg> -->
       </svg>
