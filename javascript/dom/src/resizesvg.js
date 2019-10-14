@@ -11,6 +11,12 @@ class Movel{
         this.notGrow = this.notGrow.bind(this);
         this.areaup = this.areaup.bind(this);
 
+
+
+        this.growTL = this.growTL.bind(this);
+        this.notGrowTL = this.notGrowTL.bind(this);
+
+
         this.position = {   "dx": 0,
                             "dy": 0,
                             "tx" :0,
@@ -32,8 +38,8 @@ class Movel{
         this.square = document.querySelector("#move");
         this.area = document.querySelector("#area");
         
-        this.growSquareTL.addEventListener("mousedown", this.grow);
-        this.growSquareTL.addEventListener("mouseup", this.notGrow);
+        // this.growSquareTL.addEventListener("mousedown", this.grow);
+        // this.growSquareTL.addEventListener("mouseup", this.notGrow);
         this.growSquareBL.addEventListener("mousedown", this.grow);
         this.growSquareBL.addEventListener("mouseup", this.notGrow);
         this.growSquareTR.addEventListener("mousedown", this.grow);
@@ -42,6 +48,10 @@ class Movel{
         this.growSquareBR.addEventListener("mousedown", this.grow);
         this.growSquareBR.addEventListener("mouseup", this.notGrow);
 
+        // this.growSquareTL.addEventListener("mousedown", this.grow);
+        // this.growSquareTL.addEventListener("mouseup", this.notGrow);
+
+
         this.square.addEventListener("mousedown", this.down);
         this.square.addEventListener("mouseup",this.up);
         this.area.addEventListener("mousemove", this.move);
@@ -49,6 +59,10 @@ class Movel{
         this.area.addEventListener("mouseup", this.areaup);
 
         document.addEventListener("keydown", this.move);
+
+        this.resizeTL = false;
+        this.growSquareTL.addEventListener("mousedown", this.growTL);
+        this.growSquareTL.addEventListener("mouseup", this.notGrowTL);
 
     }
 
@@ -93,6 +107,9 @@ class Movel{
             this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");
         }
         if (this.resize){
+
+            console.log("ai nao");
+            
             let squareSizeX = event.x - this.position.tx;
             let squareSizeY = event.y - this.position.ty;
             
@@ -110,6 +127,76 @@ class Movel{
                     this.growSquareBL.setAttribute("y", squareSizeY - 5);
                     this.growSquareTR.setAttribute("x", squareSizeX - 5);
                     this.growSquareTR.setAttribute("y", 0);
+                }
+                else{
+                    let maximun = Math.max(squareSizeX, squareSizeY);
+                    let widthSquare = Number(this.square.getAttribute("width"));
+                    let heightSquare = Number(this.square.getAttribute("height"));
+
+                    
+
+                    if(squareSizeX>=squareSizeY){
+
+                        let ratio = squareSizeX/widthSquare;
+                        this.square.setAttribute("width", maximun);
+                        this.square.setAttribute("height", heightSquare*ratio);
+                    }
+                    else{
+                        
+                        let ratio = squareSizeY/heightSquare;
+                        this.square.setAttribute("height", maximun);
+                        this.square.setAttribute("width", widthSquare*ratio);
+                    }
+
+                    this.growSquareBR.setAttribute("x", widthSquare-5);
+                    this.growSquareBR.setAttribute("y", heightSquare-5);
+                    this.growSquareTL.setAttribute("x", 0);
+                    this.growSquareTL.setAttribute("y", 0);
+                    this.growSquareBL.setAttribute("x", 0 );
+                    this.growSquareBL.setAttribute("y", heightSquare - 5);
+                    this.growSquareTR.setAttribute("x", widthSquare - 5 );
+                    this.growSquareTR.setAttribute("y", 0);
+                }
+            }
+        }
+
+
+
+
+
+
+        if (this.resizeTL){
+            let squareSizeX = Math.abs(event.x - this.position.tx);
+            let squareSizeY = Math.abs(event.y - this.position.ty);
+            let widthSquare = Number(this.square.getAttribute("width"));
+            let heightSquare = Number(this.square.getAttribute("height"));
+
+            console.log(Number(this.square.getAttribute("height")));
+            
+
+            let scaleX = Number(squareSizeX)/widthSquare;
+            let scaleY = Number(squareSizeY)/heightSquare;
+
+            console.log("scale X " + Number(widthSquare));
+            
+            
+            if(squareSizeX - 5 >=0 && squareSizeY-5 >= 0){
+                if(this.controlDown===false){
+                    // this.square.setAttribute("width",squareSizeX);
+                    // this.square.setAttribute("height",squareSizeY);
+
+                    this.group.setAttribute("transform","scale(" + (scaleX) + "," + (scaleY) + ")");
+
+
+                    // this.growSquareBR.setAttribute("x", squareSizeX -5);
+                    // this.growSquareBR.setAttribute("y", squareSizeY -5);
+
+                    // this.growSquareTL.setAttribute("x", 0);
+                    // this.growSquareTL.setAttribute("y", 0);
+                    // this.growSquareBL.setAttribute("x", 0 );
+                    // this.growSquareBL.setAttribute("y", squareSizeY - 5);
+                    // this.growSquareTR.setAttribute("x", squareSizeX - 5);
+                    // this.growSquareTR.setAttribute("y", 0);
                 }
                 else{
                     let maximun = Math.max(squareSizeX, squareSizeY);
@@ -140,6 +227,15 @@ class Movel{
                 }
             }
         }
+
+
+
+
+
+
+
+
+
     }
     up(event) {
         this.follow = false;
@@ -151,4 +247,18 @@ class Movel{
         this.growSquareBL.classList.toggle("visible");
         this.growSquareTR.classList.toggle("visible");
     }
+
+
+
+    growTL(event){
+        this.resizeTL = true;
+    }
+    notGrowTL(event){
+        this.resizeTL = false;
+        this.growSquareBR.classList.toggle("visible");
+        this.growSquareTL.classList.toggle("visible");
+        this.growSquareBL.classList.toggle("visible");
+        this.growSquareTR.classList.toggle("visible");
+    }
+    
 }
