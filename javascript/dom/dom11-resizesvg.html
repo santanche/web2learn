@@ -4,26 +4,21 @@
    <meta charset="utf-8">
    <script type="text/javascript"  src="src/resizesvg.js"></script>
    <style>
-   /* #area2{
-     position: absolute;
-     left: 0px;
-   } */
-   .main{
-      position: absolute;
-      left: 5px;
-      top: 5px;
-      right: 5px;
-      bottom: 5px;
-      /* background-image: url(images/virus.png); */
-   }
-   #movel{
-      position: absolute;
-      top: 0px;
-      left: 0px;
-   }
+    .main{
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        right: 5px;
+        bottom: 5px;
+    }
+    #movel{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
    .pointerDiffR{
         visibility: hidden;
-        fill: blue;
+        fill:blue;
         cursor: nwse-resize
     }
     .pointerDiffL{
@@ -31,25 +26,24 @@
         fill: blue;
         cursor: nesw-resize
     }
-     .visible{
-         visibility: visible
-     }
-
+    .visible{
+        visibility: visible
+    }
    </style>
 </head>
 
 <body onload="Start()">
-   <div class = "main">
+   <div class = "main" >
       <svg id="area" width="100%" height="100%">
          <g id="group-move" transform = "translate(0,0)">
-           <image xlink:href="images/procurar.svg" id = "move" width="100px" height="100px" preserveAspectRatio="none" x="5" y ="5" />
-         <!-- <svg id="area2" width="100%" height="100%" x = 0 y = 0> -->
+            <g id="image-inside" transform="translate(0,0)" z="0">
+                <image xlink:href="images/procurar.svg" id = "move" width="100px" height="100px" preserveAspectRatio="none" x="5" y ="5" />
+            </g>
            <rect id="squareBR" class="pointerDiffR visible" x= 95 y= 95 width= "8" height= "8" />
            <rect id="squareTL" class="pointerDiffR visible" x= 0 y= 0 width= "8" height= "8" />
            <rect id="squareBL" class="pointerDiffL visible" x= 0 y= 95 width= "8" height= "8" />
            <rect id="squareTR" class="pointerDiffL visible" x= 95 y= 0 width= "8" height= "8" />
         </g>
-         <!-- </svg> -->
       </svg>
    </div>
 </body>
