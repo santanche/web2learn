@@ -64,6 +64,8 @@ class Movel{
         this.growSquareTL.addEventListener("mousedown", this.growTL);
         this.growSquareTL.addEventListener("mouseup", this.notGrowTL);
 
+        this.groupSquare = document.querySelector("#image-inside");
+
     }
 
     areaup(event){
@@ -112,6 +114,9 @@ class Movel{
             
             let squareSizeX = event.x - this.position.tx;
             let squareSizeY = event.y - this.position.ty;
+
+            // console.log(squareSizeX + " " + squareSizeY);
+            
             
             if(squareSizeX - 5 >=0 && squareSizeY-5 >= 0){
                 if(this.controlDown===false){
@@ -166,67 +171,69 @@ class Movel{
 
 
         if (this.resizeTL){
-            let squareSizeX = Math.abs(event.x - this.position.tx);
-            let squareSizeY = Math.abs(event.y - this.position.ty);
-            let widthSquare = Number(this.square.getAttribute("width"));
-            let heightSquare = Number(this.square.getAttribute("height"));
+            let squareSizeX = (event.x - this.position.tx);
+            let squareSizeY = (event.y - this.position.ty);
+            let widthSquare = parseInt(this.square.getAttribute("width"));
+            let heightSquare = parseInt(this.square.getAttribute("height"));
 
-            console.log(Number(this.square.getAttribute("height")));
+            //console.log(Number(this.square.getAttribute("height")));
+            console.log(squareSizeX + " " + squareSizeY);
+
+            let scaleX = parseInt(squareSizeX)/widthSquare;
+            let scaleY = parseInt(squareSizeY)/heightSquare;
+
+            //console.log("scale X " + parseInt(widthSquare));
             
-
-            let scaleX = Number(squareSizeX)/widthSquare;
-            let scaleY = Number(squareSizeY)/heightSquare;
-
-            console.log("scale X " + Number(widthSquare));
             
-            
-            if(squareSizeX - 5 >=0 && squareSizeY-5 >= 0){
-                if(this.controlDown===false){
-                    // this.square.setAttribute("width",squareSizeX);
-                    // this.square.setAttribute("height",squareSizeY);
+            // if(squareSizeX - 5 >=0 && squareSizeY-5 >= 0){
+            if(this.controlDown===false){
+                
+                // this.groupSquare.setAttribute("transform","scale(" + (scaleX) + "," + (scaleY) + ")");
+                this.groupSquare.setAttribute("transform","translate(" + (squareSizeX) + "," + (squareSizeY) + ")");
+                this.square.setAttribute("width", widthSquare + Math.abs(squareSizeX));
+                this.square.setAttribute("height",heightSquare + Math.abs(squareSizeY));
 
-                    this.group.setAttribute("transform","scale(" + (scaleX) + "," + (scaleY) + ")");
+                console.log(this.square.getAttribute("width"));
+                
+                // this.growSquareBR.setAttribute("x", squareSizeX -5);
+                // this.growSquareBR.setAttribute("y", squareSizeY -5);
 
+                // this.growSquareTL.setAttribute("x", 0);
+                // this.growSquareTL.setAttribute("y", 0);
+                // this.growSquareBL.setAttribute("x", 0 );
+                // this.growSquareBL.setAttribute("y", squareSizeY - 5);
+                // this.growSquareTR.setAttribute("x", squareSizeX - 5);
+                // this.growSquareTR.setAttribute("y", 0);
+            }
+            else{
+                let maximun = Math.max(squareSizeX, squareSizeY);
+                let widthSquare = Number(this.square.getAttribute("width"));
+                let heightSquare = Number(this.square.getAttribute("height"));
 
-                    // this.growSquareBR.setAttribute("x", squareSizeX -5);
-                    // this.growSquareBR.setAttribute("y", squareSizeY -5);
+                if(squareSizeX>=squareSizeY){
 
-                    // this.growSquareTL.setAttribute("x", 0);
-                    // this.growSquareTL.setAttribute("y", 0);
-                    // this.growSquareBL.setAttribute("x", 0 );
-                    // this.growSquareBL.setAttribute("y", squareSizeY - 5);
-                    // this.growSquareTR.setAttribute("x", squareSizeX - 5);
-                    // this.growSquareTR.setAttribute("y", 0);
+                    let ratio = squareSizeX/widthSquare;
+                    this.square.setAttribute("width", maximun);
+                    this.square.setAttribute("height", heightSquare*ratio);
                 }
                 else{
-                    let maximun = Math.max(squareSizeX, squareSizeY);
-                    let widthSquare = Number(this.square.getAttribute("width"));
-                    let heightSquare = Number(this.square.getAttribute("height"));
-
-                    if(squareSizeX>=squareSizeY){
-
-                        let ratio = squareSizeX/widthSquare;
-                        this.square.setAttribute("width", maximun);
-                        this.square.setAttribute("height", heightSquare*ratio);
-                    }
-                    else{
-                        
-                        let ratio = squareSizeY/heightSquare;
-                        this.square.setAttribute("height", maximun);
-                        this.square.setAttribute("width", widthSquare*ratio);
-                    }
-
-                    this.growSquareBR.setAttribute("x", widthSquare-5);
-                    this.growSquareBR.setAttribute("y", heightSquare-5);
-                    this.growSquareTL.setAttribute("x", 0);
-                    this.growSquareTL.setAttribute("y", 0);
-                    this.growSquareBL.setAttribute("x", 0 );
-                    this.growSquareBL.setAttribute("y", heightSquare - 5);
-                    this.growSquareTR.setAttribute("x", widthSquare - 5 );
-                    this.growSquareTR.setAttribute("y", 0);
+                    
+                    let ratio = squareSizeY/heightSquare;
+                    this.square.setAttribute("height", maximun);
+                    this.square.setAttribute("width", widthSquare*ratio);
                 }
+
+                this.growSquareBR.setAttribute("x", widthSquare-5);
+                this.growSquareBR.setAttribute("y", heightSquare-5);
+                this.growSquareTL.setAttribute("x", 0);
+                this.growSquareTL.setAttribute("y", 0);
+                this.growSquareBL.setAttribute("x", 0 );
+                this.growSquareBL.setAttribute("y", heightSquare - 5);
+                this.growSquareTR.setAttribute("x", widthSquare - 5 );
+                this.growSquareTR.setAttribute("y", 0);
             }
         }
+    //}
 
 
 
