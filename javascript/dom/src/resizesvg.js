@@ -1,7 +1,3 @@
-let square;
-function Start() {
-   square = new Movel();
-}
 class Movel{
     constructor(){
         this.down = this.down.bind(this);
@@ -10,12 +6,13 @@ class Movel{
         this.grow = this.grow.bind(this);
         this.notGrow = this.notGrow.bind(this);
         this.areaup = this.areaup.bind(this);
-
-
-
         this.growTL = this.growTL.bind(this);
         this.notGrowTL = this.notGrowTL.bind(this);
+        this.createCircle = this.createCircle.bind(this);
+     }
 
+     start() {
+        MessageBus.ext.subscribe("control/create/circle", this.createCircle);
 
         this.position = {   "dx": 0,
                             "dy": 0,
@@ -66,6 +63,10 @@ class Movel{
 
         this.groupSquare = document.querySelector("#image-inside");
 
+    }
+
+    createCircle() {
+        console.log("Create circle...");
     }
 
     areaup(event){
@@ -269,3 +270,7 @@ class Movel{
     }
     
 }
+
+(function() {
+   Movel.instance = new Movel();
+})();

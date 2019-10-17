@@ -2,11 +2,34 @@
 <html>
 <head>
    <meta charset="utf-8">
+   <script src="../../infra/bus.js"></script>
+   <script src="../../infra/basic.js"></script>
+   <script src="../../infra/dcc-common-server-proxy.js"></script>
+   <script src="../../dccs/subscribe-dcc.js"></script>
+   <script src="../../dccs/components/dcc-base.js"></script>
+   <script src="../../dccs/components/dcc-visual.js"></script>
+   <script src="../../dccs/components/dcc-markdown.js"></script>
+   <script src="../../dccs/components/dcc-image.js"></script>
+   <script src="../../dccs/components/dcc-expression.js"></script>
+   <script src="../../dccs/components/dcc-block.js"></script>
+   <script src="../../dccs/components/dcc-trigger.js"></script>
+   <script src="../../dccs/components/dcc-character.js"></script>
+   <script src="../../dccs/components/dcc-lively-dialog.js"></script>
+   <script src="../../dccs/components/dcc-notice-input.js"></script>
+   <script src="../../dccs/components/dcc-state-select.js"></script>
+   <script src="../../dccs/components/dcc-image-marker.js"></script>
+   <script src="../../dccs/components/dcc-styler.js"></script>
+   <script src="../../dccs/components/dcc-entity.js"></script>
+   <script src="../../dccs/components/dcc-input.js"></script>
+   <script src="../../dccs/components/dcc-compute.js"></script>
+   <script src="../../dccs/components/dcc-report.js"></script>
+
    <script type="text/javascript"  src="src/resizesvg.js"></script>
+
    <style>
     .main{
         position: absolute;
-        left: 5px;
+        left: 100px;
         top: 5px;
         right: 5px;
         bottom: 5px;
@@ -32,7 +55,11 @@
    </style>
 </head>
 
-<body onload="Start()">
+<body onload="Movel.instance.start()">
+   <script>
+      MessageBus.page = new MessageBus(false);
+      Basic.service.rootPath = "../../";
+   </script>
    <div class = "main" >
       <svg id="area" width="100%" height="100%">
          <g id="group-move" transform = "translate(0,0)">
@@ -46,6 +73,10 @@
         </g>
       </svg>
    </div>
+   <div>
+     <dcc-trigger label="Circle" action="control/create/circle">
+     </dcc-trigger>
+  </div>
 </body>
 
 </html>
