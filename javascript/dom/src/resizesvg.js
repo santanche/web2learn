@@ -98,7 +98,7 @@ class Movel{
             
         }
         else{
-            this.square.setAttribute("preserveAspectRatio", "none");              //see
+            //this.square.setAttribute("preserveAspectRatio", "none");              //see
             this.controlDown = false;
         }
 
@@ -122,28 +122,10 @@ class Movel{
         }
         else if (this.resize){
             
-            console.log(event.x);
-            
-            //console.log("ai nao");
-            
             let squareSizeX = event.x - this.position.tx;
             let squareSizeY = event.y - this.position.ty;
-
-            if(event.x > this.position.tx){
-                console.log("maiorrrr");
-                
-            }
-            else{
-                console.log("menorrrrrrrrrrrrrrrrrrrrrrrrrrr");
-                
-            }
-
-            // console.log(squareSizeX + " " + squareSizeY);
-            console.log("Resize BR: event x = " + event.x + " event y = " + event.y + "\n tx " + this.position.tx + " ty " + this.position.ty);
             
-            
-            
-            if(squareSizeX - 5 >=0 && squareSizeY-5 >= 0){
+            if(squareSizeX>=0 && squareSizeY>=0){
                 if(this.controlDown===false){
                     this.square.setAttribute("width",squareSizeX);
                     this.square.setAttribute("height",squareSizeY);
@@ -160,10 +142,8 @@ class Movel{
                 }
                 else{
                     let maximun = Math.max(squareSizeX, squareSizeY);
-                    let widthSquare = Number(this.square.getAttribute("width"));
-                    let heightSquare = Number(this.square.getAttribute("height"));
-
-                    
+                    let widthSquare = parseInt(this.square.getAttribute("width"));
+                    let heightSquare = parseInt(this.square.getAttribute("height"));
 
                     if(squareSizeX>=squareSizeY){
 
@@ -190,74 +170,27 @@ class Movel{
             }
         }
 
-
-
-
-
-
         else if (this.resizeTL){
             let widthSquare = parseInt(this.square.getAttribute("width"));
-            let heightSquare = parseInt(this.square.getAttribute("height"));
-
-            console.log(" resize tx e ty: " + this.position.tx + " " + this.position.ty + " event: " + event.x + " " + event.y);
-            
+            let heightSquare = parseInt(this.square.getAttribute("height"));           
             let squareSizeX;
             let squareSizeY;
-
-            let bigger = -1;
-
-            //eu acho que o evento vai ser sempre < que o tx
-
-            // if(parseInt(event.x) <= parseInt(this.position.tx)){
-            //     squareSizeX = widthSquare + this.position.tx - event.x;
-            //     console.log("x menor");
-            //     bigger = -1;
-                
-            // }
-            // else{
-            //     squareSizeX = widthSquare - (event.x - this.position.tx); 
-            //     console.log("x maior");
-            //     bigger = 1;
-                
-            // }
-            // if(parseInt(event.y) <= parseInt(this.position.ty)){
-            //     squareSizeY = heightSquare + this.position.ty - event.y;
-            //     console.log("y menor");
-                
-            // }
-            // else{
-            //     squareSizeY = heightSquare - (event.y - this.position.ty);
-            //     console.log("y maior");
-                 
-            // }
 
             squareSizeX = (this.position.tx + widthSquare) - event.x;
             squareSizeY = (this.position.ty + heightSquare) - event.y;
 
-            if(squareSizeX >=0 && squareSizeY >= 0){                   //tirei o -5
+            if(squareSizeX >=0 && squareSizeY >= 0){
                 if(this.controlDown===false){
 
-                    // this.position.tx = this.position.tx + bigger*Math.abs(event.x - this.position.tx);
-                    // this.position.ty = this.position.ty + bigger*Math.abs(event.y - this.position.ty);
-
-                    // if(this.position.tx<0) this.position.tx = 0;
-                    // if(this.position.ty<0) this.position.ty = 0;
-                    
-                    // this.group.setAttribute("transform","translate(" + this.position.tx + "," + this.position.ty + ")");    
-                    
                     this.position.tx = event.x;
                     this.position.ty = event.y;
-
-                    
-
                     this.group.setAttribute("transform","translate(" + event.x + "," + event.y + ")");    
-
 
                     this.square.setAttribute("width",squareSizeX);
                     this.square.setAttribute("height",squareSizeY);
+                    
                     this.growSquareBR.setAttribute("x", squareSizeX -5);
                     this.growSquareBR.setAttribute("y", squareSizeY -5);
-
                     this.growSquareTL.setAttribute("x", 0);
                     this.growSquareTL.setAttribute("y", 0);
                     this.growSquareBL.setAttribute("x", 0 );
