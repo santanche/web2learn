@@ -35,10 +35,11 @@ class Movel{
                 this.fig.setAttribute("fill", "#4f8b2e");
                 break;
             case "circulo":
-                this.fig = document.createElementNS(SVG,"circle");
+                this.fig = document.createElementNS(SVG,"ellipse");
                 this.fig.setAttribute("id","circle");
                 this.fig.setAttribute("fill","#b81314");
-                this.fig.setAttribute("r","50");
+                this.fig.setAttribute("rx","50");
+                this.fig.setAttribute("ry", "50");
                 this.fig.setAttribute("cx",50);
                 this.fig.setAttribute("cy",50);
                 break;
@@ -119,9 +120,13 @@ class Movel{
             
             if(squareSizeX - 5 >=0 && squareSizeY-5 >= 0){
                 if(this.controlDown===false){
+                    if (this.fig.getAttribute("id") === "square"){
                     this.fig.setAttribute("width",squareSizeX);
                     this.fig.setAttribute("height",squareSizeY);
-
+                    } else{
+                        this.fig.setAttribute("rx", squareSizeX);
+                        this.fig.setAttribute("ry", squareSizeY);
+                    }
                     this.growSquareBR.setAttribute("x", squareSizeX -5);
                     this.growSquareBR.setAttribute("y", squareSizeY -5);
 
@@ -140,14 +145,24 @@ class Movel{
                     if(squareSizeX>=squareSizeY){
 
                         let ratio = squareSizeX/widthSquare;
+                        if (this.fig.getAttribute("id") === "square"){
                         this.fig.setAttribute("width", maximun);
                         this.fig.setAttribute("height", heightSquare*ratio);
+                        }else{
+                            this.fig.setAttribute("rx", maximun);
+                            this.fig.setAttribute("ry", heightSquare * ratio);
+                        }
                     }
                     else{
                         
                         let ratio = squareSizeY/heightSquare;
-                        this.fig.setAttribute("height", maximun);
-                        this.fig.setAttribute("width", widthSquare*ratio);
+                        if (this.fig.getAttribute("id") === "square") {
+                            this.fig.setAttribute("height", maximun);
+                            this.fig.setAttribute("width", widthSquare * ratio);
+                        } else {
+                            this.fig.setAttribute("ry", maximun);
+                            this.fig.setAttribute("rx", widthSquare * ratio);
+                        }
                     }
 
                     this.growSquareBR.setAttribute("x", widthSquare-5);
