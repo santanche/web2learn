@@ -97,7 +97,7 @@ class Movel{
             this.controlDown = false;
         }
 
-        if (this.follow && !this.resize) {
+        if (this.follow && !this.resize && !this.resizeTL) {
             if(event.x < 0){
                 event.x = 0;
             }
@@ -177,7 +177,7 @@ class Movel{
             let heightSquare = parseInt(this.square.getAttribute("height"));
 
             //console.log(Number(this.square.getAttribute("height")));
-            console.log(squareSizeX + " " + squareSizeY);
+            // console.log(squareSizeX + " " + squareSizeY);
 
             let scaleX = parseInt(squareSizeX)/widthSquare;
             let scaleY = parseInt(squareSizeY)/heightSquare;
@@ -190,10 +190,12 @@ class Movel{
                 
                 // this.groupSquare.setAttribute("transform","scale(" + (scaleX) + "," + (scaleY) + ")");
                 this.groupSquare.setAttribute("transform","translate(" + (squareSizeX) + "," + (squareSizeY) + ")");
-                this.square.setAttribute("width", widthSquare + Math.abs(squareSizeX));
-                this.square.setAttribute("height",heightSquare + Math.abs(squareSizeY));
+                console.log(widthSquare);
+                console.log("x: " + squareSizeX);
+                this.square.setAttribute("width", (widthSquare - squareSizeX) + "px");
+                this.square.setAttribute("height",(heightSquare - squareSizeY) + "px");
 
-                console.log(this.square.getAttribute("width"));
+                // console.log(this.square.getAttribute("width"));
                 
                 // this.growSquareBR.setAttribute("x", squareSizeX -5);
                 // this.growSquareBR.setAttribute("y", squareSizeY -5);
