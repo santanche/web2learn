@@ -7,23 +7,22 @@ class Movel{
         this.down = this.down.bind(this);
         this.move = this.move.bind(this);
         this.up = this.up.bind(this);
-        this.grow = this.grow.bind(this);
-        this.notGrow = this.notGrow.bind(this);
         this.areaup = this.areaup.bind(this);
 
-
-
+        this.growBR = this.growBR.bind(this);
+        this.notGrowBR = this.notGrowBR.bind(this);
         this.growTL = this.growTL.bind(this);
         this.notGrowTL = this.notGrowTL.bind(this);
-
+        this.growTR = this.growTR.bind(this);
+        this.notGrowTR = this.notGrowTR.bind(this);
+        this.growBL = this.growBL.bind(this);
+        this.notGrowBL = this.notGrowBL.bind(this);
 
         this.position = {   "dx": 0,
                             "dy": 0,
                             "tx" :0,
                             "ty" :0};
         this.follow = false;
-        this.resize = false;
-
         this.controlDown = false;
 
         this.growSquareTL = document.querySelector("#squareTL");
@@ -37,46 +36,42 @@ class Movel{
 
         this.square = document.querySelector("#move");
         this.area = document.querySelector("#area");
-        
-        // this.growSquareTL.addEventListener("mousedown", this.grow);
-        // this.growSquareTL.addEventListener("mouseup", this.notGrow);
-        this.growSquareBL.addEventListener("mousedown", this.grow);
-        this.growSquareBL.addEventListener("mouseup", this.notGrow);
-        this.growSquareTR.addEventListener("mousedown", this.grow);
-        this.growSquareTR.addEventListener("mouseup", this.notGrow);
-
-        this.growSquareBR.addEventListener("mousedown", this.grow);
-        this.growSquareBR.addEventListener("mouseup", this.notGrow);
-
-        // this.growSquareTL.addEventListener("mousedown", this.grow);
-        // this.growSquareTL.addEventListener("mouseup", this.notGrow);
-
-
+       
         this.square.addEventListener("mousedown", this.down);
         this.square.addEventListener("mouseup",this.up);
         this.area.addEventListener("mousemove", this.move);
-        this.group = document.querySelector("#group-move");
         this.area.addEventListener("mouseup", this.areaup);
+        this.group = document.querySelector("#group-move");
+        this.groupSquare = document.querySelector("#image-inside");
 
         document.addEventListener("keydown", this.move);
 
+        this.resizeBR = false;
+        this.growSquareBR.addEventListener("mousedown", this.growBR);
+        this.growSquareBR.addEventListener("mouseup", this.notGrowBR);
         this.resizeTL = false;
         this.growSquareTL.addEventListener("mousedown", this.growTL);
         this.growSquareTL.addEventListener("mouseup", this.notGrowTL);
-
-        this.groupSquare = document.querySelector("#image-inside");
+        this.resizeTR = false;
+        this.growSquareTR.addEventListener("mousedown", this.growTR);
+        this.growSquareTR.addEventListener("mouseup", this.notGrowTR);
+        this.resizeBL = false;
+        this.growSquareBL.addEventListener("mousedown", this.growBL);
+        this.growSquareBL.addEventListener("mouseup", this.notGrowBL);
 
     }
 
     areaup(event){
         if(this.controlDown){
-            this.resize = false;
+            this.resizeBR = false;
         }
-
-        this.resizeTL = false;                                         //ver
+        this.resizeBR = false;//TODO check if needed
+        this.resizeTL = false;
+        this.resizeTR = false;
+        this.resizeBL = false;
     }
-    grow(event){
-        this.resize = true;
+    up(event) {
+        this.follow = false;
     }
     down(event) {
         this.follow = true;
@@ -98,11 +93,11 @@ class Movel{
             
         }
         else{
-            //this.square.setAttribute("preserveAspectRatio", "none");              //see
+            //this.square.setAttribute("preserveAspectRatio", "none");//TODO check if needed
             this.controlDown = false;
         }
 
-        if (this.follow && !this.resize && !this.resizeTL) {
+        if (this.follow && !this.resizeBR && !this.resizeTL) {
             if(event.x < 0){
                 event.x = 0;
             }
@@ -111,16 +106,12 @@ class Movel{
             }
             this.position.tx = event.x - this.position.dx;
             this.position.ty = event.y - this.position.dy;
-            // this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");
 
-            //this.groupSquare.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");
             this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");
-
-
-            console.log("tx e ty: " + this.position.tx + " " + this.position.ty + " event: " + event.x + " " + event.y);
+            //console.log("tx e ty: " + this.position.tx + " " + this.position.ty + " event: " + event.x + " " + event.y);
             
         }
-        else if (this.resize){
+        else if (this.resizeBR){
             
             let squareSizeX = event.x - this.position.tx;
             let squareSizeY = event.y - this.position.ty;
@@ -170,7 +161,7 @@ class Movel{
             }
         }
 
-        else if (this.resizeTL){
+        else if(this.resizeTL){
             let widthSquare = parseInt(this.square.getAttribute("width"));
             let heightSquare = parseInt(this.square.getAttribute("height"));           
             let squareSizeX;
@@ -205,25 +196,108 @@ class Movel{
             }
         }
 
+        else if(this.resizeTR){
+            let widthSquare = parseInt(this.square.getAttribute("width"));
+            let heightSquare = parseInt(this.square.getAttribute("height"));           
+            let squareSizeX;
+            let squareSizeY;
+
+            squareSizeX = event.x - this.position.tx;
+            squareSizeY = (this.position.ty + heightSquare) - event.y;
+
+            if(squareSizeX >=0 && squareSizeY >= 0){
+                if(this.controlDown===false){
+
+                    this.position.ty = event.y;
+                    this.group.setAttribute("transform","translate(" + this.position.tx + "," + event.y + ")");//tx doesn't change here
+
+                    this.square.setAttribute("width",squareSizeX);
+                    this.square.setAttribute("height",squareSizeY);
+                    
+                    this.growSquareBR.setAttribute("x", squareSizeX -5);
+                    this.growSquareBR.setAttribute("y", squareSizeY -5);
+                    this.growSquareTL.setAttribute("x", 0);
+                    this.growSquareTL.setAttribute("y", 0);
+                    this.growSquareBL.setAttribute("x", 0 );
+                    this.growSquareBL.setAttribute("y", squareSizeY - 5);
+                    this.growSquareTR.setAttribute("x", squareSizeX - 5);
+                    this.growSquareTR.setAttribute("y", 0);
+                }
+            }
+            else{
+                console.log("ta trollano\n\n");
+                
+            }
+        }
+        else if(this.resizeBL){
+            let widthSquare = parseInt(this.square.getAttribute("width"));
+            let squareSizeX;
+            let squareSizeY;
+
+            squareSizeX = (this.position.tx + widthSquare) - event.x;
+            squareSizeY = event.y - this.position.ty;
+
+            if(squareSizeX >=0 && squareSizeY >= 0){
+                if(this.controlDown===false){
+
+                    this.position.tx = event.x;
+                    this.group.setAttribute("transform","translate(" + event.x + "," + this.position.ty + ")");//ty doesn't change here
+
+                    this.square.setAttribute("width",squareSizeX);
+                    this.square.setAttribute("height",squareSizeY);
+                    
+                    this.growSquareBR.setAttribute("x", squareSizeX -5);
+                    this.growSquareBR.setAttribute("y", squareSizeY -5);
+                    this.growSquareTL.setAttribute("x", 0);
+                    this.growSquareTL.setAttribute("y", 0);
+                    this.growSquareBL.setAttribute("x", 0 );
+                    this.growSquareBL.setAttribute("y", squareSizeY - 5);
+                    this.growSquareTR.setAttribute("x", squareSizeX - 5);
+                    this.growSquareTR.setAttribute("y", 0);
+                }
+            }
+            else{
+                console.log("ta trollano\n\n");
+                
+            }
+        }
+
     }
-    up(event) {
-        this.follow = false;
+    growBR(event){
+        this.resizeBR = true;
     }
-    notGrow(event){
-        this.resize = false;
+    notGrowBR(event){
+        this.resizeBR = false;
         this.growSquareBR.classList.toggle("visible");
         this.growSquareTL.classList.toggle("visible");
         this.growSquareBL.classList.toggle("visible");
         this.growSquareTR.classList.toggle("visible");
     }
-
-
-
     growTL(event){
         this.resizeTL = true;
     }
     notGrowTL(event){
         this.resizeTL = false;
+        this.growSquareBR.classList.toggle("visible");
+        this.growSquareTL.classList.toggle("visible");
+        this.growSquareBL.classList.toggle("visible");
+        this.growSquareTR.classList.toggle("visible");
+    }
+    growTR(event){
+        this.resizeTR = true;
+    }
+    notGrowTR(event){
+        this.resizeTR = false;
+        this.growSquareBR.classList.toggle("visible");
+        this.growSquareTL.classList.toggle("visible");
+        this.growSquareBL.classList.toggle("visible");
+        this.growSquareTR.classList.toggle("visible");
+    }
+    growBL(event){
+        this.resizeBL = true;
+    }
+    notGrowBL(event){
+        this.resizeBL = false;
         this.growSquareBR.classList.toggle("visible");
         this.growSquareTL.classList.toggle("visible");
         this.growSquareBL.classList.toggle("visible");
