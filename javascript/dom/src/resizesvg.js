@@ -140,6 +140,8 @@ class Movel{
         this.position.dy = event.y - this.position.ty;
     }
     move(event) {
+        let widthSquare;
+        let heightSquare;
         if(event.ctrlKey){
             this.controlDown = true;  
         }
@@ -235,8 +237,13 @@ class Movel{
         }
 
         else if(this.resizeTL){
-            let widthSquare = parseInt(this.fig.getAttribute("width"));
-            let heightSquare = parseInt(this.fig.getAttribute("height"));           
+            if(this.fig.getAttribute("id") === "square"){
+                widthSquare = parseInt(this.fig.getAttribute("width"));
+                heightSquare = parseInt(this.fig.getAttribute("height"));
+            }else{
+                widthSquare = parseInt(this.fig.getAttribute("rx"));
+                heightSquare = parseInt(this.fig.getAttribute("ry"));
+            }           
             let squareSizeX;
             let squareSizeY;
 
@@ -249,9 +256,13 @@ class Movel{
                     this.position.tx = event.x;
                     this.position.ty = event.y;
                     this.group.setAttribute("transform","translate(" + event.x + "," + event.y + ")");    
-
-                    this.fig.setAttribute("width",squareSizeX);
-                    this.fig.setAttribute("height",squareSizeY);
+                    if (this.fig.getAttribute("id") === "square"){
+                        this.fig.setAttribute("width",squareSizeX);
+                        this.fig.setAttribute("height",squareSizeY);
+                    } else{
+                        this.fig.setAttribute("rx", squareSizeX);
+                        this.fig.setAttribute("ry", squareSizeY);
+                    }
                     
                     this.growSquareBR.setAttribute("x", squareSizeX -5);
                     this.growSquareBR.setAttribute("y", squareSizeY -5);
@@ -266,7 +277,11 @@ class Movel{
         }
 
         else if(this.resizeTR){
-            let heightSquare = parseInt(this.fig.getAttribute("height"));           
+            if (this.fig.getAttribute("id") === "square") {
+                heightSquare = parseInt(this.fig.getAttribute("height")); 
+            }else{
+                heightSquare = parseInt(this.fig.getAttribute("ry"));
+            }          
             let squareSizeX;
             let squareSizeY;
 
@@ -278,9 +293,13 @@ class Movel{
 
                     this.position.ty = event.y;
                     this.group.setAttribute("transform","translate(" + this.position.tx + "," + event.y + ")");//tx doesn't change here
-
+                    if(this.fig.getAttribute("id") === "square"){
                     this.fig.setAttribute("width",squareSizeX);
                     this.fig.setAttribute("height",squareSizeY);
+                    }else{
+                        this.fig.setAttribute("rx", squareSizeX);
+                        this.fig.setAttribute("ry", squareSizeY);
+                    }
                     
                     this.growSquareBR.setAttribute("x", squareSizeX -5);
                     this.growSquareBR.setAttribute("y", squareSizeY -5);
@@ -294,7 +313,11 @@ class Movel{
             }
         }
         else if(this.resizeBL){
-            let widthSquare = parseInt(this.fig.getAttribute("width"));
+            if (this.fig.getAttribute("id") === "square") {
+                widthSquare = parseInt(this.fig.getAttribute("width"));
+            }else{
+                widthSquare = parseInt(this.fig.getAttribute("rx"));
+            }
             let squareSizeX;
             let squareSizeY;
 
@@ -306,9 +329,13 @@ class Movel{
 
                     this.position.tx = event.x;
                     this.group.setAttribute("transform","translate(" + event.x + "," + this.position.ty + ")");//ty doesn't change here
-
-                    this.fig.setAttribute("width",squareSizeX);
-                    this.fig.setAttribute("height",squareSizeY);
+                    if(this.fig.getAttribute("id") === "square"){
+                        this.fig.setAttribute("width",squareSizeX);
+                        this.fig.setAttribute("height",squareSizeY);
+                    }else{
+                        this.fig.setAttribute("rx", squareSizeX);
+                        this.fig.setAttribute("ry", squareSizeY);
+                    }
                     
                     this.growSquareBR.setAttribute("x", squareSizeX -5);
                     this.growSquareBR.setAttribute("y", squareSizeY -5);
