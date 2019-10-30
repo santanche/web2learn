@@ -55,12 +55,15 @@
    </style>
 </head>
 
+
 <body onload="Movel.instance.start()">
    <script>
       MessageBus.page = new MessageBus(false);
       Basic.service.rootPath = "../../";
    </script>
    <div class = "main" >
+       <button class = "button" type = "button" onclick="new Movel('quadrado')"> quadrado </button>
+        <button class="button" type="button" onclick="new Movel('circulo')"> circulo </button>
       <svg id="area" width="100%" height="100%">
          <g id="group-move" transform = "translate(8,8)">
             <g id="image-inside" transform="translate(5,5)">
