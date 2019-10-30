@@ -10,13 +10,9 @@ class Movel{
         this.areaup = this.areaup.bind(this);
 
         this.growBR = this.growBR.bind(this);
-        this.notGrowBR = this.notGrowBR.bind(this);
         this.growTL = this.growTL.bind(this);
-        this.notGrowTL = this.notGrowTL.bind(this);
         this.growTR = this.growTR.bind(this);
-        this.notGrowTR = this.notGrowTR.bind(this);
         this.growBL = this.growBL.bind(this);
-        this.notGrowBL = this.notGrowBL.bind(this);
 
         this.position = {   "dx": 0,
                             "dy": 0,
@@ -48,16 +44,16 @@ class Movel{
 
         this.resizeBR = false;
         this.growSquareBR.addEventListener("mousedown", this.growBR);
-        this.growSquareBR.addEventListener("mouseup", this.notGrowBR);
+        this.growSquareBR.addEventListener("mouseup", this.areaup);
         this.resizeTL = false;
         this.growSquareTL.addEventListener("mousedown", this.growTL);
-        this.growSquareTL.addEventListener("mouseup", this.notGrowTL);
+        this.growSquareTL.addEventListener("mouseup", this.areaup);
         this.resizeTR = false;
         this.growSquareTR.addEventListener("mousedown", this.growTR);
-        this.growSquareTR.addEventListener("mouseup", this.notGrowTR);
+        this.growSquareTR.addEventListener("mouseup", this.areaup);
         this.resizeBL = false;
         this.growSquareBL.addEventListener("mousedown", this.growBL);
-        this.growSquareBL.addEventListener("mouseup", this.notGrowBL);
+        this.growSquareBL.addEventListener("mouseup", this.areaup);
 
     }
 
@@ -65,7 +61,14 @@ class Movel{
         if(this.controlDown){
             this.resizeBR = false;
         }
-        this.resizeBR = false;//TODO check if needed
+        if(this.resizeBL || this.resizeBR || this.resizeTL || this.resizeTR){
+    
+            this.growSquareBR.classList.toggle("visible");
+            this.growSquareTL.classList.toggle("visible");
+            this.growSquareBL.classList.toggle("visible");
+            this.growSquareTR.classList.toggle("visible");
+        }
+        this.resizeBR = false;
         this.resizeTL = false;
         this.resizeTR = false;
         this.resizeBL = false;
@@ -83,17 +86,12 @@ class Movel{
 
         this.position.dx = event.x - this.position.tx;
         this.position.dy = event.y - this.position.ty;
-
-        console.log(" down tx e ty: " + this.position.tx + " " + this.position.ty + " event: " + event.x + " " + event.y);
-
     }
     move(event) {
         if(event.ctrlKey){
-            this.controlDown = true;
-            
+            this.controlDown = true;  
         }
         else{
-            //this.square.setAttribute("preserveAspectRatio", "none");//TODO check if needed
             this.controlDown = false;
         }
 
@@ -107,9 +105,7 @@ class Movel{
             this.position.tx = event.x - this.position.dx;
             this.position.ty = event.y - this.position.dy;
 
-            this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");
-            //console.log("tx e ty: " + this.position.tx + " " + this.position.ty + " event: " + event.x + " " + event.y);
-            
+            this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");            
         }
         else if (this.resizeBR){
             
@@ -135,14 +131,14 @@ class Movel{
                     let maximun = Math.max(squareSizeX, squareSizeY);
                     let widthSquare = parseInt(this.square.getAttribute("width"));
                     let heightSquare = parseInt(this.square.getAttribute("height"));
-
+                    
                     if(squareSizeX>=squareSizeY){
 
                         let ratio = squareSizeX/widthSquare;
                         this.square.setAttribute("width", maximun);
                         this.square.setAttribute("height", heightSquare*ratio);
                     }
-                    else{
+                    else if(squareSizeX<=squareSizeY){
                         
                         let ratio = squareSizeY/heightSquare;
                         this.square.setAttribute("height", maximun);
@@ -157,6 +153,7 @@ class Movel{
                     this.growSquareBL.setAttribute("y", heightSquare - 5);
                     this.growSquareTR.setAttribute("x", widthSquare - 5 );
                     this.growSquareTR.setAttribute("y", 0);
+                   
                 }
             }
         }
@@ -190,14 +187,9 @@ class Movel{
                     this.growSquareTR.setAttribute("y", 0);
                 }
             }
-            else{
-                console.log("ta trollano\n\n");
-                
-            }
         }
 
         else if(this.resizeTR){
-            let widthSquare = parseInt(this.square.getAttribute("width"));
             let heightSquare = parseInt(this.square.getAttribute("height"));           
             let squareSizeX;
             let squareSizeY;
@@ -223,10 +215,6 @@ class Movel{
                     this.growSquareTR.setAttribute("x", squareSizeX - 5);
                     this.growSquareTR.setAttribute("y", 0);
                 }
-            }
-            else{
-                console.log("ta trollano\n\n");
-                
             }
         }
         else if(this.resizeBL){
@@ -256,52 +244,18 @@ class Movel{
                     this.growSquareTR.setAttribute("y", 0);
                 }
             }
-            else{
-                console.log("ta trollano\n\n");
-                
-            }
         }
-
     }
     growBR(event){
         this.resizeBR = true;
     }
-    notGrowBR(event){
-        this.resizeBR = false;
-        this.growSquareBR.classList.toggle("visible");
-        this.growSquareTL.classList.toggle("visible");
-        this.growSquareBL.classList.toggle("visible");
-        this.growSquareTR.classList.toggle("visible");
-    }
     growTL(event){
         this.resizeTL = true;
-    }
-    notGrowTL(event){
-        this.resizeTL = false;
-        this.growSquareBR.classList.toggle("visible");
-        this.growSquareTL.classList.toggle("visible");
-        this.growSquareBL.classList.toggle("visible");
-        this.growSquareTR.classList.toggle("visible");
     }
     growTR(event){
         this.resizeTR = true;
     }
-    notGrowTR(event){
-        this.resizeTR = false;
-        this.growSquareBR.classList.toggle("visible");
-        this.growSquareTL.classList.toggle("visible");
-        this.growSquareBL.classList.toggle("visible");
-        this.growSquareTR.classList.toggle("visible");
-    }
     growBL(event){
         this.resizeBL = true;
-    }
-    notGrowBL(event){
-        this.resizeBL = false;
-        this.growSquareBR.classList.toggle("visible");
-        this.growSquareTL.classList.toggle("visible");
-        this.growSquareBL.classList.toggle("visible");
-        this.growSquareTR.classList.toggle("visible");
-    }
-    
+    }  
 }
