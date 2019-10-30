@@ -1,18 +1,19 @@
-let square;
-function Start() {
-   square = new Movel();
-}
 class Movel{
     constructor(){
         this.down = this.down.bind(this);
         this.move = this.move.bind(this);
         this.up = this.up.bind(this);
         this.areaup = this.areaup.bind(this);
-
         this.growBR = this.growBR.bind(this);
         this.growTL = this.growTL.bind(this);
         this.growTR = this.growTR.bind(this);
         this.growBL = this.growBL.bind(this);
+        this.createCircle = this.createCircle.bind(this);
+     }
+
+     start() {
+        MessageBus.ext.subscribe("control/create/circle", this.createCircle);
+
 
         this.position = {   "dx": 0,
                             "dy": 0,
@@ -57,6 +58,10 @@ class Movel{
 
     }
 
+    createCircle() {
+        console.log("Create circle...");
+    }
+
     areaup(event){
         if(this.controlDown){
             this.resizeBR = false;
@@ -94,6 +99,7 @@ class Movel{
         else{
             this.controlDown = false;
         }
+
 
         if (this.follow && !this.resizeBR && !this.resizeTL) {
             if(event.x < 0){
@@ -167,9 +173,9 @@ class Movel{
             squareSizeX = (this.position.tx + widthSquare) - event.x;
             squareSizeY = (this.position.ty + heightSquare) - event.y;
 
+
             if(squareSizeX >=0 && squareSizeY >= 0){
                 if(this.controlDown===false){
-
                     this.position.tx = event.x;
                     this.position.ty = event.y;
                     this.group.setAttribute("transform","translate(" + event.x + "," + event.y + ")");    
@@ -259,3 +265,8 @@ class Movel{
         this.resizeBL = true;
     }  
 }
+
+(function() {
+   Movel.instance = new Movel();
+})();
+   
