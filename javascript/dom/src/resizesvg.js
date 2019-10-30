@@ -1,7 +1,7 @@
 
 const SVG = 'http://www.w3.org/2000/svg';
 class Movel{
-    constructor(shape){
+    constructor(){
         this.down = this.down.bind(this);
         this.move = this.move.bind(this);
         this.up = this.up.bind(this);
@@ -11,10 +11,12 @@ class Movel{
         this.growTR = this.growTR.bind(this);
         this.growBL = this.growBL.bind(this);
         this.createCircle = this.createCircle.bind(this);
+        this.createSquare = this.createSquare.bind(this);
      }
 
      start() {
         MessageBus.ext.subscribe("control/create/circle", this.createCircle);
+        MessageBus.ext.subscribe("control/create/square", this.createSquare);
 
 
         this.position = {   "dx": 0,
@@ -32,7 +34,7 @@ class Movel{
         this.growSquareTR.classList.toggle("visible");
         this.growSquareBR = document.querySelector("#squareBR");
         this.growSquareBR.classList.toggle("visible");
-        let aux = document.querySelector("#image-inside");
+        this.aux = document.querySelector("#image-inside");
         /*switch (shape){
             case "quadrado":
                 this.fig = document.createElementNS(SVG,"rect");
@@ -53,8 +55,6 @@ class Movel{
         }
         aux.appendChild(this.fig);*/
         this.area = document.querySelector("#area");
-        this.fig.addEventListener("mousedown", this.down);
-        this.fig.addEventListener("mouseup",this.up);
         this.area.addEventListener("mousemove", this.move);
         this.area.addEventListener("mouseup", this.areaup);
         this.group = document.querySelector("#group-move");
@@ -86,7 +86,27 @@ class Movel{
     }
 
     createCircle() {
-        console.log("Create circle...");
+        this.fig = document.createElementNS(SVG, "ellipse");
+        this.fig.setAttribute("id", "circle");
+        this.fig.setAttribute("fill", "#b81314");
+        this.fig.setAttribute("rx", "50");
+        this.fig.setAttribute("ry", "50");
+        this.fig.setAttribute("cx", 50);
+        this.fig.setAttribute("cy", 50);
+        this.aux.appendChild(this.fig);
+        this.fig.addEventListener("mousedown", this.down);
+        this.fig.addEventListener("mouseup", this.up);
+    }
+    createSquare(){
+        this.fig = document.createElementNS(SVG, "rect");
+        this.fig.setAttribute("id", "square");
+        this.fig.setAttribute("width", 100);
+        this.fig.setAttribute("height", 100);
+        this.fig.setAttribute("fill", "#4f8b2e");
+        console.log(this.aux);
+        this.aux.appendChild(this.fig);
+        this.fig.addEventListener("mousedown", this.down);
+        this.fig.addEventListener("mouseup", this.up);
     }
 
     areaup(event){
