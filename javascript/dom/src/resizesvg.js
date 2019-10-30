@@ -138,14 +138,17 @@ class Movel{
                     this.growSquareTR.setAttribute("y", 0);
                 }
                 else{
+                    let maximun;
+                    let widthSquare;
+                    let heightSquare;
                     if(this.fig.getAttribute("id") === "square"){
-                        let maximun = Math.max(squareSizeX, squareSizeY);
-                        let widthSquare = Number(this.fig.getAttribute("width"));
-                        let heightSquare = Number(this.fig.getAttribute("height"));
+                        maximun = Math.max(squareSizeX, squareSizeY);
+                        widthSquare = Number(this.fig.getAttribute("width"));
+                        heightSquare = Number(this.fig.getAttribute("height"));
                     }else{
-                        let maximun = Math.max(squareSizeX, squareSizeY);
-                        let widthSquare = Number(this.fig.getAttribute("rx"));
-                        let heightSquare = Number(this.fig.getAttribute("ry"));
+                        maximun = Math.max(squareSizeX, squareSizeY);
+                        widthSquare = Number(this.fig.getAttribute("rx"));
+                        heightSquare = Number(this.fig.getAttribute("ry"));
                     }
 
                     if(squareSizeX>=squareSizeY){
