@@ -22,8 +22,16 @@ class Movel{
             };
             this.follow = false;
             this.controlDown = false;
-            this.area = createElementNS(SVG,"svg");
-            this
+            this.area = document.createElementNS(SVG,"svg");
+            this.area.setAttribute("id","area");
+            this.area.setAttribute("width","100%");
+            this.area.setAttribute("height","100%");
+            let div = document.querySelector("#main");
+            div.appendChild(this.area);
+            this.group = document.createElementNS(SVG,"g");
+            this.group.setAttribute("id","group-move");
+            this.group.setAttribute("transform","translate(8,8)");
+            this.area.appendChild(this.group);
             this.growSquareTL = document.createElementNS(SVG,"rect"); //querySelector("#squareTL");
             this.growSquareTL.setAttribute("class", "pointerDiffR visible");
             this.growSquareTL.classList.toggle("visible");
@@ -56,7 +64,46 @@ class Movel{
             this.growSquareBR.setAttribute("y", "96");
             this.growSquareBR.setAttribute("width", "8");
             this.growSquareBR.setAttribute("height", "8");
-            this.aux = document.querySelector("#image-inside");
+            this.aux = document.createElementNS(SVG,"g");
+            this.aux.setAttribute("id","image-inside");
+            this.aux.setAttribute("transform","translate(5,5)");
+            this.group.appendChild(this.aux);
+            this.area.addEventListener("mousemove", this._move);
+            this.area.addEventListener("mouseup", this._areaup);
+            document.addEventListener("keydown", this._move);
+            this.resizeBR = false;
+            this.growSquareBR.addEventListener("mousedown", this._growBR);
+            this.growSquareBR.addEventListener("mouseup", this._areaup);
+            this.resizeTL = false;
+            this.growSquareTL.addEventListener("mousedown", this._growTL);
+            this.growSquareTL.addEventListener("mouseup", this._areaup);
+            this.resizeTR = false;
+            this.growSquareTR.addEventListener("mousedown", this._growTR);
+            this.growSquareTR.addEventListener("mouseup", this._areaup);
+            this.resizeBL = false;
+            this.growSquareBL.addEventListener("mousedown", this._growBL);
+            this.growSquareBL.addEventListener("mouseup", this._areaup);
+            if(shape === "circle"){
+                this.fig = document.createElementNS(SVG, "ellipse");
+                this.fig.setAttribute("id", "circle");
+                this.fig.setAttribute("fill", "#b81314");
+                this.fig.setAttribute("rx", "50");
+                this.fig.setAttribute("ry", "50");
+                this.fig.setAttribute("cx", 50);
+                this.fig.setAttribute("cy", 50);
+                this.aux.appendChild(this.fig);
+                this.fig.addEventListener("mousedown", this._down);
+                this.fig.addEventListener("mouseup", this._up);
+            }else if(shape === "square"){
+                this.fig = document.createElementNS(SVG, "rect");
+                this.fig.setAttribute("id", "square");
+                this.fig.setAttribute("width", 100);
+                this.fig.setAttribute("height", 100);
+                this.fig.setAttribute("fill", "#4f8b2e");
+                this.aux.appendChild(this.fig);
+                this.fig.addEventListener("mousedown", this._down);
+                this.fig.addEventListener("mouseup", this._up);
+            }
         }
 
      }
@@ -64,96 +111,13 @@ class Movel{
      start() {
         MessageBus.ext.subscribe("control/create/circle", this._createCircle);
         MessageBus.ext.subscribe("control/create/square", this._createSquare);
-
-
-        this.position = {   "dx": 0,
-                            "dy": 0,
-                            "tx" :0,
-                            "ty" :0};
-        this.follow = false;
-        this.controlDown = false;
-
-        this.growSquareTL = document.querySelector("#squareTL");
-        this.growSquareTL.classList.toggle("visible");
-        this.growSquareBL = document.querySelector("#squareBL");
-        this.growSquareBL.classList.toggle("visible");
-        this.growSquareTR = document.querySelector("#squareTR");
-        this.growSquareTR.classList.toggle("visible");
-        this.growSquareBR = document.querySelector("#squareBR");
-        this.growSquareBR.classList.toggle("visible");
-        this.aux = document.querySelector("#image-inside");
-        /*switch (shape){
-            case "quadrado":
-                this.fig = document.createElementNS(SVG,"rect");
-                this.fig.setAttribute("id", "square");
-                this.fig.setAttribute("width", 100);
-                this.fig.setAttribute("height", 100);
-                this.fig.setAttribute("fill", "#4f8b2e");
-                break;
-            case "circulo":
-                this.fig = document.createElementNS(SVG,"ellipse");
-                this.fig.setAttribute("id","circle");
-                this.fig.setAttribute("fill","#b81314");
-                this.fig.setAttribute("rx","50");
-                this.fig.setAttribute("ry", "50");
-                this.fig.setAttribute("cx",50);
-                this.fig.setAttribute("cy",50);
-                break;
-        }
-        aux.appendChild(this.fig);*/
-        this.area = document.querySelector("#area");
-        this.area.addEventListener("mousemove", this._move);
-        this.area.addEventListener("mouseup", this._areaup);
-        this.group = document.querySelector("#group-move");
-        this.groupSquare = document.querySelector("#image-inside");
-
-        document.addEventListener("keydown", this._move);
-        /*let button = "batata";
-        while (true){
-            button = document.querySelector(".button");
-            if(button)
-                button.remove();
-            else 
-                break;
-        }*/
-
-        this.resizeBR = false;
-        this.growSquareBR.addEventListener("mousedown", this._growBR);
-        this.growSquareBR.addEventListener("mouseup", this._areaup);
-        this.resizeTL = false;
-        this.growSquareTL.addEventListener("mousedown", this._growTL);
-        this.growSquareTL.addEventListener("mouseup", this._areaup);
-        this.resizeTR = false;
-        this.growSquareTR.addEventListener("mousedown", this._growTR);
-        this.growSquareTR.addEventListener("mouseup", this._areaup);
-        this.resizeBL = false;
-        this.growSquareBL.addEventListener("mousedown", this._growBL);
-        this.growSquareBL.addEventListener("mouseup", this._areaup);
-
     }
 
     _createCircle() {
-        this.fig = document.createElementNS(SVG, "ellipse");
-        this.fig.setAttribute("id", "circle");
-        this.fig.setAttribute("fill", "#b81314");
-        this.fig.setAttribute("rx", "50");
-        this.fig.setAttribute("ry", "50");
-        this.fig.setAttribute("cx", 50);
-        this.fig.setAttribute("cy", 50);
-        this.aux.appendChild(this.fig);
-        this.fig.addEventListener("mousedown", this._down);
-        this.fig.addEventListener("mouseup", this._up);
+        this.circle = new Movel("circle");
     }
     _createSquare(){
-        this.fig = document.createElementNS(SVG, "rect");
-        this.fig.setAttribute("id", "square");
-        this.fig.setAttribute("width", 100);
-        this.fig.setAttribute("height", 100);
-        this.fig.setAttribute("fill", "#4f8b2e");
-        console.log(this.aux);
-        this.aux.appendChild(this.fig);
-        this.fig.addEventListener("mousedown", this._down);
-        this.fig.addEventListener("mouseup", this._up);
+        this.square = new Movel("square");
     }
 
     _areaup(event){
