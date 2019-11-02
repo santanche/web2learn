@@ -2,21 +2,22 @@
 const SVG = 'http://www.w3.org/2000/svg';
 class Movel{
     constructor(){
-        this.down = this.down.bind(this);
-        this.move = this.move.bind(this);
-        this.up = this.up.bind(this);
-        this.areaup = this.areaup.bind(this);
-        this.growBR = this.growBR.bind(this);
-        this.growTL = this.growTL.bind(this);
-        this.growTR = this.growTR.bind(this);
-        this.growBL = this.growBL.bind(this);
-        this.createCircle = this.createCircle.bind(this);
-        this.createSquare = this.createSquare.bind(this);
+        this._down = this._down.bind(this);
+        this._move = this._move.bind(this);
+        this._up = this._up.bind(this);
+        this._areaup = this._areaup.bind(this);
+        this._growBR = this._growBR.bind(this);
+        this._growTL = this._growTL.bind(this);
+        this._growTR = this._growTR.bind(this);
+        this._growBL = this._growBL.bind(this);
+        this._createCircle = this._createCircle.bind(this);
+        this._createSquare = this._createSquare.bind(this);
+        this.start = this.start.bind(this);
      }
 
      start() {
-        MessageBus.ext.subscribe("control/create/circle", this.createCircle);
-        MessageBus.ext.subscribe("control/create/square", this.createSquare);
+        MessageBus.ext.subscribe("control/create/circle", this._createCircle);
+        MessageBus.ext.subscribe("control/create/square", this._createSquare);
 
 
         this.position = {   "dx": 0,
@@ -55,12 +56,12 @@ class Movel{
         }
         aux.appendChild(this.fig);*/
         this.area = document.querySelector("#area");
-        this.area.addEventListener("mousemove", this.move);
-        this.area.addEventListener("mouseup", this.areaup);
+        this.area.addEventListener("mousemove", this._move);
+        this.area.addEventListener("mouseup", this._areaup);
         this.group = document.querySelector("#group-move");
         this.groupSquare = document.querySelector("#image-inside");
 
-        document.addEventListener("keydown", this.move);
+        document.addEventListener("keydown", this._move);
         /*let button = "batata";
         while (true){
             button = document.querySelector(".button");
@@ -71,21 +72,21 @@ class Movel{
         }*/
 
         this.resizeBR = false;
-        this.growSquareBR.addEventListener("mousedown", this.growBR);
-        this.growSquareBR.addEventListener("mouseup", this.areaup);
+        this.growSquareBR.addEventListener("mousedown", this._growBR);
+        this.growSquareBR.addEventListener("mouseup", this._areaup);
         this.resizeTL = false;
-        this.growSquareTL.addEventListener("mousedown", this.growTL);
-        this.growSquareTL.addEventListener("mouseup", this.areaup);
+        this.growSquareTL.addEventListener("mousedown", this._growTL);
+        this.growSquareTL.addEventListener("mouseup", this._areaup);
         this.resizeTR = false;
-        this.growSquareTR.addEventListener("mousedown", this.growTR);
-        this.growSquareTR.addEventListener("mouseup", this.areaup);
+        this.growSquareTR.addEventListener("mousedown", this._growTR);
+        this.growSquareTR.addEventListener("mouseup", this._areaup);
         this.resizeBL = false;
-        this.growSquareBL.addEventListener("mousedown", this.growBL);
-        this.growSquareBL.addEventListener("mouseup", this.areaup);
+        this.growSquareBL.addEventListener("mousedown", this._growBL);
+        this.growSquareBL.addEventListener("mouseup", this._areaup);
 
     }
 
-    createCircle() {
+    _createCircle() {
         this.fig = document.createElementNS(SVG, "ellipse");
         this.fig.setAttribute("id", "circle");
         this.fig.setAttribute("fill", "#b81314");
@@ -94,10 +95,10 @@ class Movel{
         this.fig.setAttribute("cx", 50);
         this.fig.setAttribute("cy", 50);
         this.aux.appendChild(this.fig);
-        this.fig.addEventListener("mousedown", this.down);
-        this.fig.addEventListener("mouseup", this.up);
+        this.fig.addEventListener("mousedown", this._down);
+        this.fig.addEventListener("mouseup", this._up);
     }
-    createSquare(){
+    _createSquare(){
         this.fig = document.createElementNS(SVG, "rect");
         this.fig.setAttribute("id", "square");
         this.fig.setAttribute("width", 100);
@@ -105,11 +106,11 @@ class Movel{
         this.fig.setAttribute("fill", "#4f8b2e");
         console.log(this.aux);
         this.aux.appendChild(this.fig);
-        this.fig.addEventListener("mousedown", this.down);
-        this.fig.addEventListener("mouseup", this.up);
+        this.fig.addEventListener("mousedown", this._down);
+        this.fig.addEventListener("mouseup", this._up);
     }
 
-    areaup(event){
+    _areaup(event){
         if(this.controlDown){
             this.resizeBR = false;
         }
@@ -125,10 +126,10 @@ class Movel{
         this.resizeTR = false;
         this.resizeBL = false;
     }
-    up(event) {
+    _up(event) {
         this.follow = false;
     }
-    down(event) {
+    _down(event) {
         this.follow = true;
 
         this.growSquareBR.classList.toggle("visible");
@@ -139,7 +140,7 @@ class Movel{
         this.position.dx = event.x - this.position.tx;
         this.position.dy = event.y - this.position.ty;
     }
-    move(event) {
+    _move(event) {
         let widthSquare;
         let heightSquare;
         if(event.ctrlKey){
@@ -159,7 +160,6 @@ class Movel{
             }
             this.position.tx = event.x - this.position.dx;
             this.position.ty = event.y - this.position.dy;
-
             this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");            
         }
         else if (this.resizeBR){
@@ -349,16 +349,16 @@ class Movel{
             }
         }
     }
-    growBR(event){
+    _growBR(event){
         this.resizeBR = true;
     }
-    growTL(event){
+    _growTL(event){
         this.resizeTL = true;
     }
-    growTR(event){
+    _growTR(event){
         this.resizeTR = true;
     }
-    growBL(event){
+    _growBL(event){
         this.resizeBL = true;
     }  
 }
