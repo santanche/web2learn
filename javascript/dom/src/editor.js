@@ -84,7 +84,8 @@ class Movel{
             if(shape === "circle"){
                 this.fig = document.createElementNS(SVG, "ellipse");
                 this.fig.setAttribute("id", "circle");
-                this.fig.setAttribute("fill", "#b81314");
+                let color = this._chooseColor();
+                this.fig.setAttribute("fill", color);
                 this.fig.setAttribute("rx", "50");
                 this.fig.setAttribute("ry", "50");
                 this.fig.setAttribute("cx", 50);
@@ -97,7 +98,8 @@ class Movel{
                 this.fig.setAttribute("id", "square");
                 this.fig.setAttribute("width", 100);
                 this.fig.setAttribute("height", 100);
-                this.fig.setAttribute("fill", "#4f8b2e");
+                let color = this._chooseColor();
+                this.fig.setAttribute("fill", color);
                 this.aux.appendChild(this.fig);
                 this.fig.addEventListener("mousedown", this._down);
                 this.fig.addEventListener("mouseup", this._up);
@@ -373,6 +375,16 @@ class Movel{
     }
     _growBL(event){
         this.resizeBL = true;
+    }
+    _chooseColor(){
+        let hex = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"];
+        let color = "#";
+        for(let i = 0;i < 6; i++){
+            let random = Math.random() * 16;
+            random = Math.floor(random);
+            color += hex[random];
+        }
+        return color;
     }  
 }
 
