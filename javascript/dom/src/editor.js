@@ -31,7 +31,7 @@ class Movel{
             this.aux.setAttribute("transform", "translate(5,5)");
             this.group.appendChild(this.aux);
             this.growSquareTL = document.createElementNS(SVG,"rect"); //querySelector("#squareTL");
-            this.growSquareTL.setAttribute("class", "pointerDiffR visible");
+            this.growSquareTL.setAttribute("class", "pointerDiffL visible");
             this.growSquareTL.classList.toggle("visible");
             this.growSquareTL.setAttribute("id","squareTL");
             this.growSquareTL.setAttribute("x","5");
@@ -40,7 +40,7 @@ class Movel{
             this.growSquareTL.setAttribute("height", "8");
             this.group.appendChild(this.growSquareTL);
             this.growSquareBL = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
-            this.growSquareBL.setAttribute("class", "pointerDiffR visible");
+            this.growSquareBL.setAttribute("class", "pointerDiffL visible");
             this.growSquareBL.classList.toggle("visible");
             this.growSquareBL.setAttribute("id", "squareBL");
             this.growSquareBL.setAttribute("x", "5");
