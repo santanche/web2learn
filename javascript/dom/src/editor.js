@@ -22,16 +22,14 @@ class Movel{
             };
             this.follow = false;
             this.controlDown = false;
-            this.area = document.createElementNS(SVG,"svg");
-            this.area.setAttribute("id","area");
-            this.area.setAttribute("width","100%");
-            this.area.setAttribute("height","100%");
-            let div = document.querySelector("#main");
-            div.appendChild(this.area);
             this.group = document.createElementNS(SVG,"g");
             this.group.setAttribute("id","group-move");
             this.group.setAttribute("transform","translate(8,8)");
-            this.area.appendChild(this.group);
+            Movel.area.appendChild(this.group);
+            this.aux = document.createElementNS(SVG, "g");
+            this.aux.setAttribute("id", "image-inside");
+            this.aux.setAttribute("transform", "translate(5,5)");
+            this.group.appendChild(this.aux);
             this.growSquareTL = document.createElementNS(SVG,"rect"); //querySelector("#squareTL");
             this.growSquareTL.setAttribute("class", "pointerDiffR visible");
             this.growSquareTL.classList.toggle("visible");
@@ -40,6 +38,7 @@ class Movel{
             this.growSquareTL.setAttribute("y", "5");
             this.growSquareTL.setAttribute("width", "8");
             this.growSquareTL.setAttribute("height", "8");
+            this.group.appendChild(this.growSquareTL);
             this.growSquareBL = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
             this.growSquareBL.setAttribute("class", "pointerDiffR visible");
             this.growSquareBL.classList.toggle("visible");
@@ -48,6 +47,7 @@ class Movel{
             this.growSquareBL.setAttribute("y", "96");
             this.growSquareBL.setAttribute("width", "8");
             this.growSquareBL.setAttribute("height", "8");
+            this.group.appendChild(this.growSquareBL);
             this.growSquareTR = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
             this.growSquareTR.setAttribute("class", "pointerDiffR visible");
             this.growSquareTR.classList.toggle("visible");
@@ -56,6 +56,7 @@ class Movel{
             this.growSquareTR.setAttribute("y", "5");
             this.growSquareTR.setAttribute("width", "8");
             this.growSquareTR.setAttribute("height", "8");
+            this.group.appendChild(this.growSquareTR);
             this.growSquareBR = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
             this.growSquareBR.setAttribute("class", "pointerDiffR visible");
             this.growSquareBR.classList.toggle("visible");
@@ -64,12 +65,9 @@ class Movel{
             this.growSquareBR.setAttribute("y", "96");
             this.growSquareBR.setAttribute("width", "8");
             this.growSquareBR.setAttribute("height", "8");
-            this.aux = document.createElementNS(SVG,"g");
-            this.aux.setAttribute("id","image-inside");
-            this.aux.setAttribute("transform","translate(5,5)");
-            this.group.appendChild(this.aux);
-            this.area.addEventListener("mousemove", this._move);
-            this.area.addEventListener("mouseup", this._areaup);
+            this.group.appendChild(this.growSquareBR);
+            Movel.area.addEventListener("mousemove", this._move);
+            Movel.area.addEventListener("mouseup", this._areaup);
             document.addEventListener("keydown", this._move);
             this.resizeBR = false;
             this.growSquareBR.addEventListener("mousedown", this._growBR);
@@ -111,6 +109,11 @@ class Movel{
      start() {
         MessageBus.ext.subscribe("control/create/circle", this._createCircle);
         MessageBus.ext.subscribe("control/create/square", this._createSquare);
+        Movel.area.setAttribute("id", "area");
+        Movel.area.setAttribute("width", "100%");
+        Movel.area.setAttribute("height", "100%");
+        let div = document.querySelector(".main");
+        div.appendChild(Movel.area);
     }
 
     _createCircle() {
@@ -374,6 +377,7 @@ class Movel{
 }
 
 (function() {
-   Movel.instance = new Movel();
+    Movel.instance = new Movel();
+    Movel.area = document.createElementNS(SVG, "svg");
 })();
    
