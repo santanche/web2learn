@@ -1,7 +1,7 @@
 
 const SVG = 'http://www.w3.org/2000/svg';
 class Movel{
-    constructor(){
+    constructor(shape){
         this._down = this._down.bind(this);
         this._move = this._move.bind(this);
         this._up = this._up.bind(this);
@@ -13,6 +13,52 @@ class Movel{
         this._createCircle = this._createCircle.bind(this);
         this._createSquare = this._createSquare.bind(this);
         this.start = this.start.bind(this);
+        if(shape !== undefined){
+            this.position = {
+                "dx": 0,
+                "dy": 0,
+                "tx": 0,
+                "ty": 0
+            };
+            this.follow = false;
+            this.controlDown = false;
+            this.area = createElementNS(SVG,"svg");
+            this
+            this.growSquareTL = document.createElementNS(SVG,"rect"); //querySelector("#squareTL");
+            this.growSquareTL.setAttribute("class", "pointerDiffR visible");
+            this.growSquareTL.classList.toggle("visible");
+            this.growSquareTL.setAttribute("id","squareTL");
+            this.growSquareTL.setAttribute("x","5");
+            this.growSquareTL.setAttribute("y", "5");
+            this.growSquareTL.setAttribute("width", "8");
+            this.growSquareTL.setAttribute("height", "8");
+            this.growSquareBL = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
+            this.growSquareBL.setAttribute("class", "pointerDiffR visible");
+            this.growSquareBL.classList.toggle("visible");
+            this.growSquareBL.setAttribute("id", "squareBL");
+            this.growSquareBL.setAttribute("x", "5");
+            this.growSquareBL.setAttribute("y", "96");
+            this.growSquareBL.setAttribute("width", "8");
+            this.growSquareBL.setAttribute("height", "8");
+            this.growSquareTR = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
+            this.growSquareTR.setAttribute("class", "pointerDiffR visible");
+            this.growSquareTR.classList.toggle("visible");
+            this.growSquareTR.setAttribute("id", "squareTR");
+            this.growSquareTR.setAttribute("x", "96");
+            this.growSquareTR.setAttribute("y", "5");
+            this.growSquareTR.setAttribute("width", "8");
+            this.growSquareTR.setAttribute("height", "8");
+            this.growSquareBR = document.createElementNS(SVG, "rect"); //querySelector("#squareTL");
+            this.growSquareBR.setAttribute("class", "pointerDiffR visible");
+            this.growSquareBR.classList.toggle("visible");
+            this.growSquareBR.setAttribute("id", "squareBR");
+            this.growSquareBR.setAttribute("x", "96");
+            this.growSquareBR.setAttribute("y", "96");
+            this.growSquareBR.setAttribute("width", "8");
+            this.growSquareBR.setAttribute("height", "8");
+            this.aux = document.querySelector("#image-inside");
+        }
+
      }
 
      start() {
