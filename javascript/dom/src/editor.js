@@ -34,8 +34,8 @@ class Movel{
             this.growSquareTL.setAttribute("class", "pointerDiffR visible");
             this.growSquareTL.classList.toggle("visible");
             this.growSquareTL.setAttribute("id","squareTL");
-            this.growSquareTL.setAttribute("x","5");
-            this.growSquareTL.setAttribute("y", "5");
+            this.growSquareTL.setAttribute("x","1");
+            this.growSquareTL.setAttribute("y", "1");
             this.growSquareTL.setAttribute("width", "8");
             this.growSquareTL.setAttribute("height", "8");
             this.group.appendChild(this.growSquareTL);
@@ -43,8 +43,8 @@ class Movel{
             this.growSquareBL.setAttribute("class", "pointerDiffL visible");
             this.growSquareBL.classList.toggle("visible");
             this.growSquareBL.setAttribute("id", "squareBL");
-            this.growSquareBL.setAttribute("x", "5");
-            this.growSquareBL.setAttribute("y", "96");
+            this.growSquareBL.setAttribute("x", "1");
+            this.growSquareBL.setAttribute("y", "100");
             this.growSquareBL.setAttribute("width", "8");
             this.growSquareBL.setAttribute("height", "8");
             this.group.appendChild(this.growSquareBL);
@@ -52,8 +52,8 @@ class Movel{
             this.growSquareTR.setAttribute("class", "pointerDiffL visible");
             this.growSquareTR.classList.toggle("visible");
             this.growSquareTR.setAttribute("id", "squareTR");
-            this.growSquareTR.setAttribute("x", "96");
-            this.growSquareTR.setAttribute("y", "5");
+            this.growSquareTR.setAttribute("x", "100");
+            this.growSquareTR.setAttribute("y", "1");
             this.growSquareTR.setAttribute("width", "8");
             this.growSquareTR.setAttribute("height", "8");
             this.group.appendChild(this.growSquareTR);
@@ -61,8 +61,8 @@ class Movel{
             this.growSquareBR.setAttribute("class", "pointerDiffR visible");
             this.growSquareBR.classList.toggle("visible");
             this.growSquareBR.setAttribute("id", "squareBR");
-            this.growSquareBR.setAttribute("x", "96");
-            this.growSquareBR.setAttribute("y", "96");
+            this.growSquareBR.setAttribute("x", "100");
+            this.growSquareBR.setAttribute("y", "100");
             this.growSquareBR.setAttribute("width", "8");
             this.growSquareBR.setAttribute("height", "8");
             this.group.appendChild(this.growSquareBR);
@@ -158,6 +158,9 @@ class Movel{
     _move(event) {
         let widthSquare;
         let heightSquare;
+
+        let offsets = document.getElementById('dccs').getBoundingClientRect();
+
         if(event.ctrlKey){
             this.controlDown = true;  
         }
@@ -178,9 +181,9 @@ class Movel{
             this.group.setAttribute("transform","translate(" + (this.position.tx) + "," + (this.position.ty) + ")");            
         }
         else if (this.resizeBR){
-            
+
             let squareSizeX = event.x - this.position.tx;
-            let squareSizeY = event.y - this.position.ty;
+            let squareSizeY = event.y - this.position.ty - offsets.bottom; //neww
             
             if(squareSizeX>=0 && squareSizeY>=0){
                 if(this.controlDown===false){
@@ -188,18 +191,27 @@ class Movel{
                     this.fig.setAttribute("width",squareSizeX);
                     this.fig.setAttribute("height",squareSizeY);
                     } else{
-                        this.fig.setAttribute("rx", squareSizeX);
-                        this.fig.setAttribute("ry", squareSizeY);
-                    }
-                    this.growSquareBR.setAttribute("x", squareSizeX -5);
-                    this.growSquareBR.setAttribute("y", squareSizeY -5);
+                        let rx = parseInt(this.fig.getAttribute("rx"));
+                        let ry = parseInt(this.fig.getAttribute("ry"));
+                        let cx = parseInt(this.fig.getAttribute("cx"));
+                        let cy = parseInt(this.fig.getAttribute("cy"));
 
-                    this.growSquareTL.setAttribute("x", 0);
-                    this.growSquareTL.setAttribute("y", 0);
-                    this.growSquareBL.setAttribute("x", 0 );
-                    this.growSquareBL.setAttribute("y", squareSizeY - 5);
-                    this.growSquareTR.setAttribute("x", squareSizeX - 5);
-                    this.growSquareTR.setAttribute("y", 0);
+                        let flagx = rx<=squareSizeX/2 ? 1 : -1;
+                        let flagy = ry<=squareSizeY/2 ? 1 : -1;
+
+                        this.fig.setAttribute("rx", squareSizeX/2);
+                        this.fig.setAttribute("ry", squareSizeY/2);
+                        this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(rx - squareSizeX/2));
+                        this.fig.setAttribute("cy", parseInt(cy) + flagy*Math.abs(ry - squareSizeY/2));
+                    }
+                    this.growSquareBR.setAttribute("x", squareSizeX);
+                    this.growSquareBR.setAttribute("y", squareSizeY);
+                    this.growSquareTL.setAttribute("x", 1);
+                    this.growSquareTL.setAttribute("y", 1);
+                    this.growSquareBL.setAttribute("x", 1 );
+                    this.growSquareBL.setAttribute("y", squareSizeY);
+                    this.growSquareTR.setAttribute("x", squareSizeX);
+                    this.growSquareTR.setAttribute("y", 1);
                 }
                 else{
                     let maximun;
@@ -207,45 +219,75 @@ class Movel{
                     let heightSquare;
                     if(this.fig.getAttribute("id") === "square"){
                         maximun = Math.max(squareSizeX, squareSizeY);
-                        widthSquare = Number(this.fig.getAttribute("width"));
-                        heightSquare = Number(this.fig.getAttribute("height"));
+                        widthSquare = parseInt(this.fig.getAttribute("width"));
+                        heightSquare = parseInt(this.fig.getAttribute("height"));
                     }else{
                         maximun = Math.max(squareSizeX, squareSizeY);
-                        widthSquare = Number(this.fig.getAttribute("rx"));
-                        heightSquare = Number(this.fig.getAttribute("ry"));
+                        widthSquare = parseInt(this.fig.getAttribute("rx"));
+                        heightSquare = parseInt(this.fig.getAttribute("ry"));
+
+                        console.log("setei o ryyy como " + this.fig.getAttribute("ry"));
+                        
                     }
 
                     if(squareSizeX>=squareSizeY){
 
-                        let ratio = squareSizeX/widthSquare;
+                        let ratio = (squareSizeX/2)/widthSquare;
                         if (this.fig.getAttribute("id") === "square"){
                         this.fig.setAttribute("width", maximun);
-                        this.fig.setAttribute("height", heightSquare *ratio);
+                        this.fig.setAttribute("height", heightSquare * ratio);
                         }else{
-                            this.fig.setAttribute("rx", maximun);
+                            let rx = parseInt(this.fig.getAttribute("rx"));
+                            let ry = parseInt(this.fig.getAttribute("ry"));
+                            let cx = parseInt(this.fig.getAttribute("cx"));
+                            let cy = parseInt(this.fig.getAttribute("cy"));
+
+                            let flagx = rx<=squareSizeX/2 ? 1 : -1;
+                            let flagy = ry<=squareSizeY/2 ? 1 : -1;
+
+                            this.fig.setAttribute("rx", maximun/2);
                             this.fig.setAttribute("ry", heightSquare * ratio);
+                            
+                            this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(rx - maximun/2));
+                            this.fig.setAttribute("cy", parseInt(cy) + flagx*Math.abs(rx - maximun/2));
+
+                            
+
+                            console.log("rx and ry " + this.fig.getAttribute("rx") + "     " + this.fig.getAttribute("ry"));
+                            
                         }
                     }
                     else if(squareSizeX<=squareSizeY){
                         
-                        let ratio = squareSizeY/heightSquare;
+                        let ratio = (squareSizeY/2)/heightSquare;
                         if (this.fig.getAttribute("id") === "square") {
                             this.fig.setAttribute("height", maximun);
                             this.fig.setAttribute("width", widthSquare * ratio);
                         } else {
-                            this.fig.setAttribute("ry", maximun);
+                            let rx = parseInt(this.fig.getAttribute("rx"));
+                            let ry = parseInt(this.fig.getAttribute("ry"));
+                            let cx = parseInt(this.fig.getAttribute("cx"));
+                            let cy = parseInt(this.fig.getAttribute("cy"));
+
+                            let flagx = rx<=squareSizeX/2 ? 1 : -1;
+                            let flagy = ry<=squareSizeY/2 ? 1 : -1;
+
+                            this.fig.setAttribute("ry", maximun/2);
                             this.fig.setAttribute("rx", widthSquare * ratio);
+
+                            this.fig.setAttribute("cy", parseInt(cy) + flagx*Math.abs(ry - maximun/2));
+                            this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(ry - maximun/2));
                         }
                     }
 
-                    this.growSquareBR.setAttribute("x", widthSquare-5);
-                    this.growSquareBR.setAttribute("y", heightSquare-5);
-                    this.growSquareTL.setAttribute("x", 0);
-                    this.growSquareTL.setAttribute("y", 0);
-                    this.growSquareBL.setAttribute("x", 0 );
-                    this.growSquareBL.setAttribute("y", heightSquare - 5);
-                    this.growSquareTR.setAttribute("x", widthSquare - 5 );
-                    this.growSquareTR.setAttribute("y", 0);
+                    this.growSquareBR.setAttribute("x", squareSizeX);
+                    this.growSquareBR.setAttribute("y", squareSizeY);
+                    this.growSquareTL.setAttribute("x", 1);
+                    this.growSquareTL.setAttribute("y", 1);
+                    this.growSquareBL.setAttribute("x", 1 );
+                    this.growSquareBL.setAttribute("y", squareSizeY);
+                    this.growSquareTR.setAttribute("x", squareSizeX);
+                    this.growSquareTR.setAttribute("y", 1);
                    
                 }
             }
