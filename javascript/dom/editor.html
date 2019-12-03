@@ -27,6 +27,9 @@
    <script type="text/javascript"  src="src/editor.js"></script>
 
    <style>
+       /*#body{
+           background: url("images/background.png");
+       }*/
     .main{
         position: absolute;
         left: 0px;
@@ -56,7 +59,7 @@
 </head>
 
 
-<body onload="Movel.instance.start()">
+<body id = "body" onload="Movel.instance.start()">
    <script>
       MessageBus.page = new MessageBus(false);
       Basic.service.rootPath = "../../";
@@ -68,6 +71,8 @@
      </dcc-trigger>
      <dcc-trigger label="Square" action="control/create/square">
      </dcc-trigger>
+    <dcc-trigger label="Image" action="control/create/image">
+    </dcc-trigger>
   </div>
   <!-- <div>
     <dcc-trigger label="Square" action="control/create/square">
