@@ -109,7 +109,7 @@ class Movel{
                 this.fig.setAttribute("id", "image");
                 this.fig.setAttribute("width", 100);
                 this.fig.setAttribute("height", 100);
-                this.fig.setAttribute("xlink:href","images/procurar.svg");
+                this.fig.setAttribute("href","images/procurar.svg");
                 console.log(this.fig);
                 this.aux.appendChild(this.fig);
                 this.fig.addEventListener("mousedown", this._down);
