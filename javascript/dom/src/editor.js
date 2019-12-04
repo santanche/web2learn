@@ -248,7 +248,7 @@ class Movel{
                     if(squareSizeX>=squareSizeY){
 
                         let ratio = (squareSizeX/2)/widthSquare;
-                        if (this.fig.getAttribute("id") === "square"){
+                        if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
                         this.fig.setAttribute("width", maximun);
                         this.fig.setAttribute("height", heightSquare * ratio);
                         }else{
@@ -275,7 +275,7 @@ class Movel{
                     else if(squareSizeX<=squareSizeY){
                         
                         let ratio = (squareSizeY/2)/heightSquare;
-                        if (this.fig.getAttribute("id") === "square") {
+                        if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image") {
                             this.fig.setAttribute("height", maximun);
                             this.fig.setAttribute("width", widthSquare * ratio);
                         } else {
@@ -328,7 +328,7 @@ class Movel{
                     this.position.tx = event.x;
                     this.position.ty = event.y;
                     this.group.setAttribute("transform","translate(" + event.x + "," + event.y + ")");    
-                    if (this.fig.getAttribute("id") === "square"){
+                    if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
                         this.fig.setAttribute("width",squareSizeX);
                         this.fig.setAttribute("height",squareSizeY);
                     } else{
@@ -365,7 +365,7 @@ class Movel{
 
                     this.position.ty = event.y;
                     this.group.setAttribute("transform","translate(" + this.position.tx + "," + event.y + ")");//tx doesn't change here
-                    if(this.fig.getAttribute("id") === "square"){
+                    if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
                     this.fig.setAttribute("width",squareSizeX);
                     this.fig.setAttribute("height",squareSizeY);
                     }else{
@@ -401,7 +401,7 @@ class Movel{
 
                     this.position.tx = event.x;
                     this.group.setAttribute("transform","translate(" + event.x + "," + this.position.ty + ")");//ty doesn't change here
-                    if(this.fig.getAttribute("id") === "square"){
+                    if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
                         this.fig.setAttribute("width",squareSizeX);
                         this.fig.setAttribute("height",squareSizeY);
                     }else{
