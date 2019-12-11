@@ -28,7 +28,7 @@
 
    <style>
        #body{
-           background: url("images/background.png");
+           background: url("images/background.jpg");
        }
     .main{
         position: absolute;
@@ -59,12 +59,12 @@
 </head>
 
 
-<body id = "body" onload="Movel.instance.start()">
+<body onload="Movel.instance.start()">
    <script>
       MessageBus.page = new MessageBus(false);
       Basic.service.rootPath = "../../";
    </script>
-   <div class = "main" >
+   <div class = "main" id = "body" >
    </div>
    <div id="dccs">
      <dcc-trigger label="Circle" action="control/create/circle">
