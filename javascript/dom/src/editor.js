@@ -115,6 +115,7 @@ class Movel{
                 this.fig.addEventListener("mousedown", this._down);
                 this.fig.addEventListener("mouseup", this._up);
             }
+            this.fig.setAttribute("opacity",0.8);
         }
 
      }
