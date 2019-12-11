@@ -110,6 +110,7 @@ class Movel{
                 this.fig.setAttribute("width", 100);
                 this.fig.setAttribute("height", 100);
                 this.fig.setAttribute("href","images/procurar.svg");
+                this.fig.setAttribute("preserveAspectRatio", "none");
                 console.log(this.fig);
                 this.aux.appendChild(this.fig);
                 this.fig.addEventListener("mousedown", this._down);
@@ -198,104 +199,33 @@ class Movel{
         }
         else if (this.resizeBR){
 
-            let squareSizeX = event.x - this.position.tx;
-            let squareSizeY = event.y - this.position.ty - offsets.bottom; //neww
+            let squareSizeX = parseInt(event.x) - this.position.tx;
+            let squareSizeY = parseInt(event.y) - this.position.ty - offsets.bottom; //neww
             
             if(squareSizeX>=0 && squareSizeY>=0){
                 if(this.controlDown===false){
-                    if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
+                    this.fig.setAttribute("preserveAspectRatio", "none");}
+                if(this.controlDown===true){
+                    this.fig.setAttribute("preserveAspectRatio", "xMidYMid meet");
+                }
+                if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
                     this.fig.setAttribute("width",squareSizeX);
                     this.fig.setAttribute("height",squareSizeY);
-                    } else{
-                        let rx = parseInt(this.fig.getAttribute("rx"));
-                        let ry = parseInt(this.fig.getAttribute("ry"));
-                        let cx = parseInt(this.fig.getAttribute("cx"));
-                        let cy = parseInt(this.fig.getAttribute("cy"));
-
-                        let flagx = rx<=squareSizeX/2 ? 1 : -1;
-                        let flagy = ry<=squareSizeY/2 ? 1 : -1;
-
-                        this.fig.setAttribute("rx", squareSizeX/2);
-                        this.fig.setAttribute("ry", squareSizeY/2);
-                        this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(rx - squareSizeX/2));
-                        this.fig.setAttribute("cy", parseInt(cy) + flagy*Math.abs(ry - squareSizeY/2));
-                    }
-                    this.growSquareBR.setAttribute("x", squareSizeX);
-                    this.growSquareBR.setAttribute("y", squareSizeY);
-                    this.growSquareTL.setAttribute("x", 1);
-                    this.growSquareTL.setAttribute("y", 1);
-                    this.growSquareBL.setAttribute("x", 1 );
-                    this.growSquareBL.setAttribute("y", squareSizeY);
-                    this.growSquareTR.setAttribute("x", squareSizeX);
-                    this.growSquareTR.setAttribute("y", 1);
                 }
                 else{
-                    let maximun;
-                    let widthSquare;
-                    let heightSquare;
-                    if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
-                        maximun = Math.max(squareSizeX, squareSizeY);
-                        widthSquare = parseInt(this.fig.getAttribute("width"));
-                        heightSquare = parseInt(this.fig.getAttribute("height"));
-                    }else{
-                        maximun = Math.max(squareSizeX, squareSizeY);
-                        widthSquare = parseInt(this.fig.getAttribute("rx"));
-                        heightSquare = parseInt(this.fig.getAttribute("ry"));
+                    let rx = parseInt(this.fig.getAttribute("rx"));
+                    let ry = parseInt(this.fig.getAttribute("ry"));
+                    let cx = parseInt(this.fig.getAttribute("cx"));
+                    let cy = parseInt(this.fig.getAttribute("cy"));
 
-                        console.log("setei o ryyy como " + this.fig.getAttribute("ry"));
-                        
-                    }
+                    let flagx = rx<=squareSizeX/2 ? 1 : -1;
+                    let flagy = ry<=squareSizeY/2 ? 1 : -1;
 
-                    if(squareSizeX>=squareSizeY){
-
-                        let ratio = (squareSizeX/2)/widthSquare;
-                        if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image"){
-                        this.fig.setAttribute("width", maximun);
-                        this.fig.setAttribute("height", heightSquare * ratio);
-                        }else{
-                            let rx = parseInt(this.fig.getAttribute("rx"));
-                            let ry = parseInt(this.fig.getAttribute("ry"));
-                            let cx = parseInt(this.fig.getAttribute("cx"));
-                            let cy = parseInt(this.fig.getAttribute("cy"));
-
-                            let flagx = rx<=squareSizeX/2 ? 1 : -1;
-                            let flagy = ry<=squareSizeY/2 ? 1 : -1;
-
-                            this.fig.setAttribute("rx", maximun/2);
-                            this.fig.setAttribute("ry", heightSquare * ratio);
-                            
-                            this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(rx - maximun/2));
-                            this.fig.setAttribute("cy", parseInt(cy) + flagx*Math.abs(rx - maximun/2));
-
-                            
-
-                            console.log("rx and ry " + this.fig.getAttribute("rx") + "     " + this.fig.getAttribute("ry"));
-                            
-                        }
-                    }
-                    else if(squareSizeX<=squareSizeY){
-                        
-                        let ratio = (squareSizeY/2)/heightSquare;
-                        if (this.fig.getAttribute("id") === "square" || this.fig.getAttribute("id") === "image") {
-                            this.fig.setAttribute("height", maximun);
-                            this.fig.setAttribute("width", widthSquare * ratio);
-                        } else {
-                            let rx = parseInt(this.fig.getAttribute("rx"));
-                            let ry = parseInt(this.fig.getAttribute("ry"));
-                            let cx = parseInt(this.fig.getAttribute("cx"));
-                            let cy = parseInt(this.fig.getAttribute("cy"));
-
-                            let flagx = rx<=squareSizeX/2 ? 1 : -1;
-                            let flagy = ry<=squareSizeY/2 ? 1 : -1;
-
-                            this.fig.setAttribute("ry", maximun/2);
-                            this.fig.setAttribute("rx", widthSquare * ratio);
-
-                            this.fig.setAttribute("cy", parseInt(cy) + flagx*Math.abs(ry - maximun/2));
-                            this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(ry - maximun/2));
-                        }
-                    }
-
+                    this.fig.setAttribute("rx", squareSizeX/2);
+                    this.fig.setAttribute("ry", squareSizeY/2);
+                    this.fig.setAttribute("cx", parseInt(cx) + flagx*Math.abs(rx - squareSizeX/2));
+                    this.fig.setAttribute("cy", parseInt(cy) + flagy*Math.abs(ry - squareSizeY/2));
+                }
                     this.growSquareBR.setAttribute("x", squareSizeX);
                     this.growSquareBR.setAttribute("y", squareSizeY);
                     this.growSquareTL.setAttribute("x", 1);
@@ -304,8 +234,6 @@ class Movel{
                     this.growSquareBL.setAttribute("y", squareSizeY);
                     this.growSquareTR.setAttribute("x", squareSizeX);
                     this.growSquareTR.setAttribute("y", 1);
-                   
-                }
             }
         }
 
