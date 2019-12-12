@@ -24,13 +24,20 @@
    <script src="../../dccs/components/dcc-compute.js"></script>
    <script src="../../dccs/components/dcc-report.js"></script>
 
-   <script type="text/javascript"  src="src/resizesvg.js"></script>
+   <script type="text/javascript"  src="src/editor.js"></script>
 
    <style>
+       #body{
+           background: url("images/background.jpg") no-repeat center center fixed;
+           -webkit-background-size: cover;
+           -moz-background-size: cover;
+           -o-background-size: cover;
+           background-size: cover;
+       }
     .main{
         position: absolute;
-        left: 100px;
-        top: 5px;
+        left: 0px;
+        top: 70px;
         right: 5px;
         bottom: 5px;
     }
@@ -61,25 +68,20 @@
       MessageBus.page = new MessageBus(false);
       Basic.service.rootPath = "../../";
    </script>
-   <div class = "main" >
-       <button class = "button" type = "button" onclick="new Movel('quadrado')"> quadrado </button>
-        <button class="button" type="button" onclick="new Movel('circulo')"> circulo </button>
-      <svg id="area" width="100%" height="100%">
-         <g id="group-move" transform = "translate(8,8)">
-            <g id="image-inside" transform="translate(5,5)">
-                <image xlink:href="images/procurar.svg" id = "move" width="100px" height="100px" preserveAspectRatio="none" />
-            </g>
-           <rect id="squareBR" class="pointerDiffR visible" x= 96 y= 96 width= "8" height= "8" />
-           <rect id="squareTL" class="pointerDiffR visible" x= 5 y= 5 width= "8" height= "8" />
-           <rect id="squareBL" class="pointerDiffL visible" x= 5 y= 96 width= "8" height= "8" />
-           <rect id="squareTR" class="pointerDiffL visible" x= 96 y= 5 width= "8" height= "8" />
-        </g>
-      </svg>
+   <div class = "main" id = "body" >
    </div>
-   <div>
+   <div id="dccs">
      <dcc-trigger label="Circle" action="control/create/circle">
      </dcc-trigger>
+     <dcc-trigger label="Square" action="control/create/square">
+     </dcc-trigger>
+    <dcc-trigger label="Image" action="control/create/image">
+    </dcc-trigger>
   </div>
+  <!-- <div>
+    <dcc-trigger label="Square" action="control/create/square">
+    </dcc-trigger>
+  </div> -->
 </body>
 
 </html>
