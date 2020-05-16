@@ -23,8 +23,9 @@ class AuthorFlowManager {
       AreaPlugin.zoomAt(this._editor);
       this._editor.trigger("process");
 
-      this.addKnot("First", 10, 10);
-      this.addKnot("Second", 10, 200);
+      let first = await this.addKnot("First", 10, 10);
+      let second = await this.addKnot("Second", 250, 10);
+      this._editor.connect(first.outputs.get("flw"), second.inputs.get("flw"));
    }
 
    async addKnot(title, x, y) {
@@ -36,6 +37,7 @@ class AuthorFlowManager {
       const coord = this.adjustCoordinates(x, y);
       k.position = [coord.x, coord.y];
       this._editor.addNode(k);
+      return k;
    }
 
    adjustCoordinates(x, y) {
