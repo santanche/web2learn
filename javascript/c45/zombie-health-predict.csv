@@ -1,0 +1,4 @@
+paralysis,yellow_tong,member_loss,chest_pain,trembling_finger,severe_anger,history_bacteria,label
+text,text,text,text,text,text,text,feature_type
+f,f,t,t,f,f,f,viral_infection
+t,t,f,f,f,f,f,bacterial_infection

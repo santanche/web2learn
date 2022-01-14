@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>C4.5 Tree</title>
+
+   <script type="text/javascript" src="jquery-3.4.1.slim.min.js"></script>
+   <script type="text/javascript" src="underscore.js"></script>
+   <script type="text/javascript" src="data_util.js"></script>
+   <script type="text/javascript" src="learningjs.js"></script>
+
+   <script>
+      function train() {
+         let content = document.querySelector("#train").value
+         loadString(content, function(D) {
+           var tree = new learningjs.tree();
+           tree.train(D, function(model, err){
+             if(err) {
+               console.log(err);
+             } else {
+               model.calcAccuracy(D.data, D.targets, function(acc, correct, total){
+                 console.log( 'training: got '+correct +' correct out of '+total+' examples. accuracy:'+(acc*100.0).toFixed(2)+'%');
+               });
+               console.log('=== resulting tree')
+               console.log(model)
+               console.log(D.data)
+               console.log(D.targets)
+             }
+           });
+         });
+      }
+      function test() {
+
+      }
+   </script>
+</head>
+<body>
+   <h3>Train</h3>
+   <textarea id="train"></textarea>
+   <button onclick="train()">Train</button>
+   <h3>Test</h3>
+   <textarea id="test"></textarea>
+   <button onclick="test()">Test</button>
+</body>
+</html>
