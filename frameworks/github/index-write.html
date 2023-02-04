@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <script type="module">
+      // documented at: https://octokit.github.io/rest.js/v19#gists
+
+      import { Octokit } from "https://cdn.skypack.dev/@octokit/rest"
+
+      export async function gist () {
+         const TOKEN = '...your GIST token...'
+         
+         const octokit = new Octokit({auth: TOKEN})
+         const gt = await octokit.rest.gists.create(
+            {description: "Dinosaur GIST",
+             public: false,
+             files: {
+               "README.md":{"content":"The dinosaur jumped into the mud."}
+             }
+            }
+         )
+         console.log('=== gist')
+         console.log(gt)
+      }
+      window.gist = gist
+   </script>
+</head>
+
+<body>
+   <p onclick="gist()" style="color:blue;font-weight:bold;cursor:pointer">
+      Write GIST
+   </p>
+
+   <h1>GIST Write</h1>
+   <div id="resultados"></div>
+</body>
+
+</html>
