@@ -1,10 +1,9 @@
-import _ from 'lodash';
+import {zeroPad} from './lib.js'
 
 function component() {
   const element = document.createElement('div');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.innerHTML = zeroPad(157, 5)
 
   return element;
 }

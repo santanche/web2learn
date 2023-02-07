@@ -20,47 +20,15 @@ We added the following parameter in the suggested command:
 * running from npm: `npm run build -- --mode=production`
 Argument `development` can replace argument `production`. It will change de bundle format to a development-friendly format: e.g., to produce a more readable js source.
 
-# ESLint
+# webpack + ESLint
 
 [ESLint](https://eslint.org/) is a tool to find and fix problems in Javascript.
 
-Installing and a configuring ESLint according to the [Getting Started with ESLint](https://eslint.org/docs/latest/use/getting-started):
+To install ESLint see [README.md](../eslint/README.md) in the `frameworks/eslint` folder.
 
-* install and config ESLint with the command: `npm init @eslint/config`
-* we suggest the following answers to the questions:
-~~~
-How would you like to use ESLint?
-> To check syntax, find problems, and enforce code style
+[EslintWebpackPlugin](https://www.npmjs.com/package/eslint-webpack-plugin) is a plugin that integrates ESLint with webpack.
 
-What type of modules does your project use? … 
-> JavaScript modules (import/export)
-
-Which framework does your project use? … 
-> None of these
-
-Does your project use TypeScript?
-> No
-
-Where does your code run?
-> Browser
-
-How would you like to define a style for your project?
-> Use a popular style guide
-
-Which style guide do you want to follow?
-> Standard: https://github.com/standard/standard
-
-What format do you want your config file to be in? … 
-> JSON
-~~~
-
-[StandardJS](https://standardjs.com/) is the standard style we suggest adopting.
-
-# webpack + ESLint
-
-EslintWebpackPlugin is a plugin that integrates ESLint with webpack.
-
-The EslintWebpackPlugin page has the installation instructions. We also created two alternative webpack configs:
+The [EslintWebpackPlugin](https://www.npmjs.com/package/eslint-webpack-plugin) page has the installation instructions. We also created two alternative webpack configs:
 
 ## Production config: webpack.config.js (default)
 
@@ -106,7 +74,9 @@ To run this development version use: `npm run build -- --config webpack-dev.conf
 
 # webpack + ESLint + Playwright
 
-o install [Playwright](https://playwright.dev/) see `README.md` in the `Playwright` folder.
+[Playwright](https://playwright.dev/) is a test automation tool.
+
+To install Playwright see [README.md](../playwright/README.md) in the `frameworks/playwright` folder.
 
 To integrate with webpack and ESLint, add two scripts in the package.json:
 
