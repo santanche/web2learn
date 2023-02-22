@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "@web/dev-server": "^0.1.35"
-  },
-  "dependencies": {
-    "lit": "^2.6.1"
-  }
-}
