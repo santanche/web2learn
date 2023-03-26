@@ -1,4 +1,4 @@
 web2learn
 =========
 
-Web learning toolkit.
+Tutorials and code examples to learn the foundations of Web development.

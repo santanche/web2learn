@@ -1,3 +1,8 @@
+---
+permalink: /frameworks/playwright/
+layout: single
+---
+
 Playwright
 ==========
 

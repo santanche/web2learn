@@ -1,3 +1,8 @@
+---
+permalink: /frameworks/eslint/
+layout: single
+---
+
 ESLint
 ======
 
@@ -5,7 +10,7 @@ ESLint
 
 Installing and a configuring ESLint according to the [Getting Started with ESLint](https://eslint.org/docs/latest/use/getting-started).
 
-Basic steps to start on Playwright on "Installation".
+Basic steps to start on ESLint on "Installation".
 
 # Summary of Installation Commands
 
@@ -43,8 +48,8 @@ What format do you want your config file to be in? …
 [StandardJS](https://standardjs.com/) is the standard style we suggest adopting.
 
 4. running ESLint
-  4.1. only test: `npx eslint js/index.js`
-  4.2. fixing problems: `npx eslint --fix js/index.js`
+  4.1. only test: `npx eslint js/app.js`
+  4.2. fixing problems: `npx eslint --fix js/app.js`
   4.3. entire folder: `npx eslint js/`
 
 If you wish to run the example code itself (not the ESLint), it is necessary to install the node.js [Web Dev Server](https://modern-web.dev/docs/dev-server/overview/). There is a `<script type="module">` in the example and browsers do not accept module inclusion from `file:` pages; they must be `http(s):`.

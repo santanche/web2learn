@@ -1,5 +1,10 @@
-webpack + ESLint Tutorial
-=========================
+---
+permalink: /frameworks/webpack/
+layout: single
+---
+
+webpack + ESLint + Playwright Tutorial
+======================================
 
 # webpack
 
@@ -13,7 +18,7 @@ Important related references:
   * it is paramount to understand the difference between `--save` and `--save-dev`
 * understanding the [package.json](https://docs.npmjs.com/cli/v9/configuring-npm/package-json) and [package-lock.json](https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json) structures
 * [Lodash](https://lodash.com/) framework adopted as an example in the tutorial
-* [webpack mode-](https://webpack.js.org/configuration/mode/) is an extra paramount parameter to produce the code
+* [webpack mode](https://webpack.js.org/configuration/mode/) is an extra paramount parameter to produce the code
 
 We added the following parameter in the suggested command:
 * running from npx: `npx webpack --config webpack.config.js --mode=production`

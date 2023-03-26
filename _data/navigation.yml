@@ -1,0 +1,19 @@
+# main links
+main:
+  - title: "GitHub"
+    url: https://github.com/santanche/web2learn/
+
+# pages sidebar
+pages:
+  - title: Web Page Foundations
+    children:
+      - title: "Minimal HTML Page"
+        url: /web/slides/01-minimal/
+      - title: "HTML Tree"
+        url: /web/slides/02-tree/
+  - title: JavaScript Programming
+    children:
+      - title: "Environment"
+        url: /javascript/slides/01-environment/
+      - title: "Literals"
+        url: /javascript/slides/02-literals/
