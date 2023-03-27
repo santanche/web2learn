@@ -18,11 +18,11 @@ feature_row:
     excerpt: "JavaScript basic programming principles for C and Java programmers."
     url: "/javascript/slides/"
     btn_label: "Learn More"
-  - image_path: /assets/images/op-dom.png
-    alt: "DOM for JavaScript"
-    title: "DOM for JavaScript"
-    excerpt: "Foundations of Document Object Model (DOM) for JavaScript programmers."
-    url: "/dom/slides/"
+  - image_path: /assets/images/op-frameworks.png
+    alt: "JavaScript Frameworks"
+    title: "JavaScript Frameworks"
+    excerpt: "Frameworks to support JavaScript development."
+    url: "/frameworks/slides/"
     btn_label: "Learn More"
 ---
 
