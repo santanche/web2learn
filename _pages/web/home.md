@@ -5,7 +5,7 @@ permalink: /web/slides/
 
 HTML, styles, CSS, and related topics.
 
-[Start Here](/web/slides/01-minimal/)
+[Start Here]({{ site.baseurl }}/web/slides/01-minimal/)
 
 ## GitHub Examples
 
@@ -13,7 +13,7 @@ HTML, styles, CSS, and related topics.
 
 ## PDF Slides
 
-* [Minimal HTML Page](/web/slides/01-minimal.pdf)
-* [HTML Tree](/web/slides/02-tree.pdf)
-* [Styles](/web/slides/03-styles.pdf)
-* [CSS](/web/slides/04-css.pdf)
+* [Minimal HTML Page]({{ site.baseurl }}/web/slides/01-minimal.pdf)
+* [HTML Tree]({{ site.baseurl }}/web/slides/02-tree.pdf)
+* [Styles]({{ site.baseurl }}/web/slides/03-styles.pdf)
+* [CSS]({{ site.baseurl }}/web/slides/04-css.pdf)

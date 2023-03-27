@@ -17,6 +17,10 @@ Black & White Series
 
 ![Anatomy of an Element](../../../web/slides/images/element-anatomy.svg)
 
+--
+
+Based on [MDN Glossary](https://developer.mozilla.org/en-US/docs/Glossary/Element)
+
 ---
 
 # Attributes

@@ -5,7 +5,7 @@ permalink: /javascript/slides/
 
 JavaScript basic programming principles for C and Java programmers.
 
-[Start Here](/javascript/slides/01-environment/)
+[Start Here]({{ site.baseurl }}/javascript/slides/01-environment/)
 
 ## GitHub Examples
 
@@ -13,5 +13,5 @@ JavaScript basic programming principles for C and Java programmers.
 
 ## PDF Slides
 
-* [Environment](/javascript/slides/01-environment.pdf)
-* [Literals](/javascript/slides/02-literals.pdf)
+* [Environment]({{ site.baseurl }}/javascript/slides/01-environment.pdf)
+* [Literals]({{ site.baseurl }}/javascript/slides/02-literals.pdf)
