@@ -15,3 +15,5 @@ HTML, styles, CSS, and related topics.
 
 * [Minimal HTML Page](/web/slides/01-minimal.pdf)
 * [HTML Tree](/web/slides/02-tree.pdf)
+* [Styles](/web/slides/03-styles.pdf)
+* [CSS](/web/slides/04-css.pdf)
