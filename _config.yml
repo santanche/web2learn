@@ -4,8 +4,9 @@ minimal_mistakes_skin    : "default"
 locale                   : "en-US"
 title                    : "Web2Learn"
 name                     : "Web2Learn"
-description              : "My homepage."
-words_per_minute         : 200
+description              : "Tutorials and code examples to learn the foundations of Web development."
+url                      : https://santanche.github.io
+baseurl                  : "/web2learn"
 
 # Analytics
 analytics:
