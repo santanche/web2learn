@@ -18,7 +18,6 @@ analytics:
 author:
   name             : "André Santanchè"
   avatar           : "/assets/images/andre-santanche-avatar.jpg"
-  bio              : "I am an **amazing** person."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

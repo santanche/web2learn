@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #author {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="author">Author: Asdrubal</p>
+    <h1>Dinosaur Story</h1>
+    <p>The dinosaur jumped into the mud.</p>
+  </body>
+</html>

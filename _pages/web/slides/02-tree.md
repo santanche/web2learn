@@ -34,7 +34,35 @@ Black & White Series
 
 ---
 
-# Header `<h_>`
+# Element
+
+* Tags delimit Elements:
+  * element name = tag;
+  * element content = everything delimited by the tag.
+
+
+---
+
+
+# `html` Element
+
+![html element](../../../web/slides/images/element-html.svg)
+
+---
+
+# `body` Element
+
+![body element](../../../web/slides/images/element-body.svg)
+
+---
+
+# `b` Element
+
+![b element](../../../web/slides/images/element-b.svg)
+
+---
+
+# Header Element `<h_>`
 
 * Document headers in levels
 
@@ -48,7 +76,7 @@ Black & White Series
 
 ---
 
-# Paragraph `<p>`
+# Paragraph Element `<p>`
 
 * Document headers in levels
 

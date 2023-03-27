@@ -1,8 +1,7 @@
 ---
+title: JavaScript Programming
 permalink: /javascript/slides/
 ---
-
-# JavaScript Programming
 
 JavaScript basic programming principles for C and Java programmers.
 

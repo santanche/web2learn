@@ -27,6 +27,15 @@ Black & White Series
 
 ---
 
+# W3C
+### World Wide Web Consortium https://www.w3.org/
+
+* Founded by Tim Berners-Lee in 1994
+* Develops and Maintains Web standards
+  * including HTML
+
+---
+
 # Experimental environment
 
 ### Javascript Playground (https://playcode.io/)
@@ -53,12 +62,12 @@ interactive environment ideal for starters
 
 # Markup
 
-* Distinguished by the symbols `<` and `>`
+* Based on tags, distinguished by the symbols `<` and `>`
 * Delimits a fragment
-  * `<...>` - start
-  * `</...>` - end
+  * `<tag>` - opening tag
+  * `</tag>` - closing tag
 
-* Example: markup `<b>` = bold
+* Example: tag `<b>` = bold
 
 ~~~html
 The <b>dinosaur jumped</b> into the mud.
@@ -66,21 +75,21 @@ The <b>dinosaur jumped</b> into the mud.
 
 ---
 
-# Bold Markup
+# Bold Tag
 
-![Bold Markup](../../../web/slides/images/page-markup-a.svg)
-
----
-
-# Body Markup
-
-![Body Markup](../../../web/slides/images/page-markup-b.svg)
+![Bold Tag](../../../web/slides/images/page-markup-a.svg)
 
 ---
 
-# HTML Markup
+# Body Tag
 
-![HTML Markup](../../../web/slides/images/page-markup-c.svg)
+![Body Tag](../../../web/slides/images/page-markup-b.svg)
+
+---
+
+# HTML Tag
+
+![HTML Tag](../../../web/slides/images/page-markup-c.svg)
 
 ---
 

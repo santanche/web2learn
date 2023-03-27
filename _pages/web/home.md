@@ -1,8 +1,7 @@
 ---
+title: Web Page Foundations
 permalink: /web/slides/
 ---
-
-# Web Page Foundations
 
 HTML, styles, CSS, and related topics.
 
