@@ -17,6 +17,8 @@ pages:
         url: /web/slides/04-styles/
       - title: "CSS"
         url: /web/slides/05-css/
+      - title: "Generic Elements"
+        url: /web/slides/06-generic-elements/
   - title: JavaScript Programming
     children:
       - title: "Environment"

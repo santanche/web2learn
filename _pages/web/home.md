@@ -18,3 +18,4 @@ HTML, styles, CSS, and related topics.
 * [Hyperlinks and Images]({{ site.baseurl }}/web/slides/03-hyperlinks-images.pdf)
 * [Styles]({{ site.baseurl }}/web/slides/04-styles.pdf)
 * [CSS]({{ site.baseurl }}/web/slides/05-css.pdf)
+* [Generic Elements]({{ site.baseurl }}/web/slides/06-generic-elements.pdf)
