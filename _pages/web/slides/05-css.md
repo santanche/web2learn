@@ -185,3 +185,15 @@ https://www.w3schools.com/html/
 
 ### Web and Semantic Web 2015 Playlist
 https://youtube.com/playlist?list=PL3JRjVnXiTBZpnuD7ZtJ3fdNsCcR5Oy7B
+
+---
+
+<!-- class: invert -->
+
+## André Santanchè
+
+www.ic.unicamp.br/~santanch/
+
+## Web2Learn
+
+santanche.github.io/web2learn/

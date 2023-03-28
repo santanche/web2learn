@@ -38,8 +38,11 @@ Black & White Series
 
 # Experimental environment
 
-### Javascript Playground (https://playcode.io/)
-interactive environment ideal for starters
+### Web2Learn https://santanche.github.io/web2learn
+Tutorials, code examples and slides
+
+### Javascript Playground https://playcode.io
+Interactive environment ideal for starters
 
 ---
 
@@ -62,7 +65,8 @@ interactive environment ideal for starters
 
 # Markup
 
-* Based on tags, distinguished by the symbols `<` and `>`
+* Based on tags
+* Distinguished by the symbols `<` and `>`
 * Delimits a fragment
   * `<tag>` - opening tag
   * `</tag>` - closing tag
@@ -106,3 +110,15 @@ https://www.w3schools.com/html/
 
 ### Web and Semantic Web 2015 Playlist
 https://youtube.com/playlist?list=PL3JRjVnXiTBZpnuD7ZtJ3fdNsCcR5Oy7B
+
+---
+
+<!-- class: invert -->
+
+## André Santanchè
+
+www.ic.unicamp.br/~santanch/
+
+## Web2Learn
+
+santanche.github.io/web2learn/

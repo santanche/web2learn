@@ -13,3 +13,7 @@ p {
 #author {
   color: blue;
 }
+
+.emphasis {
+  font-weight: bold;
+}
