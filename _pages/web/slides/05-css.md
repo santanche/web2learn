@@ -2,7 +2,7 @@
 marp: true
 theme: uncover
 class: invert
-permalink: /web/slides/04-css/
+permalink: /web/slides/05-css/
 ---
 
 Black & White Series
@@ -163,6 +163,18 @@ Three strategies based on:
 # Styling Elements by Id
 
 ![Separation Content-Style](../../../web/slides/images/style-id.png)
+
+---
+
+# External CSS File
+
+![Separation Content-Style](../../../web/slides/images/external-css.svg)
+
+---
+
+# Central CSS for Pages
+
+![Separation Content-Style](../../../web/slides/images/central-css.svg)
 
 ---
 

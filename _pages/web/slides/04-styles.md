@@ -2,7 +2,7 @@
 marp: true
 theme: uncover
 class: invert
-permalink: /web/slides/03-styles/
+permalink: /web/slides/04-styles/
 ---
 
 Black & White Series
@@ -12,35 +12,6 @@ Black & White Series
 ---
 
 <!-- class: lead -->
-
-# Anatomy of an Element
-
-![Anatomy of an Element](../../../web/slides/images/element-anatomy.svg)
-
---
-
-Based on [MDN Glossary](https://developer.mozilla.org/en-US/docs/Glossary/Element)
-
----
-
-# Attributes
-
-* Element
-  * can have several attributes
-  * with no repeated names
-
-* Defined inside the opening tag:
-`<tag attr1="value1" attr2="value2">`
-
-* Example:
-
-~~~html
-<p id="dino" style="color:blue">
-  The <b>dinosaur jumped</b> into the mud.
-</p>
-~~~
-
----
 
 # `style` Attribute
 
@@ -88,7 +59,7 @@ The style reaches the element scope
 
 ---
 
-## Style Scope Hierarchy
+# Style Scope Hierarchy
 
 Inner scopes replace outer ones
 

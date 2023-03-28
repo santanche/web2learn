@@ -1,0 +1,15 @@
+h1 {
+  font-family: Arial;
+}
+
+p {
+  font-size: 16pt;
+}
+
+.story {
+  color: gray;
+}
+
+#author {
+  color: blue;
+}

@@ -11,10 +11,12 @@ pages:
         url: /web/slides/01-minimal/
       - title: "HTML Tree"
         url: /web/slides/02-tree/
+      - title: "Hyperlinks and Images"
+        url: /web/slides/03-hyperlinks-images/
       - title: "Styles"
-        url: /web/slides/03-styles/
+        url: /web/slides/04-styles/
       - title: "CSS"
-        url: /web/slides/04-css/
+        url: /web/slides/05-css/
   - title: JavaScript Programming
     children:
       - title: "Environment"
