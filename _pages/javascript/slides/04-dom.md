@@ -78,6 +78,12 @@ querySelector(<selector>)
 * Returns the first element within the document that matches the selector
 * This element is a DOM object
 
+~~~javascript
+document.querySelector("#show-wd")
+~~~
+
+Returns the element identified by `show-wd`.
+
 **Reference:** [mdn Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
 
 ---
