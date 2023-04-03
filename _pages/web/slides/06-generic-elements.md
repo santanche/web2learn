@@ -103,6 +103,22 @@ HTML
 
 ---
 
+# Replacing Specialized Formats
+
+* Replacing tags specialized in a format, like `<b>` (bold) and `<i>` (italic):
+
+~~~css
+.emphasis { font-weight: bold; }
+~~~
+
+HTML
+
+~~~html
+<p>The <span class="emphasis">dinosaur jumped</span> into the mud.</p>
+~~~
+
+---
+
 <!-- class: invert -->
 
 ## André Santanchè

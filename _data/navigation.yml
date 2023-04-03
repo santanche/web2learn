@@ -21,7 +21,15 @@ pages:
         url: /web/slides/06-generic-elements/
   - title: JavaScript Programming
     children:
-      - title: "Environment"
-        url: /javascript/slides/01-environment/
-      - title: "Literals"
-        url: /javascript/slides/02-literals/
+      - title: "First Program"
+        url: /javascript/slides/01-first-program/
+      - title: "Literals, Variables and Constants"
+        url: /javascript/slides/02-literals-variables/
+      - title: "Array and Object Literals"
+        url: /javascript/slides/03-arrays-objects/
+      - title: "DOM - Document Object Model"
+        url: /javascript/slides/04-dom/
+      - title: "Conditional"
+        url: /javascript/slides/05-conditional/
+      - title: "Loop"
+        url: /javascript/slides/06-loop/
