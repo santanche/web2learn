@@ -122,6 +122,115 @@ weekday: 2
 
 ---
 
+# `for...in` Loop
+
+~~~javascript
+for (<variable> in <enumerable>)
+  <block>
+~~~
+
+* Iterates for all elements of an `<enumerable>`
+  * all items of an array
+  * all fields of an object
+* `<variable>` receives each enumeration value
+  * index of an array
+  * field of an object
+
+
+---
+
+# Example 1
+
+~~~javascript
+const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+for (const day in daysOfWeek)
+  console.log(`weekday: ${day} - ${daysOfWeek[day]}`)
+~~~
+
+~~~
+weekday: 0 - Mon
+weekday: 1 - Tue
+weekday: 2 - Wed
+weekday: 3 - Thu
+weekday: 4 - Fri
+weekday: 5 - Sat
+weekday: 6 - Sun
+~~~
+
+---
+
+# Example 2
+
+~~~javascript
+const author = {
+  'First Name': 'Asdrubal',
+  'Last Name': 'Montequio',
+  'Age': 25
+}
+for (const a in author)
+  console.log(`${a} - ${author[a]}`)
+~~~
+
+~~~
+First Name - Asdrubal
+Last Name - Montequio
+Age - 25
+~~~
+
+---
+
+# `for...of` Loop
+
+~~~javascript
+for (<variable> of <iterable>)
+  <block>
+~~~
+
+* Iterates for all elements of an `<iterable>`
+  * all items of an array
+* `<variable>` receives each element
+  * element of an array (not its index)
+* Objects are not iterable
+
+
+---
+
+# Example
+
+~~~javascript
+const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+for (const dw of daysOfWeek)
+  console.log(`weekday: ${dw}`)
+~~~
+
+~~~
+weekday: Mon
+weekday: Tue
+weekday: Wed
+weekday: Thu
+weekday: Fri
+weekday: Sat
+weekday: Sun
+~~~
+
+---
+
+# Comparing
+
+~~~javascript
+const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+for (const day in daysOfWeek)
+  console.log(`weekday: ${day} - ${daysOfWeek[day]}`)
+~~~
+
+~~~javascript
+const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+for (const dw of daysOfWeek)
+  console.log(`weekday: ${dw}`)
+~~~
+
+---
+
 # References
 
 * Mozilla MDN - https://developer.mozilla.org
