@@ -1,8 +1,7 @@
 ---
+title: Exercises List - Basic JavaScript
 permalink: /javascript/exercises/01-basic/
 ---
-
-# Exercises List - Basic JavaScript
 
 [Download the List Markdown](https://raw.githubusercontent.com/santanche/web2learn/master/_pages/javascript/exercises/01-basic.md)
 
