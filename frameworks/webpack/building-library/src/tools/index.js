@@ -1,9 +1,9 @@
-import {zeroPad} from './lib.js'
+import { Tools } from './tools.js'
 
 function component() {
   const element = document.createElement('div')
 
-  element.innerHTML = zeroPad(157, 5)
+  element.innerHTML = Tools.zeroPad(157, 5)
 
   return element;
 }

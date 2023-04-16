@@ -1,9 +1,9 @@
-import {zeroPad} from './lib.js'
+import { ToolsExtended } from './extended.js'
 
 function component() {
   const element = document.createElement('div')
 
-  element.innerHTML = zeroPad(157, 5)
+  element.innerHTML = ToolsExtended.currency(157, 5)
 
   return element;
 }
