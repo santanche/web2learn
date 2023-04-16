@@ -15,7 +15,7 @@
 		exports["toollib"] = factory();
 	else
 		root["toollib"] = factory();
-})(this, () => {
+})(self, () => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({

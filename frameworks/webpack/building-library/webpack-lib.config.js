@@ -7,6 +7,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'toollib',
     libraryTarget: 'umd',
-    globalObject: 'this'
+    globalObject: 'self'
   }
 }
