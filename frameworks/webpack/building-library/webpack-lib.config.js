@@ -6,7 +6,6 @@ module.exports = {
     filename: 'toollib.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'toollib',
-    libraryTarget: 'umd',
-    globalObject: 'self'
+    libraryTarget: 'umd'
   }
 }
