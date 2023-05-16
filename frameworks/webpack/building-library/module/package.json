@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {},
+  "main": "dist/toollib.js",
+  "devDependencies": {
+    "@web/dev-server": "^0.1.38",
+    "webpack": "^5.76.0",
+    "webpack-cli": "^5.0.1"
+  }
+}

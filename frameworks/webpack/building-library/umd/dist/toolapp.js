@@ -6,27 +6,17 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["toollib"] = factory();
-	else
-		root["toollib"] = factory();
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/tools/lib.js":
-/*!**************************!*\
-  !*** ./src/tools/lib.js ***!
-  \**************************/
+/***/ "./src/tools/index.js":
+/*!****************************!*\
+  !*** ./src/tools/index.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Tools\": () => (/* reexport safe */ _tools_js__WEBPACK_IMPORTED_MODULE_0__.Tools)\n/* harmony export */ });\n/* harmony import */ var _tools_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tools.js */ \"./src/tools/tools.js\");\n\n\n\n//# sourceURL=webpack://toollib/./src/tools/lib.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tools_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tools.js */ \"./src/tools/tools.js\");\n\n\nfunction component() {\n  const element = document.createElement('div')\n\n  element.innerHTML = _tools_js__WEBPACK_IMPORTED_MODULE_0__.Tools.zeroPad(157, 5)\n\n  return element;\n}\n\ndocument.body.appendChild(component())\n\n//# sourceURL=webpack:///./src/tools/index.js?");
 
 /***/ }),
 
@@ -36,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Tools\": () => (/* binding */ Tools)\n/* harmony export */ });\nclass Tools {\n  static zeroPad (number, length) {\n    return String(number).padStart(length, '0')\n  }\n}\n\n//# sourceURL=webpack://toollib/./src/tools/tools.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Tools\": () => (/* binding */ Tools)\n/* harmony export */ });\nclass Tools {\n  static zeroPad (number, length) {\n    return String(number).padStart(length, '0')\n  }\n}\n\n//# sourceURL=webpack:///./src/tools/tools.js?");
 
 /***/ })
 
@@ -100,9 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/tools/lib.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/tools/index.js");
 /******/ 	
-/******/ 	return __webpack_exports__;
 /******/ })()
 ;
-});
