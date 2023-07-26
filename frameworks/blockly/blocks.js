@@ -62,3 +62,24 @@ Blockly.Blocks['heart_image'] = {
     })
   }
 }
+
+Blockly.Blocks['sequence'] = {
+  init: function () {
+    this.jsonInit({
+      "message0": "%1 onda %2 elétrico",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "VALUE",
+          "check": "Ekg"
+        },
+        {
+          "type": "input_value",
+          "name": "VALUE",
+          "check": "Ekg"
+        },
+      ],
+      colour: 250
+  })
+}
+}
