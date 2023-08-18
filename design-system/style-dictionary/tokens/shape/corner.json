@@ -1,0 +1,9 @@
+{
+  "shape": {
+    "corner": {
+      "medium": { "value":".2" },
+
+      "button": { "value": "{shape.corner.medium.value}" }
+    }
+  }
+}
