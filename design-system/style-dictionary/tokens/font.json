@@ -1,15 +1,10 @@
 {
   "font": {
     "family": {
-      "base": {
-        "value": "{asset.font.roboto.name.value}"
-      },
-      "icons": {
-        "value": "{asset.font.icon.name.value}"
-      },
-      "button": {
-        "value": "{font.family.base.value}"
-      }
+      "base": { "value": "{asset.font.roboto.name.value}" },
+      "icons": { "value": "{asset.font.icon.name.value}" },
+
+      "button": { "value": "{font.family.base.value}" }
     }
   }
 }

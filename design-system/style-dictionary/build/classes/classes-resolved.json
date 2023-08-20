@@ -1,0 +1,35 @@
+{
+  "btn": {
+    "font-family": "Roboto",
+    "font-size": "1rem",
+    "border-radius": ".375rem",
+    "padding": [
+      "0.5rem",
+      "1rem"
+    ]
+  },
+
+  "btn:hover":{
+    "cursor": "pointer"
+  },
+
+  "btn-primary": {
+    "background-color": "#3f51b5",
+    "color": "#ffffff",
+    "border": "#3f51b5"
+  },
+
+  "btn-primary:hover": {
+    "background-color": "#303f9f"
+  },
+
+  "btn-secondary": {
+    "background-color": "#009688",
+    "color": "#ffffff",
+    "border": "#e0e0e0"
+  },
+
+  "btn-secondary:hover": {
+    "background-color": "#00796b"
+  }
+}

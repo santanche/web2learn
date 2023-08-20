@@ -1,0 +1,35 @@
+{
+  "btn": {
+    "font-family": "{font.family.button.value}",
+    "font-size": "{size.font.button.value}",
+    "border-radius": "{shape.corner.button.value}",
+    "padding": [
+      "{size.padding.button.vertical.value}",
+      "{size.padding.button.horizontal.value}"
+    ]
+  },
+
+  "btn:hover":{
+    "cursor": "{cursor.button.active.value}"
+  },
+
+  "btn-primary": {
+    "background-color": "{color.background.button.primary.base.value}",
+    "color": "{color.font.button.primary.value}",
+    "border": "{color.border.button.primary.base.value}"
+  },
+
+  "btn-primary:hover": {
+    "background-color": "{color.background.button.primary.active.value}"
+  },
+
+  "btn-secondary": {
+    "background-color": "{color.background.button.secondary.base.value}",
+    "color": "{color.font.button.secondary.value}",
+    "border": "{color.border.button.secondary.base.value}"
+  },
+
+  "btn-secondary:hover": {
+    "background-color": "{color.background.button.secondary.active.value}"
+  }
+}

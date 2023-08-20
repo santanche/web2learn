@@ -1,7 +1,11 @@
 {
   "shape": {
     "corner": {
-      "medium": { "value":".2" },
+      "small": { "value":".125" },
+      "base":  { "value":".25" },
+      "medium": { "value":".375" },
+      "large": { "value":".5" },
+      "xlarge": { "value":".75" },
 
       "button": { "value": "{shape.corner.medium.value}" }
     }

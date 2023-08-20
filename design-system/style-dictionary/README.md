@@ -11,10 +11,22 @@ Replace the `config.json` with our `config.js` to customize transformations, foc
 
 ## Build
 
+Generating CSS with the default config:
 ~~~
 npx style-dictionary build
 ~~~
 
+Generating the `config-resolved.json` with the `config-classes.js`:
+~~~
+npx style-dictionary build --config ./config-classes.js
+~~~
+
 ## Config
 
-The default file `config.json` generates only the CSS output. The file `config-complete.json` contains the complete list of outputs.
+* `config.js` - default file: generates only the CSS output with customizations to add the `rem` measure to shape specifications;
+* `config-classes.js`: a customized format that loads an extra `classes.json` file and generates `classes-resolved.json`, transforming tokens in their respective values.
+
+## Originals
+
+The folder `originals` contains the files concerning two original setups: basic and complete.
+

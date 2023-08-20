@@ -12,6 +12,7 @@
       "success":      { "value": "{color.base.green.600.value}"    },
       "disabled":     { "value": "{color.font.secondary.value}"    },
 
+
       "inverse": {
         "base":         { "value": "{color.base.white.value}"            },
         "secondary":    { "value": "{color.base.grey.100.value}"         },
@@ -26,8 +27,8 @@
       },
 
       "button": {
-        "primary":   { "value": "{color.font.inverse.base.value}" },
-        "secondary": { "value": "{color.font.inverse.base.value}" }
+        "primary":   { "value":"{color.font.inverse.base.value}" },
+        "secondary": { "value":"{color.font.link.value}" }
       }
     }
   }
