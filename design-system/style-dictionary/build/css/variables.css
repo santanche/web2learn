@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 20 Aug 2023 21:56:49 GMT
+ * Generated on Sun, 20 Aug 2023 22:49:46 GMT
  */
 
 :root {
@@ -24,12 +24,12 @@
   --color-background-info: #039be5;
   --color-background-link: #039be5;
   --color-background-low-priority: #757575;
-  --color-background-button-primary-base: #3f51b5;
-  --color-background-button-primary-disabled: #7986cb;
-  --color-background-button-primary-active: #303f9f;
-  --color-background-button-secondary-base: #009688;
-  --color-background-button-secondary-disabled: #4db6ac;
-  --color-background-button-secondary-active: #00796b;
+  --color-background-button-primary-base: #616161;
+  --color-background-button-primary-disabled: #e0e0e0;
+  --color-background-button-primary-active: #212121;
+  --color-background-button-secondary-base: #e0e0e0;
+  --color-background-button-secondary-disabled: #eeeeee;
+  --color-background-button-secondary-active: #bdbdbd;
   --color-background-overlay-light: rgba(255, 255, 255, 0.8);
   --color-background-overlay-dark: rgba(0, 0, 0, 0.27);
   --color-base-red-50: #ffe5ee;
@@ -291,26 +291,28 @@
   --color-border-light: #eeeeee;
   --color-border-base: #e0e0e0;
   --color-border-dark: #bdbdbd;
-  --color-border-focus: #3f51b5;
+  --color-border-focus: #9e9e9e;
   --color-border-error: #e53935;
   --color-border-warning: #fb8c00;
   --color-border-success: #43a047;
-  --color-border-button-primary-base: #3f51b5;
-  --color-border-button-primary-disabled: #7986cb;
-  --color-border-button-primary-active: #303f9f;
+  --color-border-button-primary-base: #9e9e9e;
+  --color-border-button-primary-disabled: #e0e0e0;
+  --color-border-button-primary-active: #616161;
   --color-border-button-secondary-base: #e0e0e0;
-  --color-border-button-secondary-active: #00796b;
+  --color-border-button-secondary-active: #bdbdbd;
   --color-border-button-secondary-disabled: #eeeeee;
-  --color-brand-primary-lighter: #c5cae9;
-  --color-brand-primary-light: #7986cb;
-  --color-brand-primary-base: #3f51b5;
-  --color-brand-primary-dark: #303f9f;
-  --color-brand-primary-darker: #1a237e;
-  --color-brand-secondary-lighter: #b2dfdb;
-  --color-brand-secondary-light: #4db6ac;
-  --color-brand-secondary-base: #009688;
-  --color-brand-secondary-dark: #00796b;
-  --color-brand-secondary-darker: #004d40;
+  --color-brand-primary-lighter: #f5f5f5;
+  --color-brand-primary-light: #e0e0e0;
+  --color-brand-primary-base: #9e9e9e;
+  --color-brand-primary-dark: #616161;
+  --color-brand-primary-darker: #212121;
+  --color-brand-primary-font: #ffffff;
+  --color-brand-secondary-lighter: #f5f5f5;
+  --color-brand-secondary-light: #eeeeee;
+  --color-brand-secondary-base: #e0e0e0;
+  --color-brand-secondary-dark: #bdbdbd;
+  --color-brand-secondary-darker: #9e9e9e;
+  --color-brand-secondary-font: #000000;
   --color-chart-stacked-base-100: #bbdefb;
   --color-chart-stacked-base-200: #90caf9;
   --color-chart-stacked-base-300: #64b5f6;
@@ -324,8 +326,8 @@
   --color-font-secondary: #424242;
   --color-font-tertiary: #757575;
   --color-font-quaternary: #bdbdbd;
-  --color-font-link: #3f51b5;
-  --color-font-active: #009688;
+  --color-font-link: #9e9e9e;
+  --color-font-active: #e0e0e0;
   --color-font-error: #e53935;
   --color-font-warning: #ef6c00;
   --color-font-success: #43a047;
@@ -334,14 +336,14 @@
   --color-font-inverse-secondary: #f5f5f5;
   --color-font-inverse-tertiary: #eeeeee;
   --color-font-inverse-quaternary: #bdbdbd;
-  --color-font-inverse-link: #7986cb;
-  --color-font-inverse-active: #4db6ac;
+  --color-font-inverse-link: #e0e0e0;
+  --color-font-inverse-active: #eeeeee;
   --color-font-inverse-error: #ef5350;
   --color-font-inverse-warning: #ffa726;
   --color-font-inverse-success: #66bb6a;
   --color-font-inverse-disabled: #f5f5f5;
   --color-font-button-primary: #ffffff;
-  --color-font-button-secondary: #ffffff;
+  --color-font-button-secondary: #000000;
   --content-icon-3d-rotation: 3d_rotation;
   --content-icon-airline-seat-individual-suite: airline_seat_individual_suite;
   --content-icon-airline-seat-legroom-reduced: airline_seat_legroom_reduced;

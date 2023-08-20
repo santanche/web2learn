@@ -26,8 +26,8 @@
       },
 
       "button": {
-        "primary":   { "value": "{color.font.inverse.base.value}" },
-        "secondary": { "value": "{color.font.inverse.base.value}" }
+        "primary":   { "value": "{color.brand.primary.font.value}" },
+        "secondary": { "value": "{color.brand.secondary.font.value}" }
       }
     }
   }

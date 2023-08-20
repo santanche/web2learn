@@ -456,11 +456,11 @@
       "button": {
         "primary": {
           "base": {
-            "value": "#3f51b5",
+            "value": "#616161",
             "filePath": "tokens/color/background.json",
             "isSource": true,
             "original": {
-              "value": "{color.brand.primary.base.value}"
+              "value": "{color.brand.primary.dark.value}"
             },
             "name": "color-background-button-primary-base",
             "attributes": {
@@ -479,7 +479,7 @@
             ]
           },
           "disabled": {
-            "value": "#7986cb",
+            "value": "#e0e0e0",
             "filePath": "tokens/color/background.json",
             "isSource": true,
             "original": {
@@ -502,11 +502,11 @@
             ]
           },
           "active": {
-            "value": "#303f9f",
+            "value": "#212121",
             "filePath": "tokens/color/background.json",
             "isSource": true,
             "original": {
-              "value": "{color.brand.primary.dark.value}"
+              "value": "{color.brand.primary.darker.value}"
             },
             "name": "color-background-button-primary-active",
             "attributes": {
@@ -527,7 +527,7 @@
         },
         "secondary": {
           "base": {
-            "value": "#009688",
+            "value": "#e0e0e0",
             "filePath": "tokens/color/background.json",
             "isSource": true,
             "original": {
@@ -550,7 +550,7 @@
             ]
           },
           "disabled": {
-            "value": "#4db6ac",
+            "value": "#eeeeee",
             "filePath": "tokens/color/background.json",
             "isSource": true,
             "original": {
@@ -573,7 +573,7 @@
             ]
           },
           "active": {
-            "value": "#00796b",
+            "value": "#bdbdbd",
             "filePath": "tokens/color/background.json",
             "isSource": true,
             "original": {
@@ -7129,7 +7129,7 @@
         ]
       },
       "focus": {
-        "value": "#3f51b5",
+        "value": "#9e9e9e",
         "filePath": "tokens/color/border.json",
         "isSource": true,
         "original": {
@@ -7207,7 +7207,7 @@
       "button": {
         "primary": {
           "base": {
-            "value": "#3f51b5",
+            "value": "#9e9e9e",
             "filePath": "tokens/color/border.json",
             "isSource": true,
             "original": {
@@ -7230,7 +7230,7 @@
             ]
           },
           "disabled": {
-            "value": "#7986cb",
+            "value": "#e0e0e0",
             "filePath": "tokens/color/border.json",
             "isSource": true,
             "original": {
@@ -7253,7 +7253,7 @@
             ]
           },
           "active": {
-            "value": "#303f9f",
+            "value": "#616161",
             "filePath": "tokens/color/border.json",
             "isSource": true,
             "original": {
@@ -7301,7 +7301,7 @@
             ]
           },
           "active": {
-            "value": "#00796b",
+            "value": "#bdbdbd",
             "filePath": "tokens/color/border.json",
             "isSource": true,
             "original": {
@@ -7352,11 +7352,11 @@
     "brand": {
       "primary": {
         "lighter": {
-          "value": "#c5cae9",
+          "value": "#f5f5f5",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.indigo.100.value}"
+            "value": "{color.base.grey.100.value}"
           },
           "name": "color-brand-primary-lighter",
           "attributes": {
@@ -7373,11 +7373,11 @@
           ]
         },
         "light": {
-          "value": "#7986cb",
+          "value": "#e0e0e0",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.indigo.300.value}"
+            "value": "{color.base.grey.300.value}"
           },
           "name": "color-brand-primary-light",
           "attributes": {
@@ -7394,11 +7394,11 @@
           ]
         },
         "base": {
-          "value": "#3f51b5",
+          "value": "#9e9e9e",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.indigo.500.value}"
+            "value": "{color.base.grey.500.value}"
           },
           "name": "color-brand-primary-base",
           "attributes": {
@@ -7415,11 +7415,11 @@
           ]
         },
         "dark": {
-          "value": "#303f9f",
+          "value": "#616161",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.indigo.700.value}"
+            "value": "{color.base.grey.700.value}"
           },
           "name": "color-brand-primary-dark",
           "attributes": {
@@ -7436,11 +7436,11 @@
           ]
         },
         "darker": {
-          "value": "#1a237e",
+          "value": "#212121",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.indigo.900.value}"
+            "value": "{color.base.grey.900.value}"
           },
           "name": "color-brand-primary-darker",
           "attributes": {
@@ -7455,15 +7455,36 @@
             "primary",
             "darker"
           ]
+        },
+        "font": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/brand.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.base.white.value}"
+          },
+          "name": "color-brand-primary-font",
+          "attributes": {
+            "category": "color",
+            "type": "brand",
+            "item": "primary",
+            "subitem": "font"
+          },
+          "path": [
+            "color",
+            "brand",
+            "primary",
+            "font"
+          ]
         }
       },
       "secondary": {
         "lighter": {
-          "value": "#b2dfdb",
+          "value": "#f5f5f5",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.teal.100.value}"
+            "value": "{color.base.grey.100.value}"
           },
           "name": "color-brand-secondary-lighter",
           "attributes": {
@@ -7480,11 +7501,11 @@
           ]
         },
         "light": {
-          "value": "#4db6ac",
+          "value": "#eeeeee",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.teal.300.value}"
+            "value": "{color.base.grey.200.value}"
           },
           "name": "color-brand-secondary-light",
           "attributes": {
@@ -7501,11 +7522,11 @@
           ]
         },
         "base": {
-          "value": "#009688",
+          "value": "#e0e0e0",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.teal.500.value}"
+            "value": "{color.base.grey.300.value}"
           },
           "name": "color-brand-secondary-base",
           "attributes": {
@@ -7522,11 +7543,11 @@
           ]
         },
         "dark": {
-          "value": "#00796b",
+          "value": "#bdbdbd",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.teal.700.value}"
+            "value": "{color.base.grey.400.value}"
           },
           "name": "color-brand-secondary-dark",
           "attributes": {
@@ -7543,11 +7564,11 @@
           ]
         },
         "darker": {
-          "value": "#004d40",
+          "value": "#9e9e9e",
           "filePath": "tokens/color/brand.json",
           "isSource": true,
           "original": {
-            "value": "{color.base.teal.900.value}"
+            "value": "{color.base.grey.500.value}"
           },
           "name": "color-brand-secondary-darker",
           "attributes": {
@@ -7561,6 +7582,27 @@
             "brand",
             "secondary",
             "darker"
+          ]
+        },
+        "font": {
+          "value": "#000000",
+          "filePath": "tokens/color/brand.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.base.black.value}"
+          },
+          "name": "color-brand-secondary-font",
+          "attributes": {
+            "category": "color",
+            "type": "brand",
+            "item": "secondary",
+            "subitem": "font"
+          },
+          "path": [
+            "color",
+            "brand",
+            "secondary",
+            "font"
           ]
         }
       }
@@ -7856,7 +7898,7 @@
         ]
       },
       "link": {
-        "value": "#3f51b5",
+        "value": "#9e9e9e",
         "filePath": "tokens/color/font.json",
         "isSource": true,
         "original": {
@@ -7875,7 +7917,7 @@
         ]
       },
       "active": {
-        "value": "#009688",
+        "value": "#e0e0e0",
         "filePath": "tokens/color/font.json",
         "isSource": true,
         "original": {
@@ -8055,7 +8097,7 @@
           ]
         },
         "link": {
-          "value": "#7986cb",
+          "value": "#e0e0e0",
           "filePath": "tokens/color/font.json",
           "isSource": true,
           "original": {
@@ -8076,7 +8118,7 @@
           ]
         },
         "active": {
-          "value": "#4db6ac",
+          "value": "#eeeeee",
           "filePath": "tokens/color/font.json",
           "isSource": true,
           "original": {
@@ -8187,7 +8229,7 @@
           "filePath": "tokens/color/font.json",
           "isSource": true,
           "original": {
-            "value": "{color.font.inverse.base.value}"
+            "value": "{color.brand.primary.font.value}"
           },
           "name": "color-font-button-primary",
           "attributes": {
@@ -8204,11 +8246,11 @@
           ]
         },
         "secondary": {
-          "value": "#ffffff",
+          "value": "#000000",
           "filePath": "tokens/color/font.json",
           "isSource": true,
           "original": {
-            "value": "{color.font.inverse.base.value}"
+            "value": "{color.brand.secondary.font.value}"
           },
           "name": "color-font-button-secondary",
           "attributes": {
