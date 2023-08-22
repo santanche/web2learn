@@ -43,6 +43,30 @@ function cssImportFonts (dictionary) {
   return cssFonts
 }
 
+// convert JSON classes to CSS classes
+function classJSONtoCSS (jsonStrClasses) {
+  let cssClasses = ''
+  const jsonClasses = JSON.parse(jsonStrClasses)
+  for (const cls in jsonClasses) {
+    cssClasses += `.${cls} {\n`
+    for (const prop in jsonClasses[cls]) {
+      let value = jsonClasses[cls][prop]
+      // check Array type and transform in a string
+      if (Array.isArray(value))
+        value = value.join(' ')
+      if (value.includes('{'))
+        value = value
+          .replace(/\.value/g, '')
+          .replace(/\./g, '-')
+          .replace(/{/g, 'var(--')
+          .replace(/}/g, ')')
+      cssClasses += `  ${prop}: ${value};\n`
+    }
+    cssClasses += '}\n'
+  }
+  return cssClasses
+}
+
 /* Output 1: aggregated tokens */
 StyleDictionary.registerFormat({
   name: 'jsonAggregatedFormat',
@@ -69,30 +93,6 @@ StyleDictionary.registerFormat({
     return cssImportFonts(dictionary) + classJSONtoCSS (jsonStrClasses)
   }
 })
-
-// convert JSON classes to CSS classes
-function classJSONtoCSS (jsonStrClasses) {
-  let cssClasses = ''
-  const jsonClasses = JSON.parse(jsonStrClasses)
-  for (const cls in jsonClasses) {
-    cssClasses += `.${cls} {\n`
-    for (const prop in jsonClasses[cls]) {
-      let value = jsonClasses[cls][prop]
-      // check Array type and transform in a string
-      if (Array.isArray(value))
-        value = value.join(' ')
-      if (value.includes('{'))
-        value = value
-          .replace(/\.value/g, '')
-          .replace(/\./g, '-')
-          .replace(/{/g, 'var(--')
-          .replace(/}/g, ')')
-      cssClasses += `  ${prop}: ${value};\n`
-    }
-    cssClasses += '}\n'
-  }
-  return cssClasses
-}
 
 /* Output 4: CSS file with final values */
 StyleDictionary.registerFormat({
