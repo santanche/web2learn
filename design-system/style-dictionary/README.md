@@ -4,10 +4,16 @@
 
 ~~~
 npm install -D style-dictionary
+~~~
+
+The following statement initializes the complete environment (not necessary):
+~~~
 npx style-dictionary init complete
 ~~~
 
-Replace the `config.json` with our `config.js` to customize transformations, focusing on CSS.
+In this case, you must:
+* replace the `config.json` with our `config.js` to customize transformations, focusing on CSS;
+* replace the initial generated tokens (`token` folder) with our tokens to use them.
 
 ## Build
 
@@ -23,8 +29,15 @@ npx style-dictionary build --config ./config-classes.js
 
 ## Config
 
-* `config.js` - default file: generates only the CSS output with customizations to add the `rem` measure to shape specifications;
-* `config-classes.js`: a customized format that loads an extra `classes.json` file and generates `classes-resolved.json`, transforming tokens in their respective values.
+* `config.js` -- default file
+  * `transform`: add specialized measures to the CSS output -- add the `rem` measure to shape specifications;
+* `config-classes.js`
+  * `transform`: add specialized measures to the CSS output -- add the `rem` measure to shape specifications;
+  * `format`: customized formats that load an extra `classes.json` file and generate:
+    * `classes/classes-resolved.json`: transforms classes.json tokens in their respective values;
+    * `css/classes-tokens.css`: transforms in CSS converting first-level properties in CSS classes and tokens to CSS variables;
+    * `css/classes-resolved.css`: same as the previous, but converting tokens in their respective values;
+    * `intermediary/aggregated-tokens.json`: an auxiliary file aggregating all tokens in a single hierarchical file.
 
 ## Originals
 
