@@ -124,32 +124,24 @@ module.exports = {
       "buildPath": "build/",
       "files": [
         {
+          "format": "css/variables",
+          "destination": "css/variables.css"
+        },
+        {
           "format": "jsonAggregatedFormat",
-          "destination": "intermediary/aggregated-tokens.json",
-          "options": {
-            "showFileHeader": false
-          }
+          "destination": "intermediary/aggregated-tokens.json"
         },
         {
           "format": "jsonResolvedFormat",
-          "destination": "classes/classes-resolved.json",
-          "options": {
-            "showFileHeader": false
-          }
+          "destination": "classes/classes-resolved.json"
         },
         {
           "format": "cssClassFormat",
           "destination": "css/classes-tokens.css",
-          "options": {
-            "showFileHeader": false
-          }
         },
         {
           "format": "cssResolvedClassFormat",
-          "destination": "css/classes-resolved.css",
-          "options": {
-            "showFileHeader": false
-          }
+          "destination": "css/classes-resolved.css"
         }
       ]
     }
