@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'MaterialIcons';
+  src: url('../assets/fonts/MaterialIcons-Regular.ttf');
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/OpenSans-Regular.ttf');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Regular.ttf');
+}
+
+.btn {
+  font-family: Roboto;
+  font-size: 1rem;
+  border-radius: .375rem;
+  padding: 0.5rem 1rem;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #616161;
+  color: #ffffff;
+  border: #9e9e9e;
+}
+.btn-primary:hover {
+  background-color: #212121;
+}
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #000000;
+  border: #e0e0e0;
+}
+.btn-secondary:hover {
+  background-color: #bdbdbd;
+}
