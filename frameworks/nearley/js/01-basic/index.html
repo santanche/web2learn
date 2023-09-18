@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Basic Example</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/nearley@2.20.1/lib/nearley.min.js"></script> -->
+    <script src="../../node_modules/nearley/lib/nearley.js"></script>
+    <script src="basic.js"></script>
+    <script src="basic-app.js"></script>
+    <script type="text/javascript">
+      function transl () {
+        document.querySelector("#translated").value =
+          Translator.i.parse(document.querySelector("#input").value)
+      }
+    </script>
+  </head>
+  <body>
+    <textarea id="input"></textarea>
+    <p><button onclick="transl()">Translate</button></p>
+    <textarea id="translated"></textarea>
+  </body>
+</html>

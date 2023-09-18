@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Basic Example</title>
+    <script src="app-lexing.js" type="module"></script>
+    <script type="module">
+      import { Translator } from './app-lexing.js'
+
+      function transl () {
+        const tr = Translator.i.parse(document.querySelector("#input").value)
+        document.querySelector("#translated").value = JSON.stringify(tr, null, 2)
+        console.log(tr)          
+      }
+
+      window.transl = transl
+    </script>
+  </head>
+  <body>
+    <textarea id="input" style="width:100%" rows="5"></textarea>
+    <p><button onclick="transl()">Translate</button></p>
+    <textarea id="translated" style="width:100%" rows="30" autocomplete="off"></textarea>
+  </body>
+</html>
