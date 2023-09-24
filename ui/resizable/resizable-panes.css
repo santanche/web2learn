@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+
+  /* Misc */
+  border: 1px solid #cbd5e0;
+  height: 16rem;
+  width: 100%;
+}
+.container__left {
+  /* Initially, the left takes 3/4 width */
+  width: 75%;
+
+  /* Misc */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.resizer {
+  background-color: #cbd5e0;
+  cursor: ew-resize;
+  height: 100%;
+  width: 2px;
+}
+.container__right {
+  /* Take the remaining width */
+  flex: 1;
+
+  /* Misc */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
