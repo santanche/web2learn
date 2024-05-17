@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="blocks.js"></script>
+  </head>
+  <body>
+    <div id="blocklyDiv" style="height: 768px; width: 1024px;"></div>
+    <xml id="toolbox" style="display: none">
+      <block type="conta"></block>
+    </xml>
+    <script>
+      var workspace = Blockly.inject('blocklyDiv',
+          {toolbox: document.getElementById('toolbox')});
+    </script>
+  </body>
+</html>
