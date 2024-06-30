@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Basic Example</title>
+    <title>Versum Example</title>
     <!-- <script src="https://cdn.jsdelivr.net/npm/nearley@2.20.1/lib/nearley.min.js"></script> -->
     <script src="../../node_modules/nearley/lib/nearley.js"></script>
     <script src="versum.js"></script>
@@ -9,9 +9,8 @@
     <script type="text/javascript">
       function transl () {
         const tr = Translator.i.parse(document.querySelector('#input').value)
-        document.querySelector('#translated').value =
-          (tr.error) ? tr.error : JSON.stringify(tr, null, 2)
-        console.log(tr)
+        document.querySelector('#translated').value = JSON.stringify(tr, null, 2)
+        // console.log(tr)
       }
     </script>
   </head>
