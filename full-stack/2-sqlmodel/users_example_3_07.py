@@ -17,7 +17,14 @@ user_1 = Users(email_id="asdrubal@email.com", name="Asdrubal", birthday=parse_da
 user_2 = Users(email_id="doriana@email.com", name="Doriana", birthday=parse_date("2024-03-05"))
 user_3 = Users(email_id="bonerges@email.com", name="Bonerges", birthday=parse_date("2024-05-01"))
 
-engine = create_engine("postgresql://postgres:postgres@localhost:5431/test")
+POSTGRES_USER = "postgres"
+POSTGRES_PASSWORD = "postgres"
+POSTGRES_SERVER = "localhost"
+POSTGRES_PORT = "5431"
+POSTGRES_DB = "test"
+POSTGRES_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+engine = create_engine(POSTGRES_URL)
 
 SQLModel.metadata.create_all(engine)
 
