@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: on-failure:5
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5431:5432"
+
+volumes:
+  postgres-data:
+    driver: "local"
+    driver_opts:
+      type: "none"
+      device: "/home/santanche/data/pgsql/docker"
+      o: "bind" 
