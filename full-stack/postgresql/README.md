@@ -46,3 +46,10 @@ The `docker-compose.yml` has the instruction for docker compose. To run:
 ~~~
 docker compose up
 ~~~
+
+# SQL Model
+
+Schema related to the base data model in SQL, the insertion of three tuples: 
+~~~
+users_schema.sql
+~~~
