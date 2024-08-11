@@ -11,6 +11,9 @@ pip3 install "fastapi[standard]"==0.112.0
 
 # Simple Example
 
+Examples derived from the tutorial:
+https://fastapi.tiangolo.com/
+
 * Version for Python 3.7+ using `Union[ ]` for optional fields:
 ~~~
 fastapi dev main_3_07.py
