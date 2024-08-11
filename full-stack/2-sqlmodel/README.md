@@ -41,7 +41,9 @@ users_example_3_07.py
 users_example_3_10.py
 ~~~
 
-Examples derived from the tutorial: https://sqlmodel.tiangolo.com/tutorial/insert/
+Examples derived from the tutorials:
+* https://sqlmodel.tiangolo.com/
+* https://sqlmodel.tiangolo.com/tutorial/insert/
 
 See details of Union Type at: https://docs.python.org/3/library/stdtypes.html#types-union
 

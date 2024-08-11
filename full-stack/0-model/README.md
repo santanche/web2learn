@@ -2,6 +2,8 @@
 
 Base data model, connecting all layers of the full-stack example.
 
+Decisions for the names of tables and fields derived from: https://dev.to/ovid/database-naming-standards-2061
+
 ## Relational (SQL) Model
 
 ~~~sql
