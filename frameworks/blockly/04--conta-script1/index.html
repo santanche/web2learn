@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/blockly@9.2.0/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly@9.2.0/javascript_compressed.js"></script>
+    <script src="blocks.js"></script>
+    <script type="text/javascript">
+      function translateBlockly() {
+        let translation = Blockly.JavaScript.workspaceToCode(workspace)
+        document.getElementById('result').innerHTML = translation
+      }
+    </script>
+  </head>
+  <body>
+    <div id="blocklyDiv" style="height: 500px; width: 1024px;"></div>
+    <h2>Resultados</h2>
+    <button onclick="translateBlockly()">Traduzir</button>
+    <div id="result"></div>
+    <xml id="toolbox" style="display: none">
+      <block type="conta"></block>
+      <block type="resultado"></block>
+    </xml>
+    <script>
+      var workspace = Blockly.inject('blocklyDiv',
+          {toolbox: document.getElementById('toolbox')});
+    </script>
+  </body>
+</html>
