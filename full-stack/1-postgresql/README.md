@@ -56,3 +56,10 @@ Schema related to the base data model in SQL, the insertion of three tuples:
 ~~~
 users_schema.sql
 ~~~
+
+# Interaction
+
+~~~
+docker exec -it 1-postgresql-db-1 bash
+psql -U postgres test
+~~~
