@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import gertie from './assets/Gertie_the_Dinosaur_poster.jpg'
-import rawrDinosaur from '/rawr-dinosaur.svg'
+import gertie from './assets/gertie.jpg'
+import rawrDinosaur from '/rawr-dino.svg'
 import './App.css'
 
 function App() {

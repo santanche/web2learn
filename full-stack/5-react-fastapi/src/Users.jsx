@@ -5,26 +5,32 @@ const UsersContext = React.createContext({
 })
 
 function Users() {
-  console.log('=== Users')
   const [users, setUsers] = useState([])
+
   const fetchUsers = async () => {
     const response = await fetch("http://localhost:8000/users")
     const responseUsers = await response.json()
     console.log(responseUsers)
     setUsers(responseUsers)
   }
+
   useEffect(() => {
     fetchUsers()
   }, [])
+
   return (
-    <UsersContext.Provider value={{users, fetchUsers}}>
-      {users.map(user => (
-        <div key={user.email_id}>
-          <h3>{user.name}</h3>
-          <p>{user.birthday}</p>
-        </div>
-      ))}
-    </UsersContext.Provider>
+    <table>
+      <tr><th>Name</th><th>E-mail</th><th>Birthday</th></tr>
+      <UsersContext.Provider value={{users, fetchUsers}}>
+        {users.map(user => (
+          <tr key={user.email_id}>
+            <td><b>{user.name}</b></td>
+            <td>{user.email_id}</td>
+            <td>{user.birthday}</td>
+          </tr>
+        ))}
+      </UsersContext.Provider>
+    </table>
   )
 }
 
