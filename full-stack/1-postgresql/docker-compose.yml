@@ -5,6 +5,7 @@ services:
     image: postgres
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - postgres-impexp:/home
     restart: on-failure:5
     shm_size: 128mb
     environment:
@@ -18,4 +19,10 @@ volumes:
     driver_opts:
       type: "none"
       device: "/home/santanche/data/pgsql/docker"
+      o: "bind" 
+  postgres-impexp:
+    driver: "local"
+    driver_opts:
+      type: "none"
+      device: "/home/santanche/data/pgsql/impexp"
       o: "bind" 

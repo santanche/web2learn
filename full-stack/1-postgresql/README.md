@@ -1,6 +1,22 @@
 # PostgreSQL
 https://www.postgresql.org
 
+# PostgreSQL Docker
+
+Image: https://hub.docker.com/_/postgres
+
+The `docker-compose.yml` has the instruction for docker compose. To run:
+~~~
+docker compose up
+~~~
+
+# Interaction
+
+~~~
+docker exec -it 1-postgresql-db-1 bash
+psql -U postgres test
+~~~
+
 # PostgreSQL on Ubuntu
 
 These are Ubuntu instructions. They may vary on Windows and Mac.
@@ -41,15 +57,6 @@ To change the database location at Ubuntu:
 https://www.digitalocean.com/community/tutorials/how-to-move-a-postgresql-data-directory-to-a-new-location-on-ubuntu-20-04
 
 
-# PostgreSQL Docker
-
-Image: https://hub.docker.com/_/postgres
-
-The `docker-compose.yml` has the instruction for docker compose. To run:
-~~~
-docker compose up
-~~~
-
 # SQL Model
 
 Schema related to the base data model in SQL, the insertion of three tuples: 
@@ -57,9 +64,3 @@ Schema related to the base data model in SQL, the insertion of three tuples:
 users_schema.sql
 ~~~
 
-# Interaction
-
-~~~
-docker exec -it 1-postgresql-db-1 bash
-psql -U postgres test
-~~~
