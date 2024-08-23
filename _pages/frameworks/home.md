@@ -5,4 +5,4 @@ permalink: /frameworks/slides/
 
 JavaScript frameworks.
 
-(under construction)
+* [React](/frameworks/react/slides/)
