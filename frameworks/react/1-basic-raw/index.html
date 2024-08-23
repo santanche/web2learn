@@ -11,12 +11,12 @@
   <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
   
   <script>
-    const { createRoot } = ReactDOM
-    const root = createRoot(document.getElementById('root'))
+    const root = ReactDOM.createRoot(
+      document.getElementById('root')
+    )
 
-    const { createElement } = React
     root.render(
-      createElement('h1', null, 'Velocirest')
+      React.createElement('h1', null, 'Velocirest')
     )
   </script>
 </body>
