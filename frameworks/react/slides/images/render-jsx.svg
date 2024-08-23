@@ -82,7 +82,7 @@
    <path d="M 173,740 C 173,903 231,1043 346,1159 462,1274 601,1332 765,1332 928,1332 1067,1274 1183,1159 1299,1043 1357,903 1357,740 1357,577 1299,437 1183,322 1067,206 928,148 765,148 601,148 462,206 346,322 231,437 173,577 173,740 Z"/>
   </g>
  </defs>
- <g ooo:name="page8" class="Page">
+ <g ooo:name="page7" class="Page">
   <g class="com.sun.star.drawing.CustomShape">
    <g id="id3">
     <rect class="BoundingBox" stroke="none" fill="none" x="19759" y="2459" width="6583" height="6583"/>
@@ -94,7 +94,7 @@
    <g id="id4">
     <rect class="BoundingBox" stroke="none" fill="none" x="20259" y="4459" width="5583" height="2583"/>
     <path fill="rgb(180,199,220)" stroke="none" d="M 23050,7000 L 20300,7000 20300,4500 25800,4500 25800,7000 23050,7000 Z"/>
-    <path fill="none" stroke="rgb(0,0,255)" stroke-width="81" stroke-linejoin="round" d="M 23050,7000 L 20300,7000 20300,4500 25800,4500 25800,7000 23050,7000 Z"/>
+    <path fill="none" stroke="rgb(42,96,153)" stroke-width="81" stroke-linejoin="round" d="M 23050,7000 L 20300,7000 20300,4500 25800,4500 25800,7000 23050,7000 Z"/>
     <text class="SVGTextShape"><tspan class="TextParagraph" font-family="FreeMono, monospace" font-size="635px" font-weight="400"><tspan class="TextPosition" x="20590" y="5306"><tspan fill="rgb(0,0,0)" stroke="none" style="white-space: pre">&lt;div&gt;</tspan></tspan></tspan><tspan class="TextParagraph" font-family="FreeMono, monospace" font-size="635px" font-weight="400"><tspan class="TextPosition" x="20590" y="6576"><tspan fill="rgb(0,0,0)" stroke="none" style="white-space: pre">&lt;/div&gt;</tspan></tspan></tspan></text>
    </g>
   </g>
@@ -149,8 +149,8 @@
   <g class="com.sun.star.drawing.OpenBezierShape">
    <g id="id12">
     <rect class="BoundingBox" stroke="none" fill="none" x="4959" y="3521" width="16043" height="5021"/>
-    <path fill="none" stroke="rgb(0,0,255)" stroke-width="81" stroke-linejoin="round" d="M 5000,8500 C 8000,0 18236,4846 20550,5806"/>
-    <path fill="rgb(0,0,255)" stroke="none" d="M 20424,5933 L 20377,5961 21000,5999 20543,5574 20555,5626 20559,5682 20553,5739 20535,5797 20506,5850 20468,5896 20424,5933 Z"/>
+    <path fill="none" stroke="rgb(42,96,153)" stroke-width="81" stroke-linejoin="round" d="M 5000,8500 C 8000,0 18236,4846 20550,5806"/>
+    <path fill="rgb(42,96,153)" stroke="none" d="M 20424,5933 L 20377,5961 21000,5999 20543,5574 20555,5626 20559,5682 20553,5739 20535,5797 20506,5850 20468,5896 20424,5933 Z"/>
    </g>
   </g>
  </g>

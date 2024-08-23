@@ -33,3 +33,9 @@ pages:
         url: /javascript/slides/05-conditional/
       - title: "Loop"
         url: /javascript/slides/06-loop/
+  - title: React Programming
+    children:
+      - title: "React &amp; JSX"
+        url: /frameworks/react/slides/01-start-jsx/
+      - title: "React Development Environment"
+        url: /frameworks/react/slides/02-environment/

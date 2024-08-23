@@ -5,4 +5,4 @@ permalink: /frameworks/slides/
 
 JavaScript frameworks.
 
-* [React](/frameworks/react/slides/)
+* [React]({{ site.baseurl }}/frameworks/react/slides/)

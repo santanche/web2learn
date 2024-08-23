@@ -91,7 +91,7 @@
    <path d="M 173,740 C 173,903 231,1043 346,1159 462,1274 601,1332 765,1332 928,1332 1067,1274 1183,1159 1299,1043 1357,903 1357,740 1357,577 1299,437 1183,322 1067,206 928,148 765,148 601,148 462,206 346,322 231,437 173,577 173,740 Z"/>
   </g>
  </defs>
- <g ooo:name="page6" class="Page">
+ <g ooo:name="page5" class="Page">
   <g class="com.sun.star.drawing.CustomShape">
    <g id="id3">
     <rect class="BoundingBox" stroke="none" fill="none" x="3459" y="4959" width="6583" height="6583"/>
@@ -103,7 +103,7 @@
    <g id="id4">
     <rect class="BoundingBox" stroke="none" fill="none" x="3959" y="6959" width="5583" height="2583"/>
     <path fill="rgb(180,199,220)" stroke="none" d="M 6750,9500 L 4000,9500 4000,7000 9500,7000 9500,9500 6750,9500 Z"/>
-    <path fill="none" stroke="rgb(0,0,255)" stroke-width="81" stroke-linejoin="round" d="M 6750,9500 L 4000,9500 4000,7000 9500,7000 9500,9500 6750,9500 Z"/>
+    <path fill="none" stroke="rgb(42,96,153)" stroke-width="81" stroke-linejoin="round" d="M 6750,9500 L 4000,9500 4000,7000 9500,7000 9500,9500 6750,9500 Z"/>
     <text class="SVGTextShape"><tspan class="TextParagraph" font-family="FreeMono, monospace" font-size="635px" font-weight="400"><tspan class="TextPosition" x="4290" y="7806"><tspan fill="rgb(0,0,0)" stroke="none" style="white-space: pre">&lt;div&gt;</tspan></tspan></tspan><tspan class="TextParagraph" font-family="FreeMono, monospace" font-size="635px" font-weight="400"><tspan class="TextPosition" x="4290" y="9076"><tspan fill="rgb(0,0,0)" stroke="none" style="white-space: pre">&lt;/div&gt;</tspan></tspan></tspan></text>
    </g>
   </g>
@@ -128,8 +128,8 @@
   <g class="com.sun.star.drawing.OpenBezierShape">
    <g id="id8">
     <rect class="BoundingBox" stroke="none" fill="none" x="5959" y="4531" width="10543" height="3137"/>
-    <path fill="none" stroke="rgb(0,0,255)" stroke-width="81" stroke-linejoin="round" d="M 6000,7000 C 12500,2000 15104,6080 16177,7274"/>
-    <path fill="rgb(0,0,255)" stroke="none" d="M 16018,7345 L 15963,7348 16500,7667 16287,7080 16275,7131 16252,7183 16221,7231 16178,7274 16129,7309 16074,7332 16018,7345 Z"/>
+    <path fill="none" stroke="rgb(42,96,153)" stroke-width="81" stroke-linejoin="round" d="M 6000,7000 C 12500,2000 15104,6080 16177,7273"/>
+    <path fill="rgb(42,96,153)" stroke="none" d="M 16018,7345 L 15963,7348 16501,7666 16288,7079 16275,7131 16252,7182 16221,7231 16178,7274 16129,7308 16074,7331 16018,7345 Z"/>
    </g>
   </g>
   <g ooo:text-adjust="left" class="TextShape">
@@ -141,8 +141,8 @@
   <g class="com.sun.star.drawing.LineShape">
    <g id="id10">
     <rect class="BoundingBox" stroke="none" fill="none" x="17459" y="7789" width="1542" height="423"/>
-    <path fill="none" stroke="rgb(0,0,255)" stroke-width="81" stroke-linejoin="round" d="M 17500,8000 L 18440,8000"/>
-    <path fill="rgb(0,0,255)" stroke="none" d="M 18445,8167 L 18412,8211 19000,7999 18412,7790 18444,7832 18469,7883 18486,7938 18492,7998 18487,8058 18470,8114 18445,8167 Z"/>
+    <path fill="none" stroke="rgb(42,96,153)" stroke-width="81" stroke-linejoin="round" d="M 17500,8000 L 18440,8000"/>
+    <path fill="rgb(42,96,153)" stroke="none" d="M 18445,8167 L 18412,8211 19000,7999 18412,7790 18444,7832 18469,7883 18486,7938 18492,7998 18487,8058 18470,8114 18445,8167 Z"/>
    </g>
   </g>
   <g class="Group">

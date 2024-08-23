@@ -61,8 +61,9 @@ CDN - Content Delivery Network
 # First React Program - Script
 
 ~~~js
-const { createRoot } = ReactDOM
-const root = createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+)
 ~~~
 
 ![width:750px](../../../../frameworks/react/slides/images/root.svg)
@@ -72,9 +73,8 @@ const root = createRoot(document.getElementById('root'))
 # First React Program - Script
 
 ~~~js
-const { createElement } = React
 root.render(
-  createElement('h1', null, 'Velocirest')
+  React.createElement('h1', null, 'Velocirest')
 )
 ~~~
 
@@ -88,6 +88,19 @@ root.render(
   * https://facebook.github.io/jsx/
 * XML constructs within JavaScript
 * Requires the use of a Transpiler (preprocessor)
+
+---
+
+![width:1000px](../../../../frameworks/react/slides/images/page-code-1.svg)
+
+---
+
+![width:1000px](../../../../frameworks/react/slides/images/page-code-2.svg)
+
+---
+
+
+![width:1000px](../../../../frameworks/react/slides/images/page-code-3.svg)
 
 ---
 
@@ -113,7 +126,7 @@ root.render(
 </script>
 ~~~
 
-![width:750px](../../../../frameworks/react/slides/images/render-transpiler.svg)
+![width:1000px](../../../../frameworks/react/slides/images/render-transpiler.svg)
 
 ---
 
@@ -127,9 +140,11 @@ root.render(
 
 * [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
 
-* Eloquent JavaScript - https://eloquentjavascript.net/
+* [React createRoot](https://react.dev/reference/react-dom/client/createRoot)
 
-![Eloquent JavaScript](../../../../javascript/slides/images/eloquent-javascript.png)
+* [React createElement](https://react.dev/reference/react/createElement)
+
+* [Eloquent JavaScript](https://eloquentjavascript.net/)
 
 ---
 
