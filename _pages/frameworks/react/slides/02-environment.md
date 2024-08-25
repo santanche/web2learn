@@ -141,7 +141,7 @@ export default defineConfig({
 
 # Babel via Dev/Building
 
-![width:1000px](../../../../frameworks/react/slides/images/babel-build-2.svg)
+![width:1000px](../../../../frameworks/react/slides/images/babel-build-3.svg)
 
 ---
 
