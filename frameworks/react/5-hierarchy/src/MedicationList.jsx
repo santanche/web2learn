@@ -1,7 +1,7 @@
 import MedicationItem from './MedicationItem.jsx'
 
 export default function MedicationList() {
-  return <div>
+  return <>
            <MedicationItem name="Velocirest"
                            description="Description of dosage and frequency of use of Velocirest."
                            image="/src/assets/medication1.svg" />
@@ -11,5 +11,5 @@ export default function MedicationList() {
            <MedicationItem name="Tyrannotonic"
                            description="Description of dosage and frequency of use of Tyrannotonic."
                            image="/src/assets/medication3.svg" />
-         </div>
+         </>
 }
