@@ -10,7 +10,6 @@ function Users() {
   const fetchUsers = async () => {
     const response = await fetch("http://localhost:8000/users")
     const responseUsers = await response.json()
-    console.log(responseUsers)
     setUsers(responseUsers)
   }
 
