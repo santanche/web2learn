@@ -55,5 +55,5 @@ export default function MedicationItem() {
         Decrease quantity
       </button>
     </div>
-  );
+  )
 }

@@ -24,5 +24,5 @@ export default function MedicationItem() {
         Increase quantity
       </button>
     </div>
-  );
+  )
 }
