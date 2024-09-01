@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from 'react'
 import { userModel, userReducer, fetchUsers } from '../redux/UserRedux'
 
-export default function Users() {
+export default function UserItem() {
   const [user, userDispatch] = useReducer(userReducer, userModel)
 
   useEffect(() => {
@@ -13,12 +13,16 @@ export default function Users() {
   return (
     <>
     <table>
-      <tr><th>Name</th><th>E-mail</th><th>Birthday</th></tr>
-      <tr key={email_id}>
-        <td><b>{name}</b></td>
-        <td>{email_id}</td>
-        <td>{birthday}</td>
-      </tr>
+      <thead>
+        <tr><th>Name</th><th>E-mail</th><th>Birthday</th></tr>
+      </thead>
+      <tbody>
+        <tr key={email_id}>
+          <td><b>{name}</b></td>
+          <td>{email_id}</td>
+          <td>{birthday}</td>
+        </tr>
+      </tbody>
     </table>
     <button type="button" onClick={() => userDispatch({ type: 'first_user' })}>
       First user
