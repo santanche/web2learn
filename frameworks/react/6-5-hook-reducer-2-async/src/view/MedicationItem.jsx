@@ -2,7 +2,6 @@ import { useReducer } from 'react'
 import { medicationModel, medicationReducer } from '../redux/MedicationRedux'
 
 export default function MedicationItem() {
-
   const [medication, medicationDispatch] = useReducer(medicationReducer, medicationModel)
 
   const { name, description, image, dose, unity, quantity, frequency } = medication

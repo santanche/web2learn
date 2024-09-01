@@ -3,11 +3,9 @@ import user1 from './assets/user1.svg'
 import user2 from './assets/user2.svg'
 import umbrellas from '/umbrellas.jpg'
 import './App.css'
-import Users from './Users'
+import UserItem from './view/UserItem.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
@@ -20,7 +18,7 @@ function App() {
       </div>
       <h1>Users Report</h1>
 
-      <Users />
+      <UserItem />
     </>
   )
 }
