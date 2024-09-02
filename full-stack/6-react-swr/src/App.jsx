@@ -3,7 +3,7 @@ import user1 from './assets/user1.svg'
 import user2 from './assets/user2.svg'
 import umbrellas from '/umbrellas.jpg'
 import './App.css'
-import UserItem from './view/UserItem.jsx'
+import UserItem from './components/UserItem.jsx'
 
 function App() {
   return (
