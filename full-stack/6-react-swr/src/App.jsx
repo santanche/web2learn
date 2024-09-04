@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import user1 from './assets/user1.svg'
 import user2 from './assets/user2.svg'
 import umbrellas from '/umbrellas.jpg'
