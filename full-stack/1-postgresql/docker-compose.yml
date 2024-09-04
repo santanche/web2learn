@@ -18,11 +18,11 @@ volumes:
     driver: "local"
     driver_opts:
       type: "none"
-      device: "/home/santanche/data/pgsql/docker"
+      device: "/home/user/data/pgsql/docker"
       o: "bind" 
   postgres-impexp:
     driver: "local"
     driver_opts:
       type: "none"
-      device: "/home/santanche/data/pgsql/impexp"
+      device: "/home/user/data/pgsql/impexp"
       o: "bind" 

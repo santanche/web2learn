@@ -21,12 +21,6 @@ https://pypi.org/project/psycopg2/
 pip install psycopg2
 ~~~
 
-# pgAdmin
-https://www.pgadmin.org/
-
-Detailed instructions to install pgAdmin via apt:
-https://www.pgadmin.org/download/pgadmin-4-apt/
-
 # Simple Example
 
 A simple and complete example of defining a model, creating a table, and inserting three records. There are two versions:
