@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+function incrementMedication(medication, setMedication) {
+  setMedication({...medication, quantity: medication.quantity + 1})
+}
+
 export default function MedicationItem() {
   const [medication, setMedication] = useState({
     name: 'Velocirest',
@@ -9,9 +13,9 @@ export default function MedicationItem() {
     unity: 'mg',
     quantity: 1,
     frequency: 'day'
-    })
+  })
 
-  const { name, description, image, dose, unity, quantity, frequency } = medication;
+  const { name, description, image, dose, unity, quantity, frequency } = medication
 
   return (
     <div style={{ width: '300px', background: 'lightgray' }}>
@@ -20,7 +24,7 @@ export default function MedicationItem() {
       <p>{description}</p>
       <p><b>dose:</b> {dose} {unity}</p>
       <p><b>frequency:</b> {quantity} / {frequency}</p>
-      <button type="button" onClick={() => setMedication({ ...medication, quantity: quantity + 1 })}>
+      <button type="button" onClick={() => incrementMedication(medication, setMedication)}>
         Increase quantity
       </button>
     </div>

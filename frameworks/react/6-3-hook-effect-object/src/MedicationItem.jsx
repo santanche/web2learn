@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 
+function incrementMedication(medication, setMedication) {
+  setMedication({...medication, quantity: medication.quantity + 1})
+}
+
 function calculateWeekly(dose, quantity, frequency) {
   const frequencyTimes = {
     '8 hours': 21,
@@ -22,12 +26,6 @@ export default function MedicationItem() {
     })
   const [weeklyDose, setWeeklyDose] = useState(0)
 
-  const frequencyTimes = {
-    '8 hours': 21,
-    'day': 7,
-    'week': 1
-  }
-
   useEffect(() => {
     setWeeklyDose(calculateWeekly(medication.dose, medication.quantity, medication.frequency))
   }, [medication])
@@ -42,7 +40,7 @@ export default function MedicationItem() {
       <p><b>dose:</b> {dose} {unity}</p>
       <p><b>frequency:</b> {quantity} / {frequency}</p>
       <p><b>weekly dose:</b> {weeklyDose} {unity}</p>
-      <button type="button" onClick={() => setMedication({ ...medication, quantity: quantity + 1 })}>
+      <button type="button" onClick={() => incrementMedication(medication, setMedication)}>
         Increase quantity
       </button>
     </div>
