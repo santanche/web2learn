@@ -2,11 +2,6 @@ from datetime import date
 from fastapi import FastAPI
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 
-def parse_date(birthday_str: str | None) -> date | None:
-    if birthday_str:
-        return date.fromisoformat(birthday_str)
-    return None
-
 class Users(SQLModel, table=True):
     email_id: str = Field(default=None, primary_key=True)
     name: str
