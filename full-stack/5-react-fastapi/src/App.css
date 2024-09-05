@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.citizen {
+  height: 12em;
+  padding: 0.2em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.citizen.users {
+  height: 4em;
+}
+.citizen:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.citizen.users:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 0.5em;
+}
