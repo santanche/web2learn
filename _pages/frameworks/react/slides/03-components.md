@@ -2,12 +2,12 @@
 marp: true
 theme: uncover
 class: invert
-permalink: /frameworks/react/slides/01-start-jsx/
+permalink: /frameworks/react/slides/03-components/
 ---
 
 Black & White Series
 
-# React & JSX
+# React Components
 
 #### Thinking in React
 
@@ -20,35 +20,44 @@ Black & White Series
 ![width:150px](../../../../frameworks/react/slides/images/react-logo.svg)
 
 * https://react.dev/
-* JavaScript Framework
-* to produce interactive (reactive) interfaces
-* founded in JSX and Components
 
 ---
 
-# Examples at
+# React Component
 
-![width:400px](../../../../frameworks/react/slides/images/codepen-logo.svg)
-
-https://codepen.io/santanche/collections/
+Available at: [frameworks/react/4-component](https://github.com/santanche/web2learn/tree/master/frameworks/react/4-component)
 
 ---
 
-# First React Program
-
-Available at: [frameworks/react/1-basic-raw](https://github.com/santanche/web2learn/tree/master/frameworks/react/1-basic-raw)
-
----
-
-#### First React Program
-# HTML Root Element
+#### HTML Specification
+# Component Step 1
 
 ~~~html
-<body>
-  <div id="root"></div>
-  ...
-</body>
+<div style={{width: '300px', background: 'lightgray'}}>
+  <img src={medication1} width="50px"/>
+  <h1>Velocirest</h1>
+  <p>Description of dosage and frequency of use of Velocirest.</p>
+</div>
 ~~~
+
+![width:300px](../../../../frameworks/react/slides/images/component-html.png)
+
+---
+
+#### HTML Specification
+# Component Step 1
+
+~~~javascript
+export default function MedicationItem() {
+  return <div style={{width: '300px', background: 'lightgray'}}>
+           <img src={medication1} width="50px"/>
+           <h1>Velocirest</h1>
+           <p>Description of dosage and frequency of use of Velocirest.</p>
+         </div>
+}
+~~~
+
+![width:300px](../../../../frameworks/react/slides/images/component-html.png)
 
 ---
 
@@ -99,6 +108,12 @@ root.render(
 
 ---
 
+# React with JSX
+
+Available at: [frameworks/react/2-basic-jsx](https://github.com/santanche/web2learn/tree/master/frameworks/react/2-basic-jsx)
+
+---
+
 ![width:1000px](../../../../frameworks/react/slides/images/page-code-1.svg)
 
 ---
@@ -109,12 +124,6 @@ root.render(
 
 
 ![width:1000px](../../../../frameworks/react/slides/images/page-code-3.svg)
-
----
-
-# React with JSX
-
-Available at: [frameworks/react/2-basic-jsx](https://github.com/santanche/web2learn/tree/master/frameworks/react/2-basic-jsx)
 
 ---
 

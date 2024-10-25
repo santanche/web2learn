@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="none"
+   stroke="#ffffff"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   stroke-width="2.3"
+   viewBox="0 0 132.19864 24.299999"
+   aria-hidden="true"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="codepen-logo.svg"
+   width="132.19864"
+   height="24.299999"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="4.5270206"
+     inkscape:cx="73.006074"
+     inkscape:cy="50.806042"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="m 13.048641,7.15 a 7,7 0 1 0 0,10 m 7,-8.7 11,-7.3 11,7.3 v 7.4 l -11,7.3 -11,-7.3 z m 0,0 11,7.4 11,-7.4 m 0,7.4 -11,-7.4 -11,7.4 m 11,-14.7 v 7.3 m 0,7.4 v 7.3 m 19,-18 h 5 a 7,7 0 0 1 0,14 h -5 z m 28,0 h -9 v 14 h 9 m -9,-7 h 6 m 11,1 h 6 a 4,4 0 0 0 0,-8 h -6 v 14 m 25.999999,-14 h -9 v 14 h 9 m -9,-7 h 6 m 11,7 v -14 l 11,14 v -14"
+     id="path1"
+     style="stroke:#000000;stroke-opacity:1" />
+</svg>
