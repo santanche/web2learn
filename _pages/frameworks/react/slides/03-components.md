@@ -40,12 +40,11 @@ Available at: [frameworks/react/4-component](https://github.com/santanche/web2le
 </div>
 ~~~
 
-![width:300px](../../../../frameworks/react/slides/images/component-html.png)
+![Resulting Component](../../../../frameworks/react/slides/images/component-html.png)
 
 ---
 
-#### HTML Specification
-# Component Step 1
+# Component Predefined
 
 ~~~javascript
 export default function MedicationItem() {
@@ -57,119 +56,92 @@ export default function MedicationItem() {
 }
 ~~~
 
-![width:300px](../../../../frameworks/react/slides/images/component-html.png)
+![Resulting Component](../../../../frameworks/react/slides/images/component-html.png)
 
 ---
 
-#### First React Program
-# Importing Libraries from CDN
+# MedicationItem Design
 
-CDN - Content Delivery Network
+![Component Structure](../../../../frameworks/react/slides/images/component-diagram-1.svg)
 
-~~~html
-<script src="https://unpkg.com/react/umd/react.development.js">
-</script>
-<script src="https://unpkg.com/react-dom/umd/react-dom.development.js">
-</script>
+---
+
+## MedicationItem React
+
+![width:300px](../../../../frameworks/react/slides/images/component-uml-2.svg)
+
+![width:800px](../../../../frameworks/react/slides/images/component-diagram-2.svg)
+
+---
+
+# Component Hierarchy
+
+Available at: [frameworks/react/5-hierarchy](https://github.com/santanche/web2learn/tree/master/frameworks/react/5-hierarchy)
+
+---
+
+## MedicationItem with Properties
+
+![width:300px](../../../../frameworks/react/slides/images/component-uml-3.svg)
+
+![width:800px](../../../../frameworks/react/slides/images/component-diagram-2.svg)
+
+---
+
+# Component with Properties
+
+~~~javascript
+export default function MedicationItem({ name, description, image }) {
+  return <div style={{width: '300px', background: 'lightgray'}}>
+           <img src={image} width="50px"/>
+           <h1>{name}</h1>
+           <p>{description}</p>
+         </div>
+}
 ~~~
 
 ---
 
-# First React Program - Script
+# MedicationList Design
 
-~~~js
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-)
+![width:1000px](../../../../frameworks/react/slides/images/component-diagram-3.svg)
+
+---
+
+# Aggregating Components
+
+~~~javascript
+export default function MedicationList() {
+  return <>
+           <MedicationItem name="Velocirest"
+                           description="Description of dosage and frequency of use of Velocirest."
+                           image="/src/assets/medication1.svg" />
+           <MedicationItem name="Tricerabust"
+                           description="Description of dosage and frequency of use of Tricerabust."
+                           image="/src/assets/medication2.svg" />
+           <MedicationItem name="Tyrannotonic"
+                           description="Description of dosage and frequency of use of Tyrannotonic."
+                           image="/src/assets/medication3.svg" />
+         </>
+}
 ~~~
 
-![width:750px](../../../../frameworks/react/slides/images/root.svg)
+---
+
+# Tarefa
+
+* Baseado no design desenvolvido na tarefa do Figma, crie um componente que crie um componente com que represente a ficha completa do paciente com os medicamentos que ele toma:
+
+![width:200px](../../../../frameworks/react/slides/images/hierarchy-task-1.svg)
 
 ---
 
-# First React Program - Script
+# Tarefa
 
-~~~js
-root.render(
-  React.createElement('h1', null, 'Velocirest')
-)
-~~~
-
-![width:750px](../../../../frameworks/react/slides/images/render.svg)
+![width:800px](../../../../frameworks/react/slides/images/hierarchy-task-2.svg)
 
 ---
 
-# JSX
-
-* Proposed by Facebook
-  * https://facebook.github.io/jsx/
-* XML constructs within JavaScript
-* Requires the use of a Transpiler (preprocessor)
-
----
-
-# React with JSX
-
-Available at: [frameworks/react/2-basic-jsx](https://github.com/santanche/web2learn/tree/master/frameworks/react/2-basic-jsx)
-
----
-
-![width:1000px](../../../../frameworks/react/slides/images/page-code-1.svg)
-
----
-
-![width:1000px](../../../../frameworks/react/slides/images/page-code-2.svg)
-
----
-
-
-![width:1000px](../../../../frameworks/react/slides/images/page-code-3.svg)
-
----
-
-# React with JSX
-
-~~~js
-root.render(
-  <h1>Velocirest</h1>
-)
-~~~
-
-![width:750px](../../../../frameworks/react/slides/images/render-jsx.svg)
-
----
-
-# JSX and Babel Transpiler
-
-~~~html
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<script  type="text/babel">
-  ...
-</script>
-~~~
-
-![width:1000px](../../../../frameworks/react/slides/images/render-transpiler.svg)
-
----
-
-# Babel Transpiler
-
-![width:750px](../../../../frameworks/react/slides/images/babel.svg)
-
----
-
-# References
-
-* [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
-
-* [React createRoot](https://react.dev/reference/react-dom/client/createRoot)
-
-* [React createElement](https://react.dev/reference/react/createElement)
-
-* [Eloquent JavaScript](https://eloquentjavascript.net/)
-
----
 
 <!-- class: invert -->
 

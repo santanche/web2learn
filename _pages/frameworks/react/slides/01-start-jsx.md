@@ -162,6 +162,14 @@ root.render(
 
 ---
 
+# Tarefa
+
+* Modifique o código do exemplo `2-basic-jsx` para que ele apresente um texto abaixo do título.
+
+* O texto é livre de sua criação e o título pode ser modificado.
+
+---
+
 <!-- class: invert -->
 
 ## André Santanchè
