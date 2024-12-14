@@ -1,5 +1,4 @@
 from django.http import HttpResponse
 
-
 def index(request):
-    return HttpResponse("Medications index.")
+    return HttpResponse("This is a plot editor.")

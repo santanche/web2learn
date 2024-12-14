@@ -1,5 +1,5 @@
 """
-WSGI config for health project.
+WSGI config for platform_02_plot project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'health.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'platform_02_plot.settings')
 
 application = get_wsgi_application()

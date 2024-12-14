@@ -1,5 +1,5 @@
 """
-ASGI config for health project.
+ASGI config for platform_01_basic project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'health.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'platform_01_basic.settings')
 
 application = get_asgi_application()
