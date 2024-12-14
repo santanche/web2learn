@@ -5,9 +5,9 @@
 * source: https://docs.djangoproject.com/en/5.1/intro/tutorial01/
 
 ~~~
-django-admin startproject platform_02_plot
+django-admin startproject platform_03_rest
 
-cd platform_02_plot
+cd platform_03_rest
 ~~~
 
 ## Creating an App inside a Project
@@ -37,7 +37,7 @@ urlpatterns = [
 ]
 ~~~
 
-Connecting to the main route (`platform_02_plot/urls.py`):
+Connecting to the main route (`platform_03_rest/urls.py`):
 
 ~~~python
 from django.contrib import admin
@@ -77,7 +77,7 @@ class Comment(models.Model):
         return self.plot.title + " / " + self.text
 ~~~
 
-Adding in `platform_02_plot/settings.py`:
+Adding in `platform_03_rest/settings.py`:
 
 ~~~python
 INSTALLED_APPS = [
@@ -123,10 +123,72 @@ admin.site.register(Comment)
 python3 manage.py createsuperuser
 ~~~
 
+## Expanding the venv
+
+Inside the venv:
+
+~~~
+pip install djangorestframework
+pip install markdown
+pip install django-filter
+~~~
+
+## Expanding to REST
+
+Adding in `platform_03_rest/settings.py`:
+
+~~~python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+]
+
+...
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+~~~
+
+Adding in `platform_03_rest/urls.py`:
+
+~~~python
+from django.contrib import admin
+from django.urls import include, path
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username', 'email', 'is_staff']
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path("plot/", include("plot.urls")),
+    path('admin/', admin.site.urls),
+]
+~~~
+
 ## Running the Server
 
 ~~~
-cd platform_02_plot
+cd platform_03_rest
 
 python3 manage.py runserver
 ~~~
