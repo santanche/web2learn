@@ -10,3 +10,4 @@ Gemfile.lock
 /vendor
 /.vscode
 __pycache__
+.antlr
