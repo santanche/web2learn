@@ -154,7 +154,7 @@ REST_FRAMEWORK = {
 }
 ~~~
 
-Create an API specification for plots and comments (`plot/api.py`):
+Create an API specification for plots and comments (`plot/api.py`). Details of ViewSet customization applied to CommentViewSet can be found at: https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset.
 
 ~~~python
 from rest_framework import routers, serializers, viewsets
