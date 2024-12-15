@@ -28,12 +28,12 @@ def index(request):
 Adding a local route (`plot/urls.py`):
 
 ~~~python
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path('about/', views.index, name="index"),
 ]
 ~~~
 
@@ -44,7 +44,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("plot/", include("plot.urls")),
+    path('', include('plot.urls')),
     path('admin/', admin.site.urls),
 ]
 ~~~
@@ -135,6 +135,8 @@ pip install django-filter
 
 ## Expanding to REST
 
+* souce: https://www.django-rest-framework.org/#installation
+
 Adding in `platform_03_rest/settings.py`:
 
 ~~~python
@@ -152,13 +154,50 @@ REST_FRAMEWORK = {
 }
 ~~~
 
-Adding in `platform_03_rest/urls.py`:
+Create an API specification for plots and comments (`plot/api.py`):
 
 ~~~python
-from django.contrib import admin
-from django.urls import include, path
-from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+
+from .models import Plot, Comment
+
+class PlotSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Plot
+        fields = ['id', 'title', 'content', 'created_at']
+
+class PlotViewSet(viewsets.ModelViewSet):
+    queryset = Plot.objects.all()
+    serializer_class = PlotSerializer
+
+class CommentSerializer(serializers.HyperlinkedModelSerializer):
+    plot_id = serializers.PrimaryKeyRelatedField(queryset=Plot.objects.all())
+    
+    class Meta:
+        model = Comment
+        fields = ['id', 'plot_id', 'text', 'grade']
+
+class CommentViewSet(viewsets.ModelViewSet):
+    serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        plot_id = self.request.query_params.get('plot_id')
+        if plot_id is not None:
+            return Comment.objects.filter(plot_id=plot_id)
+        return Comment.objects.all()
+
+router = routers.DefaultRouter()
+router.register(r'plot', PlotViewSet, basename='plot')
+router.register(r'comment', CommentViewSet, basename='comment')
+~~~
+
+Create the complete API specification file (`platform_03_rest/api.py`), importing the plot API and adding routes to access administrative data - users:
+
+~~~python
+from rest_framework import routers, serializers, viewsets
+
+from django.contrib.auth.models import User
+from plot.apis import router as plot_router
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -174,13 +213,22 @@ class UserViewSet(viewsets.ModelViewSet):
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router.registry.extend(plot_router.registry)
+~~~
+
+Expand the `platform_03_rest/urls.py`:
+
+~~~python
+from django.contrib import admin
+from django.urls import include, path
+from . import api
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(api.router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path("plot/", include("plot.urls")),
+    path('', include('plot.urls')),
     path('admin/', admin.site.urls),
 ]
 ~~~
@@ -193,5 +241,10 @@ cd platform_03_rest
 python3 manage.py runserver
 ~~~
 
+## Postman API Access
+
+Import specification: Plots.postman_collection.json
+
+* api access: http://127.0.0.1:8000/
 * admin address: http://127.0.0.1:8000/admin/
-* page address: http://127.0.0.1:8000/plot/
+* page address: http://127.0.0.1:8000/plot/about/

@@ -1,7 +1,7 @@
-from django.urls import include, path
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    path('plot/about/', views.index, name="index"),
+    path('about/', views.index, name="index"),
 ]
