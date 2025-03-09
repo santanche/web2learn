@@ -235,6 +235,14 @@ urlpatterns = [
 
 ## Running the Server
 
+Running a Virtual Environment for Django
+
+~~~
+source .venv/bin/activate
+~~~
+
+Running the server
+
 ~~~
 cd platform_03_rest
 
