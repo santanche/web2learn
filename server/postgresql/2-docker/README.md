@@ -2,12 +2,12 @@
 
 ## Running the Container
 ~~~
-docker run --name meu-postgres -e  POSTGRES_PASSWORD=postgres -d postgres
+docker run --name my-postgres -e  POSTGRES_PASSWORD=postgres -d postgres
 ~~~
 
 ## Executing the Terminal inside the Container
 ~~~
-docker exec -it meu-postgres bash
+docker exec -it my-postgres bash
 ~~~
 
 ## Running the `psql`
@@ -15,11 +15,10 @@ docker exec -it meu-postgres bash
 psql -U postgres
 ~~~
 
-## SQL statements inside the `psql`
+# SQL Model
+
+Schema related to the base data model in SQL, the insertion of one tuple:
+
 ~~~
-CREATE TABLE Person (name VARCHAR(100), age  INTEGER);
-
-INSERT INTO Person VALUES ('Asdrubal', 32);
-
-SELECT * FROM Person;
+person_schema.sql
 ~~~

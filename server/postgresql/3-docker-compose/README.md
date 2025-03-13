@@ -78,5 +78,5 @@ https://www.digitalocean.com/community/tutorials/how-to-move-a-postgresql-data-d
 Schema related to the base data model in SQL, the insertion of three tuples:
 
 ~~~
-users_schema.sql
+person_schema.sql
 ~~~
