@@ -95,13 +95,13 @@ python3 manage.py makemigrations plot
 ## Shows the SQL that creates the tables
 
 ~~~
-python manage.py sqlmigrate plot 0001
+python3 manage.py sqlmigrate plot 0001
 ~~~
 
 ## Applying Migration
 
 ~~~
-python manage.py migrate
+python3 manage.py migrate
 ~~~
 
 ## Adding in the admin panel
