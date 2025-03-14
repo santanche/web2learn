@@ -255,12 +255,6 @@ urlpatterns = [
 
 ## Running the Server
 
-Running a Virtual Environment for Django
-
-~~~
-source .venv/bin/activate
-~~~
-
 Running the server
 
 ~~~
