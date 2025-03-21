@@ -74,7 +74,7 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('about/', views.index, name="index"),
+    path('about/person/', views.index, name="index"),
 ]
 ~~~
 
@@ -269,4 +269,4 @@ Import specification: Plots.postman_collection.json
 
 * api access: http://127.0.0.1:8000/
 * admin address: http://127.0.0.1:8000/admin/
-* page address: http://127.0.0.1:8000/person/about/
+* page address: http://127.0.0.1:8000/about/person/
