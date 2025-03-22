@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@marp-team/marp-cli": "^2.4.0"
+    "@marp-team/marp-cli": "^4.1.2"
   }
 }
