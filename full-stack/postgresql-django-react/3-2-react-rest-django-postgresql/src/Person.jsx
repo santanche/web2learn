@@ -19,16 +19,20 @@ function Person() {
 
   return (
     <table>
-      <tr><th>Name</th><th>E-mail</th><th>Birthday</th></tr>
-      <PersonContext.Provider value={{person, fetchPerson}}>
-        {person.map(user => (
-          <tr key={user.email_id}>
-            <td><b>{user.name}</b></td>
-            <td>{user.email_id}</td>
-            <td>{user.birthday}</td>
-          </tr>
-        ))}
-      </PersonContext.Provider>
+      <thead>
+        <tr><th>Name</th><th>E-mail</th><th>Birthday</th></tr>
+      </thead>
+      <tbody>
+        <PersonContext.Provider value={{person, fetchPerson}}>
+          {person.map(user => (
+            <tr key={user.email_id}>
+              <td><b>{user.name}</b></td>
+              <td>{user.email_id}</td>
+              <td>{user.birthday}</td>
+            </tr>
+          ))}
+        </PersonContext.Provider>
+      </tbody>
     </table>
   )
 }
