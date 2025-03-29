@@ -60,6 +60,8 @@ python3 manage.py migrate
 Changing `plot/models.py`
 
 ~~~python
+from django.db import models
+
 class Plot(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()

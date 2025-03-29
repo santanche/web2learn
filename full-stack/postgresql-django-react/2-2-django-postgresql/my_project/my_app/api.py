@@ -12,4 +12,4 @@ class PersonViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
 
 router = routers.DefaultRouter()
-router.register(r'person', PersonViewSet, basename='person')
+router.register(r'person', PersonViewSet, basename='my_app')
