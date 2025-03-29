@@ -16,14 +16,8 @@ source .venv/bin/activate
 
 ### Django Setup - Manual Approach
 
-### Django Setup - Manual Approach
-
 ~~~
 python3 -m pip install Django
-pip install djangorestframework
-pip install markdown
-pip install django-filter
-pip install psycopg2
 ~~~
 
 ### Django Setup - Requirements Approach
@@ -81,12 +75,22 @@ urlpatterns = [
 ]
 ~~~
 
-## Creating a Database
+## Connecting to a Database
 
 * source: https://docs.djangoproject.com/en/5.1/intro/tutorial02/
 
+### Django Setup - Manual Approach
+
 ~~~
-python3 manage.py migrate
+pip install markdown
+pip install django-filter
+pip install psycopg2
+~~~
+
+### Django Setup - Requirements Approach
+
+~~~
+pip install -r requirements.txt
 ~~~
 
 Changing `my_app/models.py`
@@ -166,6 +170,18 @@ python3 manage.py createsuperuser
 ## Expanding to REST
 
 * souce: https://www.django-rest-framework.org/#installation
+
+### Django Setup - Manual Approach
+
+~~~
+pip install djangorestframework
+~~~
+
+### Django Setup - Requirements Approach
+
+~~~
+pip install -r requirements.txt
+~~~
 
 Adding in `my_project/settings.py`:
 
