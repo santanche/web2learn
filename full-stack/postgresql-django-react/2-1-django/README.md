@@ -69,6 +69,16 @@ urlpatterns = [
 ]
 ~~~
 
+## Running the Server
+
+Running the server
+
+~~~
+cd my_project
+
+python3 manage.py runserver
+~~~
+
 ## Access
 
 * api access: http://127.0.0.1:8000/
