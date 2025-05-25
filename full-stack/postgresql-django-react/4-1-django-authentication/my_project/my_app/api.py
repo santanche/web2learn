@@ -1,5 +1,7 @@
 from rest_framework import routers, serializers, viewsets
 from django.contrib.auth.models import User
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Person
 
@@ -19,6 +21,8 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['user_id', 'username', 'first_name', 'last_name', 'email', 'birth', 'google_id', 'profile_picture']
 
 class PersonViewSet(viewsets.ModelViewSet):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
 

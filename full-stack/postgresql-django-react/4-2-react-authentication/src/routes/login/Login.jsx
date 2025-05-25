@@ -20,8 +20,8 @@ function GoogleAuthComponent() {
 
   const fetchUserProfile = async (token) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/person/`, {
-        headers: { Authorization: `Bearer ${token}` }
+      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/`, {
+        headers: { Authorization: `Token ${token}` }
       })
       setUser(response.data)
     } catch (err) {
