@@ -1,26 +1,29 @@
-# Django
+# Django Server - Full Stack Environment
+## Step-by-Step Construction
 
-# Virtual Environment
+## Virtual Environment
 
-## Creating a Virtual Environment for Django
+This is a step-by-step presentation to understand how this server setup was produced.
+
+### Creating a Virtual Environment for Django
 
 ~~~
 python3 -m venv .venv
 ~~~
 
-## Running a Virtual Environment for Django
+### Running a Virtual Environment for Django
 
 ~~~
 source .venv/bin/activate
 ~~~
 
-### Django Setup - Manual Approach
+## Django Setup - Manual Approach
 
 ~~~
 python3 -m pip install Django
 ~~~
 
-### Django Setup - Requirements Approach
+## Django Setup - Requirements Approach
 
 ~~~
 pip install -r requirements.txt
@@ -668,4 +671,3 @@ Import specification: Plots.postman_collection.json
 
 * api access: http://127.0.0.1:8000/
 * admin address: http://127.0.0.1:8000/admin/
-* page address: http://127.0.0.1:8000/about/my_app/
