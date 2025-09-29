@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tau Prolog Example</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/core.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/lists.js"></script>
+</head>
+<body>
+  <h1>Welcome to Tau Prolog</h1>
+  <p>This is a basic HTML page.</p>
+  <script>
+    var session = pl.create();
+
+    session.consult(`
+        likes(sam, salad).
+        likes(dean, pie).
+        likes(sam, apples).
+        likes(dean, whiskey).
+    `, {
+        success: function() { console.log('consult ok') },
+        error: function(err) { console.log('consult error') }
+    });
+
+    session.query("likes(sam, X).", {
+        success: function(goal) { console.log(goal) },
+        error: function(err) { console.log('query error') }
+    });
+  </script>
+</body>
+</html>
