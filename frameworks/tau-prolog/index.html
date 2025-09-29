@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tau Prolog Interface</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/charsio.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/concurrent.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/core.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/dom.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/format.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/js.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/lists.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/os.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/promises.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/random.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/statistics.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-right: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .button-group {
+            margin-top: 10px;
+        }
+        
+        .output {
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 10px;
+            min-height: 60px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .error {
+            color: #d32f2f;
+        }
+        
+        .success {
+            color: #388e3c;
+        }
+        
+        .info {
+            color: #1976d2;
+        }
+        
+        .query-section {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .query-section input {
+            flex: 1;
+        }
+        
+        .query-section button {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 Tau Prolog Interface</h1>
+        
+        <div class="section">
+            <label for="facts">Facts:</label>
+            <textarea id="facts" rows="6" placeholder="e.g., parent(tom, bob).&#10;parent(tom, liz).&#10;male(tom)."></textarea>
+        </div>
+        
+        <div class="section">
+            <label for="rules">Rules:</label>
+            <textarea id="rules" rows="6" placeholder="e.g., father(X, Y) :- parent(X, Y), male(X)."></textarea>
+        </div>
+        
+        <div class="button-group">
+            <button onclick="loadProgram()">Load Facts & Rules</button>
+        </div>
+        
+        <div id="loadOutput" class="output" style="display: none;"></div>
+        
+        <hr style="margin: 30px 0; border: none; border-top: 2px solid #e0e0e0;">
+        
+        <div class="section">
+            <label for="query">Query:</label>
+            <div class="query-section">
+                <input type="text" id="query" placeholder="e.g., father(tom, X)." onkeypress="if(event.key==='Enter') executeQuery()">
+                <button onclick="executeQuery()">Query</button>
+                <button onclick="getNextSolution()">Next</button>
+            </div>
+        </div>
+        
+        <div id="queryOutput" class="output"></div>
+    </div>
+
+    <script>
+        let session = null;
+        let currentQuery = null;
+
+        function loadProgram() {
+            const facts = document.getElementById('facts').value.trim();
+            const rules = document.getElementById('rules').value.trim();
+            const output = document.getElementById('loadOutput');
+            
+            // Create new session
+            session = pl.create();
+            currentQuery = null;
+            
+            // Combine facts and rules
+            const program = facts + '\n' + rules;
+            
+            if (!program.trim()) {
+                output.style.display = 'block';
+                output.className = 'output error';
+                output.textContent = 'Error: Please enter facts or rules.';
+                return;
+            }
+            
+            // Consult the program
+            session.consult(program, {
+                success: function() {
+                    output.style.display = 'block';
+                    output.className = 'output success';
+                    output.textContent = '✓ Facts and rules loaded successfully!';
+                    document.getElementById('queryOutput').textContent = '';
+                },
+                error: function(err) {
+                    output.style.display = 'block';
+                    output.className = 'output error';
+                    output.textContent = '✗ Error loading program:\n' + session.format_answer(err);
+                }
+            });
+        }
+
+        function executeQuery() {
+            const query = document.getElementById('query').value.trim();
+            const output = document.getElementById('queryOutput');
+            
+            if (!session) {
+                output.className = 'output error';
+                output.textContent = '✗ Please load facts and rules first.';
+                return;
+            }
+            
+            if (!query) {
+                output.className = 'output error';
+                output.textContent = '✗ Please enter a query.';
+                return;
+            }
+            
+            // Query the session
+            session.query(query, {
+                success: function() {
+                    output.className = 'output info';
+                    output.textContent = 'Query loaded. Click "Next" to get solutions...';
+                    getNextSolution();
+                },
+                error: function(err) {
+                    output.className = 'output error';
+                    output.textContent = '✗ Error in query:\n' + session.format_answer(err);
+                }
+            });
+        }
+
+        function getNextSolution() {
+            const output = document.getElementById('queryOutput');
+            
+            if (!session) {
+                output.className = 'output error';
+                output.textContent = '✗ Please load facts and rules first.';
+                return;
+            }
+            
+            session.answer({
+                success: function(answer) {
+                    output.className = 'output success';
+                    output.textContent = '✓ ' + session.format_answer(answer);
+                },
+                error: function(err) {
+                    output.className = 'output error';
+                    output.textContent = '✗ Error:\n' + session.format_answer(err);
+                },
+                fail: function() {
+                    output.className = 'output info';
+                    output.textContent = '✗ No more solutions (false).';
+                },
+                limit: function() {
+                    output.className = 'output info';
+                    output.textContent = 'Limit exceeded.';
+                }
+            });
+        }
+
+        // Initialize empty session on load
+        session = pl.create();
+    </script>
+</body>
+</html>
