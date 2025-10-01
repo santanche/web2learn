@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables from .env file
 load_dotenv()
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# The key produced by Django here was transferred to the .env file.
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # Google OAuth settings

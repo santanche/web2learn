@@ -333,7 +333,7 @@ INSTALLED_APPS = [
 ]
 ~~~
 
-Load environment variables and set constants:
+Load environment variables and set constants. The field `SECRET_KEY` produced by Django is transferred to the .env file (`DJANGO_SECRET_KEY` field) and its value is replaced by `os.getenv('DJANGO_SECRET_KEY')`:
 
 ~~~python
 import os
@@ -344,7 +344,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# The key produced by Django here was transferred to the .env file.
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # Google OAuth settings

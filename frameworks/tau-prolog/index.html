@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tau Prolog Interface</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/charsio.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/concurrent.js"></script>
+    <!-- Load core first -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/core.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/dom.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/format.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/js.js"></script>
+    <!-- Then load additional modules -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/lists.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/os.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/promises.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/charsio.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/format.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/random.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/statistics.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/js.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/dom.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/os.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/promises.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/concurrent.js"></script>
     <style>
         * {
             margin: 0;
@@ -162,6 +164,48 @@
         <h1>🔮 Tau Prolog Interface</h1>
         
         <div class="section">
+            <label>Modules to Load:</label>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px; margin-bottom: 15px;">
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_lists" checked style="margin-right: 6px; cursor: pointer;">
+                    <span>lists</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_charsio" style="margin-right: 6px; cursor: pointer;">
+                    <span>charsio</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_format" style="margin-right: 6px; cursor: pointer;">
+                    <span>format</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_random" style="margin-right: 6px; cursor: pointer;">
+                    <span>random</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_statistics" style="margin-right: 6px; cursor: pointer;">
+                    <span>statistics</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_js" style="margin-right: 6px; cursor: pointer;">
+                    <span>js</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_dom" style="margin-right: 6px; cursor: pointer;">
+                    <span>dom</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_os" style="margin-right: 6px; cursor: pointer;">
+                    <span>os</span>
+                </label>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <input type="checkbox" id="mod_promises" style="margin-right: 6px; cursor: pointer;">
+                    <span>promises</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="section">
             <label for="facts">Facts:</label>
             <textarea id="facts" rows="6" placeholder="e.g., parent(tom, bob).&#10;parent(tom, liz).&#10;male(tom)."></textarea>
         </div>
@@ -204,22 +248,35 @@
             session = pl.create();
             currentQuery = null;
             
-            // Combine facts and rules
-            const program = facts + '\n' + rules;
+            // Get selected modules
+            const modules = [];
+            const moduleIds = ['lists', 'charsio', 'format', 'random', 'statistics', 'js', 'dom', 'os', 'promises'];
             
-            if (!program.trim()) {
-                output.style.display = 'block';
-                output.className = 'output error';
-                output.textContent = 'Error: Please enter facts or rules.';
-                return;
-            }
+            moduleIds.forEach(mod => {
+                if (document.getElementById('mod_' + mod).checked) {
+                    modules.push(mod);
+                }
+            });
             
-            // Consult the program
+            // Build module directives
+            let moduleDirectives = '';
+            modules.forEach(mod => {
+                moduleDirectives += ':- use_module(library(' + mod + ')).\n';
+            });
+            
+            // Combine modules, facts and rules
+            const program = moduleDirectives + facts + '\n' + rules;
+            
+            // Consult the program (allow empty facts/rules if modules are selected)
             session.consult(program, {
                 success: function() {
                     output.style.display = 'block';
                     output.className = 'output success';
-                    output.textContent = '✓ Facts and rules loaded successfully!';
+                    let message = '✓ Program loaded successfully!';
+                    if (modules.length > 0) {
+                        message += '\nModules loaded: ' + modules.join(', ');
+                    }
+                    output.textContent = message;
                     document.getElementById('queryOutput').textContent = '';
                 },
                 error: function(err) {
@@ -289,7 +346,7 @@
             });
         }
 
-        // Initialize empty session on load
+        // Initialize session on load
         session = pl.create();
     </script>
 </body>

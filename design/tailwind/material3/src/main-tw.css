@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply border border-black bg-black text-white rounded-md px-4 py-2 m-2 transition duration-500 ease-in-out select-none hover:bg-gray-700 focus:outline-none;
+  }
+  .bg-primary {color:rgb(65 95 145)}
+}
