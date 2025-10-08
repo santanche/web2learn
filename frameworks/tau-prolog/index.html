@@ -150,7 +150,7 @@
             align-items: flex-start;
         }
         
-        .query-section input {
+        .query-section textarea {
             flex: 1;
         }
         
@@ -226,7 +226,7 @@
         <div class="section">
             <label for="query">Query:</label>
             <div class="query-section">
-                <input type="text" id="query" placeholder="e.g., father(tom, X)." onkeypress="if(event.key==='Enter') executeQuery()">
+                <textarea id="query" rows="6" placeholder="e.g., father(tom, X)."></textarea>
                 <button onclick="executeQuery()">Query</button>
                 <button onclick="getNextSolution()">Next</button>
             </div>
