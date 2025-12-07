@@ -93,6 +93,20 @@
             border-color: #667eea;
         }
         
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
         button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -233,6 +247,19 @@
         </div>
         
         <div id="queryOutput" class="output"></div>
+        
+        <hr style="margin: 30px 0; border: none; border-top: 2px solid #e0e0e0;">
+        
+        <div class="section">
+            <label for="queryFile">Batch Queries from File:</label>
+            <input type="file" id="queryFile" accept=".txt,.pl,.prolog" style="margin-bottom: 10px;">
+            <div class="button-group">
+                <button onclick="executeBatchQueries()">Execute Batch Queries</button>
+                <button onclick="clearBatchResults()">Clear Results</button>
+            </div>
+        </div>
+        
+        <div id="batchOutput" class="output" style="display: none;"></div>
     </div>
 
     <script>
@@ -344,6 +371,126 @@
                     output.textContent = 'Limit exceeded.';
                 }
             });
+        }
+
+        function executeBatchQueries() {
+            const fileInput = document.getElementById('queryFile');
+            const output = document.getElementById('batchOutput');
+            
+            if (!session) {
+                output.style.display = 'block';
+                output.className = 'output error';
+                output.textContent = '✗ Please load facts and rules first.';
+                return;
+            }
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                output.style.display = 'block';
+                output.className = 'output error';
+                output.textContent = '✗ Please select a file containing queries.';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const content = e.target.result;
+                const queries = content.split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0 && !line.startsWith('%')); // Filter empty lines and comments
+                
+                if (queries.length === 0) {
+                    output.style.display = 'block';
+                    output.className = 'output error';
+                    output.textContent = '✗ No valid queries found in file.';
+                    return;
+                }
+                
+                output.style.display = 'block';
+                output.className = 'output info';
+                output.textContent = 'Processing ' + queries.length + ' queries...\n\n';
+                
+                processQueriesSequentially(queries, 0, output);
+            };
+            
+            reader.onerror = function() {
+                output.style.display = 'block';
+                output.className = 'output error';
+                output.textContent = '✗ Error reading file.';
+            };
+            
+            reader.readAsText(file);
+        }
+
+        function processQueriesSequentially(queries, index, output) {
+            if (index >= queries.length) {
+                output.textContent += '\n✓ Batch processing complete!';
+                return;
+            }
+            
+            const query = queries[index];
+            output.textContent += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+            output.textContent += 'Query ' + (index + 1) + ': ' + query + '\n';
+            output.textContent += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+            
+            session.query(query, {
+                success: function() {
+                    collectAllSolutions(session, output, function() {
+                        output.textContent += '\n';
+                        processQueriesSequentially(queries, index + 1, output);
+                    });
+                },
+                error: function(err) {
+                    output.textContent += '✗ Error: ' + session.format_answer(err) + '\n\n';
+                    processQueriesSequentially(queries, index + 1, output);
+                }
+            });
+        }
+
+        function collectAllSolutions(session, output, callback) {
+            const solutions = [];
+            
+            function getNext() {
+                session.answer({
+                    success: function(answer) {
+                        solutions.push(session.format_answer(answer));
+                        getNext(); // Get next solution
+                    },
+                    error: function(err) {
+                        output.textContent += '✗ Error: ' + session.format_answer(err) + '\n';
+                        callback();
+                    },
+                    fail: function() {
+                        if (solutions.length === 0) {
+                            output.textContent += '✗ false (no solutions)\n';
+                        } else {
+                            solutions.forEach((sol, idx) => {
+                                output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                            });
+                        }
+                        callback();
+                    },
+                    limit: function() {
+                        output.textContent += '⚠ Limit exceeded\n';
+                        if (solutions.length > 0) {
+                            solutions.forEach((sol, idx) => {
+                                output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                            });
+                        }
+                        callback();
+                    }
+                });
+            }
+            
+            getNext();
+        }
+
+        function clearBatchResults() {
+            const output = document.getElementById('batchOutput');
+            output.style.display = 'none';
+            output.textContent = '';
+            document.getElementById('queryFile').value = '';
         }
 
         // Initialize session on load
