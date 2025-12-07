@@ -434,30 +434,39 @@
             output.textContent += 'Query ' + (index + 1) + ': ' + query + '\n';
             output.textContent += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
             
-            session.query(query, {
-                success: function() {
-                    collectAllSolutions(session, output, function() {
-                        output.textContent += '\n';
-                        processQueriesSequentially(queries, index + 1, output);
-                    });
-                },
-                error: function(err) {
-                    output.textContent += '✗ Error: ' + session.format_answer(err) + '\n\n';
-                    processQueriesSequentially(queries, index + 1, output);
-                }
-            });
+            // Use setTimeout to prevent blocking
+            setTimeout(function() {
+                session.query(query, {
+                    success: function() {
+                        collectAllSolutions(session, output, function() {
+                            output.textContent += '\n';
+                            // Use setTimeout for next query
+                            setTimeout(function() {
+                                processQueriesSequentially(queries, index + 1, output);
+                            }, 10);
+                        });
+                    },
+                    error: function(err) {
+                        output.textContent += '✗ Error: ' + session.format_answer(err) + '\n\n';
+                        // Use setTimeout for next query
+                        setTimeout(function() {
+                            processQueriesSequentially(queries, index + 1, output);
+                        }, 10);
+                    }
+                });
+            }, 10);
         }
 
         function collectAllSolutions(session, output, callback) {
             const solutions = [];
             const maxSolutions = 100; // Limit to prevent infinite loops
             const startTime = Date.now();
-            const timeout = 30000; // 30 second timeout
+            const timeout = 10000; // 10 second timeout per query
             
             function getNext() {
                 // Check for timeout
                 if (Date.now() - startTime > timeout) {
-                    output.textContent += '⚠ Timeout exceeded (30s)\n';
+                    output.textContent += '⚠ Timeout exceeded (10s)\n';
                     if (solutions.length > 0) {
                         solutions.forEach((sol, idx) => {
                             output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
@@ -477,36 +486,43 @@
                     return;
                 }
                 
-                session.answer({
-                    success: function(answer) {
-                        solutions.push(session.format_answer(answer));
-                        // Use setTimeout to prevent blocking the UI
-                        setTimeout(getNext, 0);
-                    },
-                    error: function(err) {
-                        output.textContent += '✗ Error: ' + session.format_answer(err) + '\n';
-                        callback();
-                    },
-                    fail: function() {
-                        if (solutions.length === 0) {
-                            output.textContent += '✗ false (no solutions)\n';
-                        } else {
-                            solutions.forEach((sol, idx) => {
-                                output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
-                            });
-                        }
-                        callback();
-                    },
-                    limit: function() {
-                        output.textContent += '⚠ Limit exceeded\n';
-                        if (solutions.length > 0) {
-                            solutions.forEach((sol, idx) => {
-                                output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
-                            });
-                        }
+                // Use setTimeout to allow UI updates
+                setTimeout(function() {
+                    try {
+                        session.answer({
+                            success: function(answer) {
+                                solutions.push(session.format_answer(answer));
+                                getNext();
+                            },
+                            error: function(err) {
+                                output.textContent += '✗ Error: ' + session.format_answer(err) + '\n';
+                                callback();
+                            },
+                            fail: function() {
+                                if (solutions.length === 0) {
+                                    output.textContent += '✗ false (no solutions)\n';
+                                } else {
+                                    solutions.forEach((sol, idx) => {
+                                        output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                                    });
+                                }
+                                callback();
+                            },
+                            limit: function() {
+                                output.textContent += '⚠ Limit exceeded\n';
+                                if (solutions.length > 0) {
+                                    solutions.forEach((sol, idx) => {
+                                        output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                                    });
+                                }
+                                callback();
+                            }
+                        });
+                    } catch (e) {
+                        output.textContent += '✗ Exception: ' + e.message + '\n';
                         callback();
                     }
-                });
+                }, 1);
             }
             
             getNext();
