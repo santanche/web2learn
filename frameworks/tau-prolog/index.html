@@ -146,11 +146,6 @@
             word-break: break-word;
         }
         
-        #batchOutput {
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        
         .error {
             color: #d32f2f;
         }
@@ -455,12 +450,38 @@
 
         function collectAllSolutions(session, output, callback) {
             const solutions = [];
+            const maxSolutions = 100; // Limit to prevent infinite loops
+            const startTime = Date.now();
+            const timeout = 30000; // 30 second timeout
             
             function getNext() {
+                // Check for timeout
+                if (Date.now() - startTime > timeout) {
+                    output.textContent += '⚠ Timeout exceeded (30s)\n';
+                    if (solutions.length > 0) {
+                        solutions.forEach((sol, idx) => {
+                            output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                        });
+                    }
+                    callback();
+                    return;
+                }
+                
+                // Check for max solutions
+                if (solutions.length >= maxSolutions) {
+                    output.textContent += '⚠ Maximum solutions reached (' + maxSolutions + ')\n';
+                    solutions.forEach((sol, idx) => {
+                        output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                    });
+                    callback();
+                    return;
+                }
+                
                 session.answer({
                     success: function(answer) {
                         solutions.push(session.format_answer(answer));
-                        getNext(); // Get next solution
+                        // Use setTimeout to prevent blocking the UI
+                        setTimeout(getNext, 0);
                     },
                     error: function(err) {
                         output.textContent += '✗ Error: ' + session.format_answer(err) + '\n';
