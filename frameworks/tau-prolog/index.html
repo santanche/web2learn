@@ -78,7 +78,7 @@
             border-color: #667eea;
         }
         
-        input[type="text"] {
+        input[type="text"], input[type="number"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #e0e0e0;
@@ -88,7 +88,7 @@
             transition: border-color 0.3s;
         }
         
-        input[type="text"]:focus {
+        input[type="text"]:focus, input[type="number"]:focus {
             outline: none;
             border-color: #667eea;
         }
@@ -253,6 +253,8 @@
         <div class="section">
             <label for="queryFile">Batch Queries from File:</label>
             <input type="file" id="queryFile" accept=".txt,.pl,.prolog" style="margin-bottom: 10px;">
+            <label for="maxSolutions" style="margin-top: 10px;">Maximum solutions per query:</label>
+            <input type="number" id="maxSolutions" value="10" min="1" max="1000" style="margin-bottom: 10px; width: 150px;">
             <div class="button-group">
                 <button onclick="executeBatchQueries()">Execute Batch Queries</button>
                 <button onclick="clearBatchResults()">Clear Results</button>
@@ -409,9 +411,14 @@
                 
                 output.style.display = 'block';
                 output.className = 'output info';
-                output.textContent = 'Processing ' + queries.length + ' queries...\n\n';
                 
-                processQueriesSequentially(queries, 0, output);
+                // Get max solutions from input
+                const maxSolutionsInput = document.getElementById('maxSolutions');
+                const maxSolutions = parseInt(maxSolutionsInput.value) || 10;
+                
+                output.textContent = 'Processing ' + queries.length + ' queries (max ' + maxSolutions + ' solutions per query)...\n\n';
+                
+                processQueriesSequentially(queries, 0, output, maxSolutions);
             };
             
             reader.onerror = function() {
@@ -423,7 +430,7 @@
             reader.readAsText(file);
         }
 
-        function processQueriesSequentially(queries, index, output) {
+        function processQueriesSequentially(queries, index, output, maxSolutions) {
             if (index >= queries.length) {
                 output.textContent += '\n✓ Batch processing complete!';
                 return;
@@ -438,11 +445,11 @@
             setTimeout(function() {
                 session.query(query, {
                     success: function() {
-                        collectAllSolutions(session, output, function() {
+                        collectAllSolutions(session, output, maxSolutions, function() {
                             output.textContent += '\n';
                             // Use setTimeout for next query
                             setTimeout(function() {
-                                processQueriesSequentially(queries, index + 1, output);
+                                processQueriesSequentially(queries, index + 1, output, maxSolutions);
                             }, 10);
                         });
                     },
@@ -450,16 +457,15 @@
                         output.textContent += '✗ Error: ' + session.format_answer(err) + '\n\n';
                         // Use setTimeout for next query
                         setTimeout(function() {
-                            processQueriesSequentially(queries, index + 1, output);
+                            processQueriesSequentially(queries, index + 1, output, maxSolutions);
                         }, 10);
                     }
                 });
             }, 10);
         }
 
-        function collectAllSolutions(session, output, callback) {
+        function collectAllSolutions(session, output, maxSolutions, callback) {
             const solutions = [];
-            const maxSolutions = 100; // Limit to prevent infinite loops
             const startTime = Date.now();
             const timeout = 10000; // 10 second timeout per query
             
@@ -478,10 +484,12 @@
                 
                 // Check for max solutions
                 if (solutions.length >= maxSolutions) {
-                    output.textContent += '⚠ Maximum solutions reached (' + maxSolutions + ')\n';
-                    solutions.forEach((sol, idx) => {
-                        output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
-                    });
+                    if (solutions.length > 0) {
+                        solutions.forEach((sol, idx) => {
+                            output.textContent += '  Solution ' + (idx + 1) + ': ' + sol + '\n';
+                        });
+                        output.textContent += '  (Maximum ' + maxSolutions + ' solutions reached)\n';
+                    }
                     callback();
                     return;
                 }
