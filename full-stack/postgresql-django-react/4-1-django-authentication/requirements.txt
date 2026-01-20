@@ -14,7 +14,7 @@ psycopg2==2.9.10
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 python-dotenv==1.1.0
-requests==2.32.3
+requests==2.32.4
 rsa==4.9
 sqlparse==0.5.3
 typing_extensions==4.12.2
